@@ -1,1 +1,50 @@
-<p>login works!</p>
+<section class="login">
+    <div class="app__container">
+        <div class="login__row">
+            <div class="login__col">
+                <div class="login__header">
+                    <h1 class="login__title">S'identifier</h1>
+                </div>
+                <div class="login__body">
+                    <form action="#" [formGroup]="loginForm">
+                        <div class="form__group">
+                            <mat-form-field appearance="outline" class="form__control">
+                                <mat-label>Email *</mat-label>
+                                <input matInput formControlName = "email">
+                                <mat-error *ngIf="isControlHasError('email','required')">
+                                    <strong>Email est obligatoire</strong>
+                                </mat-error>
+                                <mat-error *ngIf="isControlHasError('email','email')">
+                                    <strong>Email est invalide</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="form__group">
+                            <mat-form-field appearance="outline" class="form__control">
+                                <mat-label>Password *</mat-label>
+                                <input matInput type="password" name="password" id="password" formControlName = "password">
+                                <mat-error *ngIf="isControlHasError('password','required')">
+                                    <strong>Password est obligatoire</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="btn__actions">
+                            <button mat-flat-button color="primary" class="btn__block btn btn-primary" onclick="login()">Se connecter</button>
+                        </div>
+                        <div>
+                            <a href="javascript:;" routerLink="/auth/forgot-password" class="text-decoration-none">
+                                Mot de passe oublié
+                            </a>
+                        </div>
+                        <div class="loginSignUpSeparator">
+                            <span class="textInSeparator">ou</span>
+                        </div>
+                        <div class="login__actions">
+                            <button mat-flat-button routerLink="/auth/register" class="btn__block btn-primary login__btn-signin ">S'inscrire</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
