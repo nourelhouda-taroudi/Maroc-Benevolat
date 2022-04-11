@@ -1,0 +1,173 @@
+
+.btn{
+    margin-left: 15px;
+    border-radius: 20px;
+}
+input{
+    margin-right: -10px;
+}
+.d-flex{
+    text-align: center;
+}
+
+
+
+.me-2{
+    margin-right: -0.5rem!important;
+    border-radius: 20px;
+}
+
+.carousel{
+    margin-top: 0px;
+
+}
+.carousel-inner{
+
+    width: 1300px;
+    height: 600px;
+    margin-left: 75px;
+   
+ 
+}
+
+.me-auto {
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+.div{
+    display: flex;
+    margin-top: 60px;
+    justify-content: space-around;
+
+}
+.card{
+    justify-content: space-around;
+   
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    border-radius: 18px;
+    transition: 0.5s ease;
+    cursor: pointer;
+
+    
+    
+}
+.card-img-top{
+    
+        grid-area: image;
+        height: 168px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-size: cover;
+      
+}
+.card-text {
+    grid-area: text;
+    margin: 25px;
+  }
+  .card-text .date {
+    color: rgb(255, 7, 110);
+    font-size:13px;
+  }
+  .card-text p {
+    color: grey;
+    font-size:15px;
+    font-weight: 300;
+  }
+ 
+ 
+  .card:hover {
+    transform: scale(1.15);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+    background-color: rgb(67, 67, 184);
+    color: white;
+  }
+
+  h2{
+      margin-top: 50px;
+      text-align: center;
+      font-size: 30px;
+      color: grey;
+
+  }
+  .titre{
+      display: flex;
+      justify-content: space-around;
+  }
+  .name:hover{
+      color: green;
+  }
+  .container{
+      justify-content: space-around;
+  }
+ .navbar1{
+     justify-content: space-around;
+     display: flex;
+     margin-top: 25px;
+     margin-bottom: 20px;
+    
+
+
+     
+ }
+ .navbar{
+    justify-content: space-around;
+    display: flex;
+    margin-top: 25px;
+    margin-bottom: 20px;
+
+ }
+ .link{
+     color: gray;
+     font-size: 18px;
+     text-decoration: none;
+
+  
+    
+ }
+ .link:hover{
+     color: green;
+     text-decoration: underline;
+ 
+     text-underline-offset: 0.8em;
+    
+     
+ }
+ .card-text:hover{
+     
+ }
+ .share{
+     justify-content: space-around;
+ }
+
+ 
+ .nous{
+     display: flex;
+     margin: 50px;
+     justify-content: space-around;
+ }
+ .para{
+     font-size: 15px;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     text-align: center;
+     padding: 10px;
+ }
+ .pourquoi{
+     display: flex;
+     margin: 20px;
+     justify-content: space-around;
+ }
+ .social{
+     justify-content: space-around;
+     display: flex;
+ }
+ .container {
+     background-color: rgb(2, 51, 11);
+     
+
+ }
+ .section{
+     margin-top: 30px;
+ }
+
