@@ -1,0 +1,261 @@
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', "Helvetica Neue", sans-serif; }
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+button,
+[type='button'] {
+  -webkit-appearance: button;
+}
+legend {
+  padding: 0;
+}
+mat-icon{
+  color: #2c77f4;
+  margin-left: 20px;
+}
+
+button {
+  background-color: transparent;
+  background-image: none;
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+nput::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1;
+  color: #a1a1aa;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  opacity: 1;
+  color: #a1a1aa;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  color: #a1a1aa;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
+}
+
+.form__right {
+  display: flex;
+  justify-content: flex-end
+}
+btn.btn__dark {
+  background-color: rgba(15, 23, 42, 1);
+  border-color: rgba(15, 23, 42, 1)
+}
+
+.btn.btn__text__sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.btn__lg__hidden {
+  display: none
+}
+
+.login__head{
+
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: right;
+}
+.login__link{
+  color : rgba(black, 0.7)
+}
+
+.loginSignUpSeparator {
+  border-top: 1px solid #cbd2d6;
+  position: relative;
+  margin: 25px 0 10px;
+  text-align: center;
+}
+.textInSeparator {
+  background-color: #fff;
+  padding: 0 .5em;
+  position: relative;
+  color: #6c7378;
+  top: -.7em;
+}
+.login__btn-signin {
+  font-weight: 500;
+  font-size: 1rem;
+  height: 50px;
+  padding-left: 2.75rem;
+  padding-right: 2.75rem;
+  width: 100%;
+  background-color: #E1E7EB;
+  color: #2C2E2F;
+  border-color: #2C2E2F;
+}
+.login {
+  min-height: 100vh;
+  padding-bottom: 2.5rem;
+  padding-top: 3rem
+}
+
+@media (min-width: 1024px) {
+  .login {
+    padding-top: 5rem;
+  }
+}
+
+.login__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%
+}
+
+.login__col {
+  width: 100%
+}
+.register__col {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .login__col {
+    width: 83.333333%;
+  }
+  .register__col {
+    width: 83.333333%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login__col {
+    width: 33.333333%;
+  }
+  .register__col {
+    width: 83.333333%;
+  }
+}
+
+.login__header {
+  margin-bottom: 1.5rem;
+  text-align: center
+}
+
+.login__title {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 0px
+}
+
+.login__body {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  border-radius: 0.375rem;
+  padding: 1.5rem;
+  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.form__group {
+  margin-bottom: 1rem
+}
+
+.form__label {
+  display: block;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: rgba(15, 23, 42, 1)
+}
+
+.form__control:focus {
+  border-color: rgba(203, 213, 225, 1);
+}
+
+.form__control {
+  font-weight: 200;
+  font-size: .8rem;
+  width: 100%;
+}
+
+.form__control.is__invalid {
+  --tw-border-opacity: 1;
+  border-color: rgba(220, 38, 38, var(--tw-border-opacity))
+}
+
+.form__control.is__invalid:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(220, 38, 38, var(--tw-border-opacity));
+}
+.btn.btn__primary {
+  --tw-bg-opacity: 1;
+  background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(37, 99, 235, var(--tw-border-opacity))
+}
+
+.btn.btn__secondary {
+  background-color: rgba(148, 163, 184, 1);
+  border-color: rgba(148, 163, 184, 1)
+}
+.btn__block {
+  font-weight: 500;
+  font-size: 1rem;
+  height: 50px;
+  padding-left: 2.75rem;
+  padding-right: 2.75rem;
+  width: 100%;
+  background-color: #2c77f4;
+}
+.btn__actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+}

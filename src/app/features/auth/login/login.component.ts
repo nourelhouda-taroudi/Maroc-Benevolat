@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.checkFormIsValid();
     const {email, password} = this.loginForm.value;
+    console.log(email,password);
   }
 
   // Check Form is valid
