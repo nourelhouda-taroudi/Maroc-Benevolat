@@ -1,0 +1,65 @@
+<div class="all">
+  <div class="div">
+    <h1 class="titre">DEVENIR UN BENEVOLAT</h1>
+    <p class="para">Vous souhaitez vous investir auprès d’une association et vous vous posez de nombreuses questions : Est-ce vraiment fait pour moi ? Puis-je concilier cet engagement avec mon emploi du temps ? Comment valoriser cette expérience ? Étudiants, salariés, retraités, demandeurs d’emploi… Rassurez-vous ! Tout le monde peut devenir bénévole, et c’est bien plus simple qu’on ne le pense.</p>
+    <div class="search"><input class="form-control me-2" type="search" placeholder="Choissisez votre association " aria-label="Search"  name="you searched " >
+    <button class="btn btn-outline-success" type="submit"><mat-icon>search</mat-icon></button></div>
+  </div>
+  <div class="img">
+    <video width="550" height="400" controls="controls" id="myVideo">
+       <source src="./../../../assets/Devenir bénévole au Maroc.mp4">
+       <source src="./../../../assets/Devenir bénévole au Maroc.ogg">
+      </video>
+      <script>
+        let options = {
+            root: null,
+            rootMargin:'0px',
+            threshold:1.0
+        };
+        let callback= (entries, observer) =>{
+            entries.forEach(entry => {
+                if (entry.target.id =='myVideo'){
+                    if(entry.isIntersecting){
+                        entry.target.play();
+                      }
+                      else{
+                          entry.target.pause();
+                      }
+                }
+            })
+        } 
+        let observer = new IntersectionObserver(callback,options);
+        observer.observe(document.querySelector('#myVideo'));
+    </script>
+  </div>
+</div>
+<div class="all">
+  <div class="why">
+    <h1 style="margin-left: 30px;"> POURQUOI DEVENIR UN BENEVOLAT?</h1>
+    <img src="../../../assets/why2.jpeg" width="600px"  style="margin-left: 30px; margin-top: 30px;">
+   </div>
+   <div  style="background-color: rgb(251, 233, 133); margin-top: 70px;width: 600px; padding: 10px; height: 300px;" >
+    <p class="para1"> 
+        - Pour la moitié des bénévoles, c’est se sentir utile qui compte !<br/>
+        - Faire de belles rencontres et partager des bons moments <br/>
+        - Acquérir des compétences et en développer d’autres <br/>
+        - Se faire plaisir<br/>
+        - Servir une cause 
+
+    </p>
+   </div>
+   
+</div>
+<img src="../../../assets/why.png" width="600px" class="image">
+<div class="all">
+<p class="para"> Oups vous avez une association , Waaw donc vous etes parmi les 2000 associations au maroc.<br/>
+    C'est a vous de jouer rejoingez nous et profitez de nos nombreux affaires.
+</p>
+<a (click)="goToConn('auth/register')" class="link" type="submit" >S'inscrire</a>
+</div>
+
+<div class="all" style="margin: 30px;">
+    <button  (click)="goToConn('auth/login')"  class="button" style="width:260px ; background-color: rgb(204, 216, 66);">Pourquoi nous rejoindre?</button>
+    <button   (click)="goToConn('auth/login')"  class="button" style="background-color: rgb(204, 216, 66);">A propos de nous</button>
+
+</div>

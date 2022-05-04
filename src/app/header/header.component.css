@@ -1,0 +1,56 @@
+.container{
+    justify-content: space-around;
+}
+.navbar1{
+   justify-content: space-around;
+   display: flex;
+   margin-top: 25px;
+   margin-bottom: 20px;
+  
+
+
+   
+}
+.navbar{
+  justify-content: space-around;
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 20px;
+
+}
+.link{
+   color: gray;
+   font-size: 18px;
+   text-decoration: none;
+
+
+  
+}
+.link:hover{
+   color: green;
+   text-decoration: underline;
+
+   text-underline-offset: 0.8em;
+  
+   
+}
+.btn{
+    margin-left: 15px;
+    border-radius: 20px;
+}
+input{
+    margin-right: -10px;
+}
+.d-flex{
+    text-align: center;
+}
+.me-2{
+    margin-right: -0.5rem!important;
+    border-radius: 20px;
+}
+.active {
+    color: green;
+    text-decoration: underline;
+ 
+    text-underline-offset: 0.8em;
+  }
