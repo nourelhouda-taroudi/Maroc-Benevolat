@@ -1,0 +1,28 @@
+.title{
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-bottom: 50px;
+    width: 1420px;
+    height: 200px;
+    background-color: rgb(221, 207, 180);
+    color: rgb(213, 233, 213);
+    padding: 100px;
+    padding-left: 30px;
+    background-image: url('./../../../assets/back1.jpg');
+    background-repeat: no-repeat;
+
+}
+.div{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+.image{
+    width: 300px; height: 450px;
+}
+.btn{
+    width: 250px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: rgb(233, 233, 171);
+}
