@@ -21,10 +21,13 @@
                         </div>
                         <div class="form__group">
                             <mat-form-field appearance="outline" class="form__control">
-                                <mat-label>Password *</mat-label>
+                                <mat-label>Mot de passe *</mat-label>
                                 <input matInput type="password" name="password" id="password" formControlName = "password">
                                 <mat-error *ngIf="isControlHasError('password','required')">
-                                    <strong>Password est obligatoire</strong>
+                                    <strong>Mot de passe est obligatoire</strong>
+                                </mat-error>
+                                <mat-error *ngIf="isControlHasError('password','minlength')">
+                                    <strong>Mot de passe est court(6 caractére minimum)</strong>
                                 </mat-error>
                             </mat-form-field>
                         </div>

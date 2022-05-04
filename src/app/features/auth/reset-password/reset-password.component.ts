@@ -11,8 +11,8 @@ export class ResetPasswordComponent implements OnInit {
 
   resetForm    : FormGroup= new FormGroup(
     {
-      newPassword    : new FormControl(null,[Validators.required]),
-      retapPassword : new FormControl(null,[Validators.required])
+      newPassword    : new FormControl(null,[Validators.required,Validators.minLength(6)]),
+      retapPassword : new FormControl(null,[Validators.required,Validators.minLength(6)])
     }
   );
   hasFormErrors = false;

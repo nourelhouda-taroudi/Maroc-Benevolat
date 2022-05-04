@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
   isLinear=true;
   number:number=0;
+  samePassword=false;
   registerForm1: FormGroup = new FormGroup({
     firstname: new FormControl(null, [Validators.required]),
     lastname: new FormControl(null, [Validators.required]),
@@ -18,8 +19,8 @@ export class RegisterComponent implements OnInit {
   registerForm2: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required]),
     emailValidation: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required]),
-    passwordValidation: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required,Validators.minLength(6)]),
+    passwordValidation: new FormControl(null, [Validators.required,Validators.minLength(6)]),
   });
   registerForm3: FormGroup = new FormGroup({
     nameAssociation: new FormControl(null, [Validators.required]),
@@ -89,5 +90,14 @@ export class RegisterComponent implements OnInit {
   }
   before(){
     this.number--;
+  }
+  isSamePassword(){
+    const password=this.registerForm2.controls['password'];
+    const passwordValidation=this.registerForm2.controls['passwordValidation'];
+    console.log(password,passwordValidation);
+    
+    const tst=((password.value!==passwordValidation.value)&& (password.dirty || password.touched)&& (passwordValidation.dirty || passwordValidation.touched));
+    this.samePassword=tst;
+    return tst;
   }
 }
