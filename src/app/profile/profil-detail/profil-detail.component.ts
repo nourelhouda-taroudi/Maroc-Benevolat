@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';  
 import { Post } from '../models/post';
-import { PostService } from '../services/post.service';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-profil-detail',
@@ -14,11 +14,13 @@ export class ProfilDetailComponent implements OnInit {
     text:'',
     visualisation:'',
     image:'',
-    like:false,
+    like:true,
     commentaire:'',
-    likeNum:0
+    likeNum:0,
+    date:new Date()
   }
   posts: Post[]=[];
+  addblogform: any;
   constructor(private postservice:PostService) { }
 
   ngOnInit(): void {
@@ -40,7 +42,10 @@ export class ProfilDetailComponent implements OnInit {
     })
   }
   onFileSelected(event: any){
-    console.log(event);
+    if(event.target.files.lenght>0){
+      const file=event.target.files[0];
+      this.addblogform.get('image').setValue(file);
+    }
   }
   resetpost(){
     this.mypost={
@@ -49,7 +54,8 @@ export class ProfilDetailComponent implements OnInit {
     image:'',
     like:false,
     commentaire:'',
-    likeNum:0
+    likeNum:0,
+    date:new Date()
     }
   }
   tolike(post:any){

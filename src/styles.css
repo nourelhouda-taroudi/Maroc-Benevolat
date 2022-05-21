@@ -33,3 +33,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     src: url("./assets/fonts/Montserrat-Medium.ttf") format("truetype");
     font-display: swap;
 }
+*{
+    font-family: "Montserrat regular"; /* 1 */
+}

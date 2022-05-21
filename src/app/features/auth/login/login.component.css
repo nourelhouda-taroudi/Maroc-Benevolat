@@ -189,7 +189,9 @@ btn.btn__dark {
   font-weight: 500;
   font-size: 1.5rem;
   line-height: 2rem;
-  margin-bottom: 0px
+  margin-bottom: 0px;
+  font-family: "Montserrat regular" !important; /* 1 */
+
 }
 
 .login__body {

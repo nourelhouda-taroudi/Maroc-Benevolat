@@ -1,6 +1,6 @@
 .container{
   display: flex;
-  margin-top: 20px ;
+  margin-top: 0px ;
 }
 .counter{
   margin-top: 40px;
@@ -9,12 +9,15 @@
 }
 .image{
   text-align: center;
-  margin-left: 40px;
-  
+  margin-left: 40px; 
 }
 .text{
   width: 800px;
   height: 210px;
+  text-align: left;
+  margin-top: 5px;
+  margin-top: 90px;
+  
 }
 
 .btn{
@@ -36,15 +39,23 @@
   text-align: left;
   margin-top: 5px;
   box-shadow: 10px 5px 5px 5px #d2d1d0;
+  
 }
 .rounded1 {
-  border-style: none;
-  width: 300px;
-  height: 200px;
  border: 1px solid #030303;
   text-align: left;
   margin-top: 5px;
-  box-shadow: 10px 5px 5px 5px #d2d1d0;
+  box-shadow: 10px 5px 5px 5px rgba(0,0,0,0.6);
+  margin: 30px;
+    font-size: 20px;
+    border-radius: 28px;
+    transition: 0.5s ease;
+    cursor: pointer;
+    width: 250px;
+}
+.rounded1:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
 }
 .describ{
   width: 600px;
@@ -58,12 +69,12 @@
 .name{
   color: gray;
   margin: 60px;
-  font-size: 18px;
+  font-size: 22px;
 }
 .siege{
  text-decoration: none;
   color: gray;
-  font-size: 18px;
+  font-size: 22px;
   margin-right: 15px;
   margin-left: 15px;
 
@@ -111,4 +122,22 @@
 .contact-us .map {
   overflow: hidden;
   border-radius: 4px;
+}
+.imagepost{
+  width: 400px;
+  height: 300px;
+  margin: 20px;
+}
+.imagecenter{
+  text-align: center;
+  display: flex;
+  margin: 30px;
+}
+.like{
+  width: 80px;
+  height: 30px;
+  font-size: 28px;
+  margin-top: 70px;
+  margin-left: 680px;
+  
 }

@@ -54,3 +54,20 @@ input{
  
     text-underline-offset: 0.8em;
   }
+
+  .btn1 {
+     width: 20px;
+      
+
+  }
+
+  .dropdown {
+    position: absolute;
+    margin-left: 470px;
+}
+
+.dropdown-item{
+    color: gray;
+    font-size: 18px;
+    font-family:'Times New Roman', Times, serif;
+}
