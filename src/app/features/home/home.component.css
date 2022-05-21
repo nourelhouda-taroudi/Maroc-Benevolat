@@ -88,6 +88,11 @@ input{
     box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
     background-color: rgb(6, 105, 11);
     color: white;
+    
+       
+    
+
+    
   }
 
   h2{
@@ -202,4 +207,14 @@ input{
     height: 50px;
     background-color: rgb(0 0 0 / 8%);
 
+}
+
+.btn_asso{
+    border:  none;
+    border-radius: 18px;
+    background-color: white;
+}
+
+.btn_asso:hover{
+    background-color: rgb(6, 105, 11);
 }

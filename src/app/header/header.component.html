@@ -2,11 +2,30 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container-fluid">
      <img  width="200" src="./../../../assets/logo.png" >
-      <form class="d-flex" (ngSubmit)="Search(homeform)" #homeform="ngForm">
-       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  [(ngModel)]="search.search" name="you searched " >
-        <button class="btn btn-outline-success" type="submit"><mat-icon>search</mat-icon></button>
-       
-      </form>
+     <div class="dropdown">
+      <button class="btn btn-light " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg> 
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Orphelins</a></li>
+        <li><a class="dropdown-item" href="#">Femmes</a></li>
+        <li><a class="dropdown-item" href="#">Others</a></li>
+      </ul>
+    </div>
+
+    <form class="d-flex" (ngSubmit)="Search(homeform)" #homeform="ngForm">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  [(ngModel)]="search.search" name="you searched " >
+       <button class="btn btn-outline-success" type="submit"><mat-icon>search</mat-icon></button>
+      
+     </form>
+    
+
+     
+      
+     
+
       <form class="d-flex">
       <button  (click)="goToConn('auth/login')"  class="btn btn-outline-success" type="submit" style="background-color: green; color: white;">Se connecter</button>
       <button  (click)="goToConn('auth/register')" class="btn btn-outline-success" type="submit" >S'inscrire</button>
@@ -17,6 +36,7 @@
 
 
  <div class="navbar1">
+   
   <a class="link " aria-current="page" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">ASSOCIATIONS</a>|
   <a class="link " aria-current="page" routerLink="benevoles" routerLinkActive="active">BENEVOLES</a>|
   <a class="link " aria-current="page" routerLink="partenaires"  routerLinkActive="active">PARTENAIRES</a>|
