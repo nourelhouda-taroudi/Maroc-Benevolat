@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';  
+import { Component, OnInit, Pipe } from '@angular/core';  
 import { Post } from '../models/post';
 import { PostService } from '../services/post.service';
 
@@ -7,6 +7,7 @@ import { PostService } from '../services/post.service';
   templateUrl: './profil-detail.component.html',
   styleUrls: ['./profil-detail.component.css']
 })
+
 export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
@@ -17,7 +18,7 @@ export class ProfilDetailComponent implements OnInit {
     like:true,
     commentaire:'',
     likeNum:0,
-    date:new Date()
+    createdAt:new Date()
   }
   posts: Post[]=[];
   addblogform: any;
@@ -55,7 +56,7 @@ export class ProfilDetailComponent implements OnInit {
     like:false,
     commentaire:'',
     likeNum:0,
-    date:new Date()
+    createdAt:new Date()
     }
   }
   tolike(post:any){
@@ -77,5 +78,9 @@ export class ProfilDetailComponent implements OnInit {
       this.edite = false;
       this.showForm =  false;
     })
+  }
+  close(){
+      this.edite = false; 
+      this.resetpost();
   }
 }

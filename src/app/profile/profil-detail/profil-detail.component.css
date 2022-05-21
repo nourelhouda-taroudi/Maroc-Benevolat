@@ -141,3 +141,18 @@
   margin-left: 680px;
   
 }
+.decouvert{
+  display: flex;
+  margin: 50px;
+  justify-content: space-around;
+}
+.textp{
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  padding: 10px;
+}
+.edite {
+  position: absolute;
+  margin-left: 1060px;
+}

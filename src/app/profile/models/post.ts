@@ -6,5 +6,5 @@ export interface Post {
     like:boolean;
     commentaire:string;
     likeNum:number;
-    date:Date;
+    createdAt:Date;
 }
