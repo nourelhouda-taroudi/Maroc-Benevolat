@@ -1,320 +1,365 @@
 <div class="container mt-4 border rounded border-black">
-<mat-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="registerForm1">
-    <form [formGroup]="registerForm1">
-      <ng-template matStepLabel>Votre compte (signataire du compte)</ng-template>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Entrer votre nom</mat-label>
-          <input
-            matInput
-            placeholder="Entrer votre nom"
-            formControlName="lastname"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Entrer votre prénom</mat-label>
-          <input
-            matInput
-            placeholder="Entrer votre prénom"
-            formControlName="firstname"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Entrer votre numéro de Téléphone</mat-label>
-          <input
-            matInput
-            placeholder="Entrer Téléphone"
-            formControlName="phone"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-radio-group aria-label="Select an option" formControlName="gender">
-          <mat-radio-button value="1">Femme</mat-radio-button>
-          <mat-radio-button value="2">Homme</mat-radio-button>
-        </mat-radio-group>
-      </div>
-      <!-- <button mat-button matStepperNext>Next</button> -->
-      <button mat-button matStepperNext mat-icon-button >
-        <mat-icon>arrow_forward_ios</mat-icon>
-      </button>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="registerForm2" label="Vos identifiant de connexion">
-    <form [formGroup]="registerForm2">
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Email</mat-label>
-          <input
-            matInput
-            placeholder="Entrer Email"
-            formControlName="email"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Valider l'email</mat-label>
-          <input
-            matInput
-            placeholder="Retaper l'email"
-            formControlName="emailValidation"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Mot de passe</mat-label>
-          <input
-            matInput
-            placeholder="Entrer mot de passe"
-            formControlName="password"
-            required
-          />
-          <mat-error *ngIf="isControlHasError('password','required')">
-            <strong>Mot de passe est obligatoire</strong>
-        </mat-error>
-          <mat-error *ngIf="isControlHasError('password','minlength')">
-            <strong>Mot de passe est court(6 caractére minimum)</strong>
-        </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Valider mot de passe</mat-label>
-          <input
-            matInput
-            placeholder="Retaper mot de passe"
-            formControlName="passwordValidation"
-            required
-          />
-          <mat-error *ngIf="isControlHasError('password','required')">
-            <strong>Mot de passe est obligatoire</strong>
-        </mat-error>
-          <mat-error *ngIf="isControlHasError('password','minlength')">
-            <strong>Mot de passe est court(6 caractére minimum)</strong>
-        </mat-error>
-        <mat-error *ngIf="isSamePassword()">
-          <strong>Les deux mot de passe ne sont pas identiques</strong>
-      </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <button mat-button matStepperPrevious mat-icon-button>
-          <mat-icon>arrow_back_ios</mat-icon>
-        </button>
-        <button mat-button matStepperNext mat-icon-button [disabled]="samePassword" >
-          <mat-icon>arrow_forward_ios</mat-icon>
-        </button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="registerForm3">
-    <form [formGroup]="registerForm3">
-      <ng-template matStepLabel>À propos de l'association</ng-template>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Nom d'association</mat-label>
-          <input
-            matInput
-            placeholder="Entrer le nom de l'association"
-            formControlName="nameAssociation"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Sigle de l'association</mat-label>
-          <input
-            matInput
-            placeholder="Entrer le sigle de l'association"
-            formControlName="sigleAssociation"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>L'objet de l'association</mat-label>
-          <input
-            matInput
-            placeholder="Entrer l'objet de l'association"
-            formControlName="objetSocial"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Téléphone de l'association</mat-label>
-          <input
-            matInput
-            placeholder="Entrer numéro de Téléphone"
-            formControlName="phone"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Adresse l'association</mat-label>
-          <input
-            matInput
-            placeholder="Entrer l'addresse"
-            formControlName="address"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="col-md-12 justify-content-between d-md-flex d-sm-block">
-        <div class="form__group col-md-6 col-sm-12">
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="registerForm1">
+      <form [formGroup]="registerForm1">
+        <ng-template matStepLabel
+          >Votre compte (signataire du compte)</ng-template
+        >
+        <div class="form__group">
           <mat-form-field appearance="outline" class="form__control">
-            <mat-label>Code postal de l'association</mat-label>
+            <mat-label>Entrer votre nom</mat-label>
             <input
               matInput
-              placeholder="Entrer le code postal"
-              formControlName="codePostal"
+              placeholder="Entrer votre nom"
+              formControlName="lastname"
               required
             />
           </mat-form-field>
         </div>
-        <div class="form__group col-md-6 col-sm-12">
+        <div class="form__group">
           <mat-form-field appearance="outline" class="form__control">
-            <mat-label>Ville</mat-label>
+            <mat-label>Entrer votre prénom</mat-label>
             <input
               matInput
-              placeholder="Entrer la ville"
-              formControlName="city"
+              placeholder="Entrer votre prénom"
+              formControlName="firstname"
               required
             />
           </mat-form-field>
         </div>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Description de l'association</mat-label>
-          <textarea
-            matInput
-            placeholder="description"
-            formControlName="infos"
-            required
-          ></textarea>
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-label>Logo</mat-label>
-        <input formControlName="logo" type="file" required />
-      </div>
-      <div class="form__group">
-        <button mat-button matStepperPrevious mat-icon-button>
-          <mat-icon>arrow_back_ios</mat-icon>
-        </button>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Entrer votre numéro de Téléphone</mat-label>
+            <input
+              matInput
+              placeholder="Entrer Téléphone"
+              formControlName="phone"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-radio-group
+            aria-label="Select an option"
+            formControlName="gender"
+          >
+            <mat-radio-button value="1">Femme</mat-radio-button>
+            <mat-radio-button value="2">Homme</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <!-- <button mat-button matStepperNext>Next</button> -->
         <button mat-button matStepperNext mat-icon-button>
           <mat-icon>arrow_forward_ios</mat-icon>
         </button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="registerForm4">
-    <form [formGroup]="registerForm4">
-      <ng-template matStepLabel>Contact de l'association</ng-template>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Email</mat-label>
-          <input
-            matInput
-            placeholder="email"
-            formControlName="email"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Facebook</mat-label>
-          <input
-            matInput
-            placeholder="facebook"
-            formControlName="facebook"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Instagram</mat-label>
-          <input
-            matInput
-            placeholder="instagram"
-            formControlName="instagram"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="form__group">
-        <mat-form-field appearance="outline" class="form__control">
-          <mat-label>Twitter</mat-label>
-          <input
-            matInput
-            placeholder="twitter"
-            formControlName="twitter"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <button mat-raised-button color="primary" class="mx-2 p-2">Valider</button>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Confirmation</ng-template>
-    <p class="fs-2 fw text-center my-3 fw-bold" style="color: green;">Vous avez terminer</p>
-    <div>
+      </form>
+    </mat-step>
+    <mat-step
+      [stepControl]="registerForm2"
+      label="Vos identifiant de connexion"
+    >
+      <form [formGroup]="registerForm2">
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Entrer Email"
+              formControlName="email"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Valider l'email</mat-label>
+            <input
+              matInput
+              placeholder="Retaper l'email"
+              formControlName="emailValidation"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Mot de passe</mat-label>
+            <input
+              matInput
+              placeholder="Entrer mot de passe"
+              formControlName="password"
+              (change)="isSamePassword()"
+              required
+            />
+            <mat-error *ngIf="isControlHasError('password', 'required')">
+              <strong>Mot de passe est obligatoire</strong>
+            </mat-error>
+            <mat-error *ngIf="isControlHasError('password', 'minlength')">
+              <strong>Mot de passe est court(6 caractére minimum)</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Valider mot de passe</mat-label>
+            <input
+              matInput
+              placeholder="Retaper mot de passe"
+              formControlName="passwordValidation"
+              (change)="isSamePassword()"
+              required
+            />
+            <mat-error *ngIf="isControlHasError('passwordValidation', 'required')">
+              <strong>Mot de passe est obligatoire</strong>
+            </mat-error>
+            <!-- <mat-error *ngIf="isControlHasError('passwordValidation', 'minlength')">
+              <strong>Mot de passe est court(6 caractére minimum)</strong>
+            </mat-error> -->
+            <!-- <mat-error *ngIf="samePassword">
+              <strong>Les deux mot de passe ne sont pas identiques</strong>
+            </mat-error> -->
+          </mat-form-field>
+        <div *ngIf="samePassword"><small style="color: red;">Les deux mot de passe ne sont pas identiques</small></div>
+        </div>
+        <div class="form__group">
+          <button mat-button matStepperPrevious mat-icon-button>
+            <mat-icon>arrow_back_ios</mat-icon>
+          </button>
+          <button
+            mat-button
+            matStepperNext
+            mat-icon-button
+            [disabled]="samePassword"
+          >
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="registerForm3">
+      <form [formGroup]="registerForm3">
+        <ng-template matStepLabel>À propos de l'association</ng-template>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Nom d'association</mat-label>
+            <input
+              matInput
+              placeholder="Entrer le nom de l'association"
+              formControlName="nameAssociation"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Sigle de l'association</mat-label>
+            <input
+              matInput
+              placeholder="Entrer le sigle de l'association"
+              formControlName="sigleAssociation"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>L'objet de l'association</mat-label>
+            <input
+              matInput
+              placeholder="Entrer l'objet de l'association"
+              formControlName="objetSocial"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Téléphone de l'association</mat-label>
+            <input
+              matInput
+              placeholder="Entrer numéro de Téléphone"
+              formControlName="phoneAssociation"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Adresse l'association</mat-label>
+            <input
+              matInput
+              placeholder="Entrer l'addresse"
+              formControlName="address"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 justify-content-between d-md-flex d-sm-block">
+          <div class="form__group col-md-6 col-sm-12">
+            <mat-form-field appearance="outline" class="form__control">
+              <mat-label>Code postal de l'association</mat-label>
+              <input
+                matInput
+                placeholder="Entrer le code postal"
+                formControlName="codePostal"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="form__group col-md-6 col-sm-12">
+            <mat-form-field appearance="outline" class="form__control">
+              <mat-label>Ville</mat-label>
+              <input
+                matInput
+                placeholder="Entrer la ville"
+                formControlName="city"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Description de l'association</mat-label>
+            <textarea
+              matInput
+              placeholder="description"
+              formControlName="infos"
+              required
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-label>Logo</mat-label>
+          <input formControlName="logo" type="file" required />
+        </div>
+        <div class="form__group">
+          <button mat-button matStepperPrevious mat-icon-button>
+            <mat-icon>arrow_back_ios</mat-icon>
+          </button>
+          <button mat-button matStepperNext mat-icon-button>
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="registerForm4">
+      <form [formGroup]="registerForm4">
+        <ng-template matStepLabel>Contact de l'association</ng-template>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="email"
+              formControlName="emailAssociation"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Facebook</mat-label>
+            <input
+              matInput
+              placeholder="facebook"
+              formControlName="facebook"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Instagram</mat-label>
+            <input
+              matInput
+              placeholder="instagram"
+              formControlName="instagram"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form__group">
+          <mat-form-field appearance="outline" class="form__control">
+            <mat-label>Twitter</mat-label>
+            <input
+              matInput
+              placeholder="twitter"
+              formControlName="twitter"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" class="mx-2 p-2">
+          Valider
+        </button>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Confirmation</ng-template>
+      <p class="fs-2 fw text-center my-3 fw-bold" style="color: green">
+        Vous avez terminer
+      </p>
+      <div>
         <h6 class="fs-5 text-decoration-underline">Signataire du compte</h6>
         <ul>
-            <li><strong>Nom:</strong>{{registerForm1.value.lastname}}</li>
-            <li><strong>Prénom:</strong>{{registerForm1.value.firstname}}</li>
-            <li><strong>Sexe:</strong>{{registerForm1.value.gender}}</li>
-            <li><strong>Téléphone:</strong>{{registerForm1.value.phone}}</li>
+          <li><strong>Nom:</strong>{{ registerForm1.value.lastname }}</li>
+          <li><strong>Prénom:</strong>{{ registerForm1.value.firstname }}</li>
+          <li><strong>Sexe:</strong>{{ registerForm1.value.gender }}</li>
+          <li><strong>Téléphone:</strong>{{ registerForm1.value.phone }}</li>
         </ul>
-        <h6 class="fs-5 text-decoration-underline">Vos identifiant de connexion</h6>
+        <h6 class="fs-5 text-decoration-underline">
+          Vos identifiant de connexion
+        </h6>
         <ul>
-            <li><strong>email:</strong>{{registerForm2.value.email}}</li>
+          <li><strong>email:</strong>{{ registerForm2.value.email }}</li>
         </ul>
-        <h6 class="fs-5 text-decoration-underline">Information sur l'association</h6>
+        <h6 class="fs-5 text-decoration-underline">
+          Information sur l'association
+        </h6>
         <ul>
-            <li><strong>Nom d'association:</strong>{{registerForm3.value.nameAssociation}}</li>
-            <li><strong>Sigle d'association:</strong>{{registerForm3.value.sigleAssociation}}</li>
-            <li><strong>Objectif d'association:</strong>{{registerForm3.value.objetSocial}}</li>
-            <li><strong>Téléphone d'association:</strong>{{registerForm3.value.phone}}</li>
-            <li><strong>Adresse d'association:</strong>{{registerForm3.value.address}}</li>
-            <li><strong>Code Postal:</strong>{{registerForm3.value.codePostal}}</li>
-            <li><strong>Ville:</strong>{{registerForm3.value.city}}</li>
-            <li><strong>Informations:</strong>{{registerForm3.value.infos}}</li>
-            <li><strong>Logo:</strong>{{registerForm3.value.logo}}</li>
+          <li>
+            <strong>Nom d'association:</strong
+            >{{ registerForm3.value.nameAssociation }}
+          </li>
+          <li>
+            <strong>Sigle d'association:</strong
+            >{{ registerForm3.value.sigleAssociation }}
+          </li>
+          <li>
+            <strong>Objectif d'association:</strong
+            >{{ registerForm3.value.objetSocial }}
+          </li>
+          <li>
+            <strong>Téléphone d'association:</strong
+            >{{ registerForm3.value.phone }}
+          </li>
+          <li>
+            <strong>Adresse d'association:</strong
+            >{{ registerForm3.value.address }}
+          </li>
+          <li>
+            <strong>Code Postal:</strong>{{ registerForm3.value.codePostal }}
+          </li>
+          <li><strong>Ville:</strong>{{ registerForm3.value.city }}</li>
+          <li><strong>Informations:</strong>{{ registerForm3.value.infos }}</li>
+          <li><strong>Logo:</strong>{{ registerForm3.value.logo }}</li>
         </ul>
         <h6 class="fs-5 text-decoration-underline">Réseau d'association</h6>
         <ul>
-            <li><strong>email:</strong>{{registerForm4.value.email}}</li>
-            <li><strong>Facebook:</strong>{{registerForm4.value.facebook}}</li>
-            <li><strong>Instagram:</strong>{{registerForm4.value.instagram}}</li>
-            <li><strong>Twitter:</strong>{{registerForm4.value.twitter}}</li>
+          <li><strong>email:</strong>{{ registerForm4.value.email }}</li>
+          <li><strong>Facebook:</strong>{{ registerForm4.value.facebook }}</li>
+          <li>
+            <strong>Instagram:</strong>{{ registerForm4.value.instagram }}
+          </li>
+          <li><strong>Twitter:</strong>{{ registerForm4.value.twitter }}</li>
         </ul>
-    </div>
-    <div class="d-flex align-items-center mt-4">
-      <button mat-raised-button color="primary" class="mx-2 p-2">Envoyer</button>
-      <button mat-raised-button color="accent" class="p-2">Annuler</button>
-    </div>
-  </mat-step>
-</mat-stepper>
+      </div>
+      <div class="d-flex align-items-center mt-4">
+        <button mat-raised-button color="primary" class="mx-2 p-2">
+          Envoyer
+        </button>
+        <button mat-raised-button color="accent" class="p-2">Annuler</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
 </div>
