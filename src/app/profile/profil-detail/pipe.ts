@@ -14,7 +14,7 @@ export class OrderByPipe implements PipeTransform {
             value.sort((a: any, b: any) => {
                     let left = Number(new Date(a[column]));
                     let right = Number(new Date(b[column]));
-                    return (direction === "-") ? right - left : left - right;
+                    return (direction === "-") ?  left - right:right - left ;
             });
             return value;
         }
