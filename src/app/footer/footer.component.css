@@ -7,10 +7,8 @@
     justify-content: space-around;
     display: flex;
 }
-.container {
-    background-color: rgb(2, 51, 11);
-    
-
+footer {
+    background-color: #012d48;
 }
 .section{
     margin-top: 30px;

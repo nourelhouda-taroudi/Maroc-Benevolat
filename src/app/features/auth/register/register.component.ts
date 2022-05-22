@@ -7,34 +7,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  isLinear=true;
-  number:number=0;
-  samePassword=false;
+  isLinear = true;
+  number: number = 0;
+  samePassword:boolean = false;
   registerForm1: FormGroup = new FormGroup({
     firstname: new FormControl(null, [Validators.required]),
     lastname: new FormControl(null, [Validators.required]),
     gender: new FormControl(null, [Validators.required]),
-    phone: new FormControl(null, []),
+    phone: new FormControl(null, [Validators.required]),
   });
   registerForm2: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required]),
-    emailValidation: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required,Validators.minLength(6)]),
-    passwordValidation: new FormControl(null, [Validators.required,Validators.minLength(6)]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    emailValidation: new FormControl(null, [
+      Validators.required,
+      Validators.email,
+    ]),
+    password: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+    passwordValidation: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
   registerForm3: FormGroup = new FormGroup({
     nameAssociation: new FormControl(null, [Validators.required]),
     sigleAssociation: new FormControl(null, [Validators.required]),
     objetSocial: new FormControl(null, [Validators.required]),
-    phone: new FormControl(null, [Validators.required]),
+    phoneAssociation: new FormControl(null, [Validators.required]),
     address: new FormControl(null, [Validators.required]),
     codePostal: new FormControl(null, [Validators.required]),
     city: new FormControl(null, [Validators.required]),
     infos: new FormControl(null),
-    logo: new FormControl(null)
+    logo: new FormControl(null),
   });
   registerForm4: FormGroup = new FormGroup({
-    email: new FormControl(null,[Validators.required]),
+    emailAssociation: new FormControl(null, [Validators.required, Validators.email]),
     facebook: new FormControl(null),
     instagram: new FormControl(null),
     twitter: new FormControl(null),
@@ -61,16 +70,31 @@ export class RegisterComponent implements OnInit {
     const {
       firstname,
       lastname,
+      gender,
+      phone,
+    } = this.registerForm1.value;
+    const{
       email,
       password,
-      phone,
+
+    }=this.registerForm2.value;
+    const{
+      nameAssociation,
+      sigleAssociation,
+      objetSocial,
+      phoneAssociation,
       address,
-      identity,
-      contactRequestMethod,
-      bio,
-      photo,
-      gender,
-    } = this.registerForm1.value;
+      codePostal,
+      city,
+      infos,
+      logo
+    }=this.registerForm3.value;
+    const{
+      emailAssociation,
+      facebook,
+      instagram,
+      twitter,
+    }=this.registerForm4.value;
   }
 
   // Check Form is valid
@@ -85,19 +109,23 @@ export class RegisterComponent implements OnInit {
       return;
     }
   }
-  next(){
+  next() {
     this.number++;
   }
-  before(){
+  before() {
     this.number--;
   }
-  isSamePassword(){
-    const password=this.registerForm2.controls['password'];
-    const passwordValidation=this.registerForm2.controls['passwordValidation'];
-    console.log(password,passwordValidation);
+  isSamePassword() {
+    console.log("salam");
     
-    const tst=((password.value!==passwordValidation.value)&& (password.dirty || password.touched)&& (passwordValidation.dirty || passwordValidation.touched));
-    this.samePassword=tst;
-    return tst;
+    const password = this.registerForm2.controls['password'];
+    const passwordValidation =
+      this.registerForm2.controls['passwordValidation'];
+
+    const tst =
+      password.value !== passwordValidation.value &&
+      (password.dirty || password.touched) &&
+      (passwordValidation.dirty || passwordValidation.touched);
+    this.samePassword = tst;
   }
 }
