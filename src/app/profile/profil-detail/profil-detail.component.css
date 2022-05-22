@@ -107,7 +107,11 @@
 }
 .contact-us {
   padding: 70px 0px;
+
   background: #ffffff;
+
+  background: #796348;
+
 }
 .section-title h2 {
   color: black;
@@ -138,7 +142,26 @@
   height: 30px;
   font-size: 28px;
 
-  
 
   
+
+
+  margin-left: 450px;
+
+  
+}
+.decouvert{
+  display: flex;
+  margin: 50px;
+  justify-content: space-around;
+}
+.textp{
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  padding: 10px;
+}
+.edite {
+  position: absolute;
+  margin-left: 1060px;
 }

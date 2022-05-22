@@ -8,7 +8,7 @@ import { Post } from '../models/post';
   providedIn: 'root'
 })
 export class PostService {
-  apiUrl="http://localhost:5000/post";
+  apiUrl="http://localhost:3000/api/story";
   constructor(private http:HttpClient) {}
     findAll()
       {
