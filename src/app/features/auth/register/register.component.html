@@ -1,4 +1,9 @@
-<div class="container mt-4 border rounded border-black">
+<div class="container mt-4 py-3 border rounded border-black shadow-lg">
+  <span routerLink="/">
+    <svg heigth="25px" style="cursor: pointer;" width="25px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" style="color: #012d48;" />
+    </svg>
+  </span>
   <mat-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="registerForm1">
       <form [formGroup]="registerForm1">

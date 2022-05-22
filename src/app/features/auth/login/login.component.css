@@ -506,3 +506,7 @@ body {
   margin: auto;
   align-self: center;
 }
+.alert{
+  padding: 22px 20px;
+  font-size: 18px;
+}
