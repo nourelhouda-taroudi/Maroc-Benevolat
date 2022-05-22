@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container-fluid">
-     <img  width="200" src="./../../../assets/logo.png" >
+     <img  width="200" src="./../../../assets/logo.jpg" >
      <div class="dropdown">
       <button class="btn btn-light " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -17,9 +17,15 @@
 
     <form class="d-flex" (ngSubmit)="Search(homeform)" #homeform="ngForm">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  [(ngModel)]="search.search" name="you searched " >
-       <button class="btn btn-outline-success" type="submit"><mat-icon>search</mat-icon></button>
+       <button class="btn btn-outline-success" type="submit"><mat-icon class="icon">search</mat-icon></button>
       
      </form>
+
+    
+
+    
+
+    
     
 
      
@@ -27,8 +33,8 @@
      
 
       <form class="d-flex">
-      <button  (click)="goToConn('auth/login')"  class="btn btn-outline-success" type="submit" style="background-color: green; color: white;">Se connecter</button>
-      <button  (click)="goToConn('auth/register')" class="btn btn-outline-success" type="submit" >S'inscrire</button>
+      <button  (click)="goToConn('auth/login')"  class="btn btn-outline-success" type="submit" style="background-color: rgb(227, 159, 32); color: white;">Se connecter</button>
+      <button  (click)="goToConn('auth/register')" class="boutton btn-outline-success" type="submit" >S'inscrire</button>
     </form>
         
     </div>

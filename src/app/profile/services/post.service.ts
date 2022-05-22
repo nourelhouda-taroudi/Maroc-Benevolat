@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { associations } from 'src/app/models/association';
+import { associations } from 'src/app/models/associations';
 import { Post } from '../models/post';
 
 @Injectable({
@@ -27,8 +27,6 @@ export class PostService {
      return this.http.put(`${this.apiUrl}/${post.id}`,post);
    }
 
-   public getSelectedPost(): Observable<associations[]>{
-    return this.http.get<associations[]>( ' http://localhost:3000/api/association');
-}
+
 
 }

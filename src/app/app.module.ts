@@ -17,6 +17,7 @@ import { NousComponent } from './features/nous/nous.component';
 import { MarocComponent } from './features/maroc/maroc.component';
 import { PartenairesComponent } from './features/partenaires/partenaires.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchfilterPipe } from './searchfilter.pipe';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NousComponent,
     MarocComponent,
     PartenairesComponent,
+    SearchfilterPipe,
  
   
   ],

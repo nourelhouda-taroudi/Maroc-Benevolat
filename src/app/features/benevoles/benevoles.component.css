@@ -36,6 +36,8 @@
 .btn{
     margin-left: 15px;
     border-radius: 20px;
+    color: rgb(227, 159, 32);
+    border: white;
 }
 .search{
     display: flex;
@@ -61,7 +63,7 @@
 }
 .link{
     font-size: 20px;
-    color: green;
+    color: rgb(227, 159, 32);
     margin-top: 60px;
     text-decoration: none;
 }
@@ -78,3 +80,15 @@
   
     position:relative;
  }
+ .icon{
+    color: rgb(227, 159, 32);
+}
+
+.icon:hover{
+  color: white;
+    
+}
+.btn:hover{
+    background-color:  rgb(227, 159, 32);
+    color: white;
+}
