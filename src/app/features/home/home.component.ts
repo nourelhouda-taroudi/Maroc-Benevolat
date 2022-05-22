@@ -4,8 +4,13 @@ import { search } from './search';
 import { Router } from '@angular/router';
 import assoData from '../../../app/features/association.json';
 import slideData from '../../../app/features/slide.json';
-import { PostService } from '../../services/post.service';
+
+import { PostService } from '../../features/home/services/post.service';
 import { associations } from '../../models/associations';
+
+
+
+
 import { HttpErrorResponse } from '@angular/common/http';
 
 // interface Association{

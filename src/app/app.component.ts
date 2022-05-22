@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { associations } from './models/associations';
-import { PostService } from './services/post.service';
+import { PostService } from './features/home/services/post.service';
 
 @Component({
   selector: 'app-root',
@@ -18,14 +18,19 @@ export class AppComponent {
    // on route change to '/login', set the variable showHead to false
    router.events.forEach((event) => {
     if (event instanceof NavigationStart) {
-      if (event['url'] == '/auth/login' ||  event['url'] == '/auth/register' ||   event['url'] == '/') {
+
+ {
+
+      if (event['url'] == '/auth/login' ||  event['url'] == '/auth/register' || event['url'] == '/auth/forget-password' ||event['url'] == '/') {
+
         this.showHead = false;
       } else {
         // console.log("NU")
         this.showHead = true;
       }
-    }
-  });
+ }
+  
+}});
 }
 getAsso(){
    

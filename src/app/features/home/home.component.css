@@ -1,75 +1,73 @@
 
+
 .btn{
     margin-left: 15px;
     border-radius: 20px;
-    border: rgb(227, 159, 32);
+    border: rgb(227, 159, 32);}
+
+.btn {
+  margin-left: 15px;
+  border-radius: 20px;
+
 }
-input{
-    margin-right: -10px;
+input {
+  margin-right: -10px;
 }
-.d-flex{
-    text-align: center;
+.d-flex {
+  text-align: center;
 }
 
-
-
-.me-2{
-    margin-right: -0.5rem!important;
-    border-radius: 20px;
+.me-2 {
+  margin-right: -0.5rem !important;
+  border-radius: 20px;
 }
+
 
 .carousel{
     margin-top: 50px;
+}
+
+.carousel {
+  margin-top: 0px;
 
 }
-.carousel-inner{
-
-    width: 1300px;
-    height: 600px;
-    margin-left: 75px;
-   
- 
+.carousel-inner {
+  width: 1300px;
+  height: 600px;
+  margin-left: 75px;
 }
 
 .me-auto {
-    margin-right: 0px;
-    margin-left: auto;
+  margin-right: 0px;
+  margin-left: auto;
 }
 
-.div{
-   
-    justify-content: space-around;
-    margin-top: 60px;
-    display: flex;
-    flex-wrap: wrap;
-
+.div {
+  justify-content: space-around;
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
 }
-.card{
-    
-  
-   margin: 30px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 20px;
-    border-radius: 18px;
-    transition: 0.5s ease;
-    cursor: pointer;
-    width: 300px;
-    min-height: 300px;
-    min-width: 300px;
-
-    
-    
+.card {
+  margin: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  border-radius: 18px;
+  transition: 0.5s ease;
+  cursor: pointer;
+  width: 300px;
+  min-height: 300px;
+  min-width: 300px;
 }
-.card-img-top{
-    
-        grid-area: image;
-        height: 168px;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        background-size: cover;
-      
+.card-img-top {
+  grid-area: image;
+  height: 168px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-size: cover;
 }
 .card-text {
+
     grid-area: text;
     margin: 25px;
   }
@@ -180,7 +178,28 @@ input{
  }
  .section{
      margin-top: 30px;
- }
+
+
+  grid-area: text;
+  margin: 25px;
+}
+.card-text .date {
+  color: #012d48;
+  font-size: 13px;
+}
+.card-text p {
+  color: grey;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+
+.card:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+  background-color: rgb(6, 105, 11);
+  color: white;
+}
 
 
 .don{
@@ -193,29 +212,114 @@ input{
  padding: 12px;
  text-align: center;
 }
+.h2 {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
+  color: grey;
+}
+
+.titre {
+  display: flex;
+  justify-content: space-around;
+}
+.name:hover {
+  color: green;
+
+}
+.container {
+  justify-content: space-around;
+}
+.navbar1 {
+  justify-content: space-around;
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+.navbar {
+  justify-content: space-around;
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+.link {
+  color: gray;
+  font-size: 18px;
+  text-decoration: none;
+}
+.link:hover {
+  color: green;
+  text-decoration: underline;
+
+  text-underline-offset: 0.8em;
+}
+.card-text:hover {
+}
 
 
 .don:hover{
     background-color: rgb(227, 159, 32);
     color: white;
-
 }
-.carousel-caption{
-   color: white;
-    margin-bottom: 100px;
-    margin-right: 0px;
-    margin-left: -120px;
-    width: 1200px;
-    height: 50px;
-    background-color: rgb(0 0 0 / 8%);
-
+.nous {
+  display: flex;
+  margin: 50px;
+  justify-content: space-around;
+}
+.para {
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  padding: 10px;
+}
+.pourquoi {
+  display: flex;
+  margin: 20px;
+  justify-content: space-around;
+}
+.social {
+  justify-content: space-around;
+  display: flex;
+}
+.container {
+  background-color: rgb(2, 51, 11);
+}
+.section {
+  margin-top: 30px;
 }
 
-.btn_asso{
-    border:  none;
-    border-radius: 18px;
-    background-color: white;
+
+.don {
+  margin-top: 65px;
+  color: #012d48;
+  font-size: 20px;
+  background-color: rgb(0 0 0 / 8%);
+  height: 50px;
+  width: 180px;
+  padding: 12px;
+  text-align: center;
 }
+
+.don:hover {
+  background-color: green;
+  color: white;
+}
+.carousel-caption {
+  color: white;
+  margin-bottom: 100px;
+  margin-right: 0px;
+  margin-left: -120px;
+  width: 1200px;
+  height: 50px;
+  background-color: rgb(0 0 0 / 8%);
+}
+
+.btn_asso {
+  border: none;
+  border-radius: 18px;
+  background-color: white;
+}
+
 
 .btn_asso:hover{
     background-color: rgb(227, 159, 32);
@@ -273,3 +377,8 @@ input{
  
     text-underline-offset: 0.8em;
 }
+
+.btn_asso:hover {
+  background-color: #012d48;
+}
+
