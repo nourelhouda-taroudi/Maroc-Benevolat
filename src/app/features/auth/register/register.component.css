@@ -262,3 +262,9 @@ btn.btn__dark {
 *:not(mat-icon){
   font-family: "Montserrat regular" !important;
 }
+h1 {
+  color: #012d48;
+  font-size: 34px ;
+  font-family: "Montserrat", sans-serif;
+  
+}

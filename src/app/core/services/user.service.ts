@@ -15,7 +15,10 @@ export class UserService {
   signIn(payload: {email:string,password:string}){
     return this.http.post(`${this.url}signIn`,payload)
   }
-  signup(payload: any){
+  signUp(payload: any){
+    console.log(payload);
     return this.http.post(`${this.url}signUp`,payload)
+   
+    
   }
 }

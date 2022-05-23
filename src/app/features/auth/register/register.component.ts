@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserService } from './../../../core/services/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
   isLinear = true;
   number: number = 0;
-  samePassword:boolean = false;
+  samePassword: boolean = false;
   registerForm1: FormGroup = new FormGroup({
     firstname: new FormControl(null, [Validators.required]),
     lastname: new FormControl(null, [Validators.required]),
@@ -43,7 +45,10 @@ export class RegisterComponent implements OnInit {
     logo: new FormControl(null),
   });
   registerForm4: FormGroup = new FormGroup({
-    emailAssociation: new FormControl(null, [Validators.required, Validators.email]),
+    emailAssociation: new FormControl(null, [
+      Validators.required,
+      Validators.email,
+    ]),
     facebook: new FormControl(null),
     instagram: new FormControl(null),
     twitter: new FormControl(null),
@@ -51,7 +56,9 @@ export class RegisterComponent implements OnInit {
 
   hasFormErrors = false;
 
-  constructor() {}
+  constructor(private readonly userService: UserService ,
+    private readonly router:Router
+    ) {}
 
   ngOnInit(): void {}
 
@@ -67,18 +74,9 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.checkFormIsValid();
+    const { firstname, lastname, gender, phone } = this.registerForm1.value;
+    const { email, password } = this.registerForm2.value;
     const {
-      firstname,
-      lastname,
-      gender,
-      phone,
-    } = this.registerForm1.value;
-    const{
-      email,
-      password,
-
-    }=this.registerForm2.value;
-    const{
       nameAssociation,
       sigleAssociation,
       objetSocial,
@@ -87,14 +85,49 @@ export class RegisterComponent implements OnInit {
       codePostal,
       city,
       infos,
-      logo
-    }=this.registerForm3.value;
-    const{
-      emailAssociation,
-      facebook,
-      instagram,
-      twitter,
-    }=this.registerForm4.value;
+      logo,
+    } = this.registerForm3.value;
+    console.log({phoneAssociation});
+    
+    const { emailAssociation, facebook, instagram, twitter } =
+      this.registerForm4.value;
+    const payload = {
+      firstname,
+      lastname,
+      phone:+phone,
+      gender,
+      email,
+      password,
+      association: {
+        address,
+        nameAssociation,
+        phoneAssociation:+phoneAssociation,
+        sigleAssociation,
+        objetSocial,
+        codePostal,
+        city,
+        infos,
+        logo,
+        emailAssociation,
+        facebook,
+        instagram,
+        twitter,
+      },
+    };
+    this.userService.signUp(payload).subscribe(
+      response=>{
+        console.log(response);
+        this.router.navigateByUrl('/auth/login')
+        
+      },
+      err=>{
+        console.error(err);
+        if(err.status===400){
+          // show error message
+        }
+        
+      }
+    );
   }
 
   // Check Form is valid
@@ -116,8 +149,8 @@ export class RegisterComponent implements OnInit {
     this.number--;
   }
   isSamePassword() {
-    console.log("salam");
-    
+    console.log('salam');
+
     const password = this.registerForm2.controls['password'];
     const passwordValidation =
       this.registerForm2.controls['passwordValidation'];
