@@ -268,3 +268,12 @@ h1 {
   font-family: "Montserrat", sans-serif;
   
 }
+.form input {
+  display: block;
+  border: none;
+  color: #012d48;
+  width: 100%;
+  font-size: 18px;
+  outline: none;
+  background-color: transparent;
+}
