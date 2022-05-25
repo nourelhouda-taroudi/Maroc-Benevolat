@@ -1,5 +1,45 @@
 
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <div class="container-fluid">
+   <img  width="200" src="./../../../assets/logo.jpg" >
+   <div class="dropdown">
+    <button class="btn btn-light " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg> 
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">Orphelins</a></li>
+      <li><a class="dropdown-item" href="#">Femmes</a></li>
+      <li><a class="dropdown-item" href="#">Others</a></li>
+    </ul>
+  </div>
 
+  <form class="d-flex" (change)="onChange($event)">
+    <input class="form-control me-2"  type="search" placeholder="Search" aria-label="Search"  >
+     <button class="btn btn-outline-success" type="submit"><mat-icon class="icon">search</mat-icon></button>
+    
+   </form>
+
+   
+
+    <form class="d-flex">
+    <button  (click)="goToConn('auth/login')"  class="btn btn-outline-success" type="submit" style="background-color: rgb(227, 159, 32); color: white;">Se connecter</button>
+    <button  (click)="goToConn('auth/register')" class="boutton btn-outline-success" type="submit" >S'inscrire</button>
+  </form>
+      
+  </div>
+</nav>
+
+
+<div class="navbar1">
+ 
+<a class="link " aria-current="page" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">ASSOCIATIONS</a>|
+<a class="link " aria-current="page" routerLink="benevoles" routerLinkActive="active">BENEVOLES</a>|
+<a class="link " aria-current="page" routerLink="partenaires"  routerLinkActive="active">PARTENAIRES</a>|
+<a class="link " aria-current="page" routerLink="maroc"  routerLinkActive="active">MAROC BENEVOLAT</a>|
+<a class="link " aria-current="page" routerLink="nous"  routerLinkActive="active">POURQUOI NOUS REJOUNDRE</a>
+</div>
 
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -38,10 +78,11 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
 <div>
 <div class="titre">
 <a href="#associations" style="text-decoration: none;"><h2 class="name"><img  width="80px" src="./../../../assets/assos.jpeg">NOS ASSOCIATIONS</h2></a>
-<a href="#" style="text-decoration: none;"><h2 class="name" ><img  width="80px" src="./../../../assets/nous.webp">A PROPOS DE NOUS</h2></a>
+<a href="#asso" style="text-decoration: none;"><h2 class="name" ><img  width="80px" src="./../../../assets/nous.webp">A PROPOS DE NOUS</h2></a>
 <a href="#" style="text-decoration: none;"><h3 class="don" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
 </svg>  FAIRE UN DON</h3></a>
@@ -53,7 +94,7 @@
 
 <div class="div" id="associations">
   
-    <div class="card" style="width: 22rem;" *ngFor="let association of associations ">
+    <div class="card" style="width: 22rem;" *ngFor="let association of associations | searchfilter: searcheValue ">
     <button (click)="goToConn('profile')"  class="btn_asso">
       <div class="card-body">
         <img src="./../../../assets/img1.jpeg" class="card-img-top">
@@ -95,7 +136,7 @@
   <div id="asso">
   <h2><img src="./../../../assets/decouvrir.png" width="100px"> NOUS DECOUVRIR</h2>
   <div class="nous" >
-    <div> <img src="./../../../assets/logo.png" width="600px"></div>
+    <div> <img src="./../../../assets/logo.jpg" width="500px" ></div>
    
     <div class="para"><p>À partir de votre page d’accueil, vos visiteurs doivent pouvoir rapidement trouver une réponse aux questions suivantes : « Qu’est-ce que cette entreprise ? », « Que fait-elle, que propose-t-elle ? », « Que puis-je faire grâce à ce site ? ».
 
@@ -108,7 +149,7 @@
 </div>
  
 
-
+<app-footer></app-footer>
 
 
 

@@ -18,6 +18,11 @@
   font-size: 18px;
   text-decoration: none;
 }
+
+.link:hover{
+   color: #012d48;
+   text-decoration: underline;
+}
 .btn:hover {
   background-color: #012d48;
 }
@@ -25,11 +30,24 @@
   color: #012d48;
   text-decoration: underline;
 
+
   text-underline-offset: 0.8em;
+}
+
+.btn{
+    margin-left: 15px;
+    border-radius: 20px;
+    border: rgb(227, 159, 32);
+}
+
+.btn:hover{
+    background-color: rgb(227, 159, 32);
+    color: white;
 }
 .btn {
   margin-left: 15px;
   border-radius: 20px;
+
 }
 input {
   margin-right: -10px;
@@ -42,11 +60,18 @@ input {
   border-radius: 20px;
 }
 .active {
-  color: #012d48;
-  text-decoration: underline;
 
-  text-underline-offset: 0.8em;
-}
+    color: #012d48;
+    text-decoration: underline;
+ 
+    text-underline-offset: 0.8em;
+  }
+
+
+
+
+
+
 
 .btn1 {
   width: 20px;
@@ -60,4 +85,40 @@ input {
 .dropdown-item {
   color: #012d48;
   font-size: 18px;
+}
+
+.bi{
+    color: rgb(227, 159, 32);
+}
+
+.bi:hover{
+    color: white;
+}
+
+.boutton{
+    margin-left: 15px;
+    border-radius: 20px;
+    border: rgb(227, 159, 32);
+    color: rgb(227, 159, 32);
+    background-color: white;
+    font-size: 1rem;
+}
+
+.boutton:hover{
+    background-color: rgb(227, 159, 32);
+    color: white;
+}
+
+.icon{
+    color: rgb(227, 159, 32);
+}
+
+.icon:hover{
+  color: white;
+    
+}
+
+.btn:hover{
+    background-color:  rgb(227, 159, 32);
+    color: white;
 }

@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,8 +15,13 @@ import { HomeComponent } from './features/home/home.component';
 import { MarocComponent } from './features/maroc/maroc.component';
 import { NousComponent } from './features/nous/nous.component';
 import { PartenairesComponent } from './features/partenaires/partenaires.component';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchfilterPipe } from './searchfilter.pipe';
+
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+
 
 
 @NgModule({
@@ -29,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
     NousComponent,
     MarocComponent,
     PartenairesComponent,
+    SearchfilterPipe,
  
   
   ],
