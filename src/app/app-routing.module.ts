@@ -44,6 +44,11 @@ const routes: Routes = [
     loadChildren: () => import('./features/partenaires/partenaires.module').then(m=> m.PartenairesModule)
   },
 
+  {
+    path: 'profile/editer/:id',
+    loadChildren: () => import('./profile/editer/editer.module').then(m=> m.EditerModule)
+  },
+ 
  
  
   {
