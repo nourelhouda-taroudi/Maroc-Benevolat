@@ -1,0 +1,31 @@
+
+<h1>Modification de vos coordonnees</h1>
+
+<label>Nom</label><br/>
+<input [(ngModel)]="association.nom"><br/>
+<label>Siege</label><br/>
+<input [(ngModel)]="association.siege"><br/>
+<label>Objet</label><br/>
+<input [(ngModel)]="association.objet"><br/>
+<label>Telephone</label><br/>
+<input [(ngModel)]="association.telephone"><br/>
+<label>Adresse</label><br/>
+<input [(ngModel)]="association.adresse"><br/>
+<label>Code Postal</label><br/>
+<input [(ngModel)]="association.code_postal"><br/>
+<label>Ville</label><br/>
+<input [(ngModel)]="association.ville"><br/>
+<label>Description</label><br/>
+<input [(ngModel)]="association.description"><br/>
+<label>Email</label><br/>
+<input [(ngModel)]="association.email"><br/>
+<label>Facebook</label><br/>
+<input [(ngModel)]="association.facebook"><br/>
+<label>Instagram</label><br/>
+<input [(ngModel)]="association.instagram"><br/>
+<label>Twitter</label><br/>
+<input [(ngModel)]="association.twitter"><br/>
+<div class="button">
+<button (click)="updateAsso()"> Valider</button>
+<button (click)="goToConn('profile')" > Annuler</button>
+</div>

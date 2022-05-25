@@ -1,17 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { associations } from '../../models/association';
+
+import { associations } from '../../models/associations';
 import { Post } from '../../profile/models/post';
+
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
  
-  public getSelectedPost(): Observable<associations[]>{
-    return this.http.get<associations[]>( 'http://localhost:3000/api/association');
-}
+
   apiUrl="http://localhost:5000/post";
   constructor(private http:HttpClient) {}
     findAll()
@@ -30,4 +33,8 @@ export class PostService {
    update(post:any){
      return this.http.put(`${this.apiUrl}/${post.id}`,post);
    }
+
+   public getAssociation(): Observable<associations[]>{
+    return this.http.get<associations[]>( 'http://localhost:3000/api/association/all');
+}
 }

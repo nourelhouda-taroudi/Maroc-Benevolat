@@ -43,7 +43,6 @@ const routes: Routes = [
     path: 'partenaires',
     loadChildren: () => import('./features/partenaires/partenaires.module').then(m=> m.PartenairesModule)
   },
-  
 
  
  

@@ -4,8 +4,13 @@ import { search } from './search';
 import { Router } from '@angular/router';
 import assoData from '../../../app/features/association.json';
 import slideData from '../../../app/features/slide.json';
-import { PostService } from '../../core/services/post.service';
-import { associations } from '../../models/association';
+
+import { PostService } from '../../features/home/services/post.service';
+import { associations } from '../../models/associations';
+
+
+
+
 import { HttpErrorResponse } from '@angular/common/http';
 
 // interface Association{
@@ -30,7 +35,7 @@ export class HomeComponent implements OnInit {
   public search : search = new search();
   
   constructor(  private asso: PostService, private router: Router) { }
-
+  searchValue!: string;
   public associations!: associations[] ;
   associ!: associations[];
   cards:associations ={
@@ -75,7 +80,7 @@ export class HomeComponent implements OnInit {
 
   getAsso(){
    
-   return this.asso.getSelectedPost().subscribe((response: associations[]) => {
+   return this.asso.getAssociation().subscribe((response: associations[]) => {
     this.associations = response;
   },
   (error : HttpErrorResponse) => {
@@ -99,28 +104,57 @@ export class HomeComponent implements OnInit {
 
 
 
-  public searchAsso(key: string): void{
+  public searchAsso(homeform: NgForm): void{
       
-    // let  key = JSON.stringify(homeform.value);
+    let  key = JSON.stringify(homeform.value);
     
     const results: associations[]= [];
     for (const card of this.associations){
-      if(card.nom.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) !== -1 )   {
+      if(card.description.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) !== -1 )   {
         results.push(card);
    
 
       }
-      
-      
     }
     this.associations = results;
-    
     console.log(results)
     if(results.length == 0 || !key){
       this.getAsso();
     }
   }
 
-  
+
+  // public searchFacture(key: string): void{
+  //   const results: associations[] = [];
+  //   console.log(key)
+  //   for (const association of this.associations){
+  //     if (association.nom.indexOf(key) !== -1 || association.description.indexOf(key) !== -1){
+  //       results.push(association);
+  //     }
+  //   }
+  //   this.associations = results;
+  //   console.log(results)
+  //   if (results.length === 0 || !key){
+  //     this.getAsso();
+  //   }
+  // }
+
+  public onChange(event: any): void {  //event will give you full breif of action
+    const choix = event.target.value;
+    console.log(choix);
+    const results: associations[] = [];
+    for (const agences of this.associations){
+      if (agences.description.indexOf(choix) !== -1 ){
+        results.push(agences);
+       
+      }
+    }
+    this.associations = results;
+    this.onChange(event);
+    if (results.length === 0 || !choix){
+      this.getAsso();
+    }
+ 
+  }
 
 }
