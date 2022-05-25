@@ -94,8 +94,8 @@
 
 <div class="div" id="associations">
   
-    <div class="card" style="width: 22rem;" *ngFor="let association of associations | searchfilter: searcheValue ">
-    <button (click)="goToConn('profile')"  class="btn_asso">
+    <div class="card" style="width: 22rem;" *ngFor="let association of associations  ">
+    <button (click)="editeAnn(association)" class="btn_asso">
       <div class="card-body">
         <img src="./../../../assets/img1.jpeg" class="card-img-top">
         <p class="card-text">{{association.description}}</p>

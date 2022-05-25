@@ -46,6 +46,11 @@ export class ProfilDetailComponent implements OnInit {
   constructor(private postservice:PostService, private asso: PostService, private router: Router) { }
 
   ngOnInit(): void {
+    // this.route.paramMap.subscribe(parameterMap => {
+    //   const id = Number(parameterMap.get('id'));
+    //   this.getAssoci(id);
+    //   console.log(id)
+    //      })
     this.getPosts();
     this.getAsso();
   }
@@ -121,6 +126,7 @@ export class ProfilDetailComponent implements OnInit {
  );
  
    }
+
    editeAnn(post:any){
     this.cards=post
     this.edite=true;
@@ -128,4 +134,19 @@ export class ProfilDetailComponent implements OnInit {
     this.router.navigate(['profile/editer',this.cards.id])
     
  }
+
+//  getAssoci(id : number){
+   
+//   return this.assoService.getAssociationById(id).subscribe((response) => {
+//    this.association= response;
+
+//    console.log(this.association)
+ 
+//  },
+//  (error : HttpErrorResponse) => {
+//    alert(error.message)
+//  }
+// );
+
+//  }
 }
