@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import assoData from '../../../app/features/association.json';
 import slideData from '../../../app/features/slide.json';
 
-import { PostService } from '../../features/home/services/post.service';
+import { PostService } from './services/Services';
 import { associations } from '../../models/associations';
 
 
@@ -33,9 +33,10 @@ interface Slide{
 })
 export class HomeComponent implements OnInit {
   public search : search = new search();
+  edite = false;
   
   constructor(  private asso: PostService, private router: Router) { }
-  searchValue!: string;
+ 
   public associations!: associations[] ;
   associ!: associations[];
   cards:associations ={
@@ -55,7 +56,7 @@ export class HomeComponent implements OnInit {
   }
   
  
-  searcheValue: string ='';
+
   ngOnInit(): void {
     this.getAsso();
   
@@ -90,10 +91,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  onSearch(searcheText: string){
-       this.searcheValue = searcheText;
-       console.log( this.searcheValue);
-  }
+
 
 
   goToConn(pageName: string): void{
@@ -156,5 +154,14 @@ export class HomeComponent implements OnInit {
     }
  
   }
+
+    
+  editeAnn(post:any){
+    this.cards=post
+    this.edite=true;
+    console.log(this.cards.id)
+    this.router.navigate(['profile',this.cards.id])
+    
+ }
 
 }

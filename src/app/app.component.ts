@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { associations } from './models/associations';
-import { PostService } from './features/home/services/post.service';
+import { PostService } from './features/home/services/Services';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,8 @@ export class AppComponent {
 
  {
 
-      if (event['url'] == '/auth/login' ||  event['url'] == '/auth/register' || event['url'] == '/auth/forget-password' ||event['url'] == '/') {
+      if (event['url'] == '/auth/login' ||  event['url'] == '/auth/register' || event['url'] == '/auth/forget-password' ||event['url'] == '/' 
+      || event['url'] == '/editer' ) {
 
         this.showHead = false;
       } else {
