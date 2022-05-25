@@ -3,11 +3,11 @@
     <img class="rounded1 " src="../../../assets/images.jpg">
 
   </div>
-  <div class="text">
-    <a class="name">Association Care</a>
+  <div class="text" *ngFor="let association of associations  " >
+    <a class="name">{{association.nom}}</a>
     <div class="local">
-      <a class="siege">Siege</a>|
-      <a class="siege" >Local</a>
+      <a class="siege">{{association.siege}}</a>|
+      <a class="siege" >{{association.ville}}</a>
     </div>
     <div class="counter">
       <a href="https://web.facebook.com" class="btn-floating pulse indigo darken-3 btn btn-outline-success"><i class="fa fa-facebook"></i></a>
@@ -19,31 +19,29 @@
      
       <div class="like  dropdown-item rounded  d-flex  justify-content-center align-items-center pointer  text-muted  p-1 ">
         <i class="fa fa-heart text-danger "></i>
+        
    
      </div>
     </div>
-   
+    <div class="dropdown">
+      <button class="btn btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li class="d-flex align-items-center" (click)="editeAnn(association)">
+              <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-pencil" >Editer</a>
+              
+          </li>
+          <li class="d-flex align-items-center"  >
+            <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-trash" >Supprimer</a>
+          </li>
+        </ul>
+    </div>
   </div>
-</div>
-<div class="container list bg-white p-3 mt-3 rounded border shadow">
  
-  <a class="link" href="" >Evenements</a>
+</div>
 
-      <div class="like  dropdown-item rounded  d-flex  justify-content-center align-items-center pointer  text-muted  p-1 ">
-        <i class="fa fa-heart text-danger "></i>
-     </div>
-
-    </div>
   
-  <div class="dropdown edite">
-    <button class="btn btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li class="d-flex align-items-center">
-            <a class="dropdown-item d-flex justify-content-around align-items-center fa fa-pencil"  data-bs-toggle="modal" data-bs-target="#exampleModal">Editer</a>
-        </li>
-      </ul>
-  </div>
+
 
 <div class="container list bg-white p-3 mt-3 rounded border shadow">
   <a class="link" href="#event">Evenements</a>
@@ -156,7 +154,7 @@
             <button type="button" class="btn btn-secondary" style="width: 60px; height: 30px;"
               data-bs-dismiss="modal" (click)="close()">Close</button>
             <button *ngIf="!edite" (click)="persistpost()" data-bs-dismiss="modal" type="button" class="btn btn-success" style="width: 90px; height: 30px;">publier </button>
-            <button *ngIf="edite"  (click)="updatepost()" data-bs-dismiss="modal"type="button" class="btn btn-warning" style="width: 120px; height: 30px;">sauvgarder </button>
+            <!-- <button *ngIf="edite"  (click)="updatepost()" data-bs-dismiss="modal"type="button" class="btn btn-warning" style="width: 120px; height: 30px;">sauvgarder </button> -->
           </div>
         </div>
       </div>

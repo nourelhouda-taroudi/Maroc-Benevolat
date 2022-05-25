@@ -1,6 +1,9 @@
-import { Component, OnInit, Pipe } from '@angular/core';  
+import { Component, Input, OnInit, Pipe } from '@angular/core';  
 import { Post } from '../models/post';
 import { PostService } from '../../core/services/post.service';
+import { associations } from 'src/app/models/associations';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil-detail',
@@ -20,15 +23,35 @@ export class ProfilDetailComponent implements OnInit {
     likeNum:0,
     createdAt:new Date()
   }
+
+  cards:associations ={
+    nom: '',
+    description: '',
+    facebook: '',
+    twitter: '',
+    id: 0,
+    siege: '',
+    objet: '',
+    telephone: 0,
+    adresse: '',
+    code_postal: 0,
+    ville: '',
+    email: '',
+    instagram: ''
+  }
+
+  public associations!: associations[] ;
   posts: Post[]=[];
   addblogform: any;
-  constructor(private postservice:PostService) { }
+  constructor(private postservice:PostService, private asso: PostService, private router: Router) { }
 
   ngOnInit(): void {
     this.getPosts();
+    this.getAsso();
   }
   getPosts(){
     this.postservice.findAll().subscribe(posts => this.posts = posts)
+   
   }
   deletepost(id: any){
     this.postservice.delete(id).subscribe(() =>{
@@ -71,16 +94,38 @@ export class ProfilDetailComponent implements OnInit {
   editepost(post:any){
      this.mypost=post
      this.edite=true;
+     
   }
-  updatepost(){
-    this.postservice.update(this.mypost).subscribe(post => {
-      this.resetpost();
-      this.edite = false;
-      this.showForm =  false;
-    })
-  }
+  // updatepost(){
+  //   this.postservice.update(this.mypost).subscribe(post => {
+  //     this.resetpost();
+  //     this.edite = false;
+  //     this.showForm =  false;
+  //   })
+  // }
   close(){
       this.edite = false; 
       this.resetpost();
   }
+
+
+
+  getAsso(){
+   
+    return this.asso.getAssociation().subscribe((response: associations[]) => {
+     this.associations = response;
+   },
+   (error : HttpErrorResponse) => {
+     alert(error.message)
+   }
+ );
+ 
+   }
+   editeAnn(post:any){
+    this.cards=post
+    this.edite=true;
+    console.log(this.cards.id)
+    this.router.navigate(['profile/editer',this.cards.id])
+    
+ }
 }

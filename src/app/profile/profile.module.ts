@@ -7,7 +7,8 @@ import { ProfileComponent } from './profile.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { ProfilDetailComponent } from './profil-detail/profil-detail.component';
 import { PostComponent } from './post/post.component';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms'
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { EditerComponent } from './editer/editer.component'
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -16,7 +17,8 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms'
     ProfileComponent,
     ProfilDetailComponent,
     PostComponent,
-    OrderByPipe
+    OrderByPipe,
+    EditerComponent
   ],
   imports: [
     CommonModule,
