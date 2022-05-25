@@ -33,6 +33,12 @@ export class PostService {
   
   }
 
+  getAssociationById(id: number ): Observable<associations>{
+    return this.http.get<associations>(`http://localhost:3000/api/association/${id}`);
+   
+   
+  }
+
  
 
 

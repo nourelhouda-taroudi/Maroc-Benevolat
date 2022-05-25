@@ -21,7 +21,7 @@ export class AppComponent {
 
  {
 
-      if (event['url'] == '/auth/login' ||  event['url'] == '/auth/register' || event['url'] == '/auth/forget-password' ||event['url'] == '/' 
+      if (event['url'] == '/auth/login' ||  event['url'] == '/auth/register' || event['url'] == '/auth/forget-password' 
       || event['url'] == '/editer' ) {
 
         this.showHead = false;

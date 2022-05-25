@@ -3,7 +3,8 @@ import { Post } from '../models/post';
 import { PostService } from '../../core/services/post.service';
 import { associations } from 'src/app/models/associations';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-profil-detail',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
+  association !: associations;
   mypost:Post ={
     text:'',
     visualisation:'',
@@ -43,14 +45,14 @@ export class ProfilDetailComponent implements OnInit {
   public associations!: associations[] ;
   posts: Post[]=[];
   addblogform: any;
-  constructor(private postservice:PostService, private asso: PostService, private router: Router) { }
+  constructor(private postservice:PostService, private asso: PostService, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe(parameterMap => {
-    //   const id = Number(parameterMap.get('id'));
-    //   this.getAssoci(id);
-    //   console.log(id)
-    //      })
+    this.route.paramMap.subscribe(parameterMap => {
+      const id = Number(parameterMap.get('id'));
+      this.getAssoci(id);
+      console.log(id)
+         })
     this.getPosts();
     this.getAsso();
   }
@@ -101,13 +103,13 @@ export class ProfilDetailComponent implements OnInit {
      this.edite=true;
      
   }
-  // updatepost(){
-  //   this.postservice.update(this.mypost).subscribe(post => {
-  //     this.resetpost();
-  //     this.edite = false;
-  //     this.showForm =  false;
-  //   })
-  // }
+  updatepost(){
+    this.postservice.update(this.mypost).subscribe(post => {
+      this.resetpost();
+      this.edite = false;
+      this.showForm =  false;
+    })
+  }
   close(){
       this.edite = false; 
       this.resetpost();
@@ -135,18 +137,18 @@ export class ProfilDetailComponent implements OnInit {
     
  }
 
-//  getAssoci(id : number){
+ getAssoci(id : number){
    
-//   return this.assoService.getAssociationById(id).subscribe((response) => {
-//    this.association= response;
+  return this.asso.getAssociationById(id).subscribe((response) => {
+   this.association= response;
 
-//    console.log(this.association)
+   console.log(this.association)
  
-//  },
-//  (error : HttpErrorResponse) => {
-//    alert(error.message)
-//  }
-// );
+ },
+ (error : HttpErrorResponse) => {
+   alert(error.message)
+ }
+);
 
-//  }
+ }
 }

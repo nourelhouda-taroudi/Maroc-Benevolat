@@ -87,11 +87,16 @@ export class EditerComponent implements OnInit {
       this.resetpost();
       this.edite = false;
       this.showForm =  false;
-      this.router.navigate(['profile'])
+      this.router.navigate([`profile/${this.association.id}`])
     })
   }
-
-   
+  
+       
+  goTo(post:any){
+    this.editAsso=post
+    this.router.navigate(['profile',this.editAsso.id])
+    
+ }
 
   
 
