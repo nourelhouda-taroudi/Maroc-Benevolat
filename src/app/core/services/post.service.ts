@@ -1,21 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-import { associations } from '../../models/associations';
-import { Post } from '../../profile/models/post';
-
-
-
-
+import { associations } from 'src/app/models/associations';
+import { Post } from '../../models/post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
- 
-
-  apiUrl="http://localhost:5000/post";
+  apiUrl="http://localhost:3000/api/post";
   constructor(private http:HttpClient) {}
     findAll()
       {
@@ -34,7 +27,6 @@ export class PostService {
      return this.http.put(`${this.apiUrl}/${post.id}`,post);
    }
 
-   public getAssociation(): Observable<associations[]>{
-    return this.http.get<associations[]>( 'http://localhost:3000/api/association/all');
-}
+
+
 }
