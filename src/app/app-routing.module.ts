@@ -24,7 +24,7 @@ const routes: Routes = [
     ] 
   },
   { 
-    path: 'profile',
+    path: 'profile/:id',
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
   },
   {
@@ -47,6 +47,10 @@ const routes: Routes = [
   {
     path: 'profile/editer/:id',
     loadChildren: () => import('./profile/editer/editer.module').then(m=> m.EditerModule)
+  },
+  {
+    path: 'story',
+    loadChildren: () => import('./profile/story/story.module').then(m=> m.StoryModule)
   },
  
  
