@@ -15,18 +15,19 @@ export class EditerComponent implements OnInit {
   association !: associations;
 
   editAsso:associations ={
-    nom: '',
-    description: '',
+    nameAssociation: '',
+    infos: '',
     facebook: '',
     twitter: '',
     id: 0,
-    siege: '',
-    objet: '',
-    telephone: 0,
-    adresse: '',
-    code_postal: 0,
-    ville: '',
-    email: '',
+    sigleAssociation: '',
+    objetSocial: '',
+    phoneAssociation: 0,
+    address: '',
+    codePostal: '',
+    logo:'',
+    city: '',
+    emailAssociation: '',
     instagram: ''
   }
   constructor(private route: ActivatedRoute, private assoService : PostService, private router: Router) { }
@@ -66,18 +67,19 @@ export class EditerComponent implements OnInit {
   }
   resetpost(){
     this.editAsso={
-       nom: '',
-    description: '',
+      nameAssociation: '',
+    infos: '',
     facebook: '',
     twitter: '',
     id: 0,
-    siege: '',
-    objet: '',
-    telephone: 0,
-    adresse: '',
-    code_postal: 0,
-    ville: '',
-    email: '',
+    sigleAssociation: '',
+    objetSocial: '',
+    phoneAssociation: 0,
+    address: '',
+    codePostal: '',
+    logo:'',
+    city: '',
+    emailAssociation: '',
     instagram: ''
     }
   }

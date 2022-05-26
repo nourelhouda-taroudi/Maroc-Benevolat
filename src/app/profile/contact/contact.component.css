@@ -1,0 +1,39 @@
+.container{
+    display: flex;
+    margin-top: 0px ;
+  }
+  
+  .contact-us {
+    padding: 70px 0px;
+  
+    background: #ffffff;
+  
+    background: #796348;
+  
+  }
+  .section-title h2 {
+    color: black;
+    font-size: 30px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    border-bottom: 5px solid #625a58;
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+  .contact-us .map {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .decouvert{
+    display: flex;
+    margin: 50px;
+    justify-content: space-around;
+  }
+  .textp{
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    padding: 10px;
+  }

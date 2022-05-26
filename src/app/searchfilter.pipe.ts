@@ -11,7 +11,7 @@ export class SearchfilterPipe implements PipeTransform {
      return association;
    }
    return association.filter(association =>
-    association.description.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()) );
+    association.infos.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()) );
   }
 
 }

@@ -9,6 +9,8 @@ import { ProfilDetailComponent } from './profil-detail/profil-detail.component';
 import { PostComponent } from './post/post.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { EditerComponent } from './editer/editer.component'
+import { StoryComponent } from './story/story.component';
+import { ContactComponent } from './contact/contact.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -18,7 +20,9 @@ import { EditerComponent } from './editer/editer.component'
     ProfilDetailComponent,
     PostComponent,
     OrderByPipe,
-    EditerComponent
+    EditerComponent,
+    StoryComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,

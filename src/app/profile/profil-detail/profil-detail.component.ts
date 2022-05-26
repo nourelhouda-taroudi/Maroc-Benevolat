@@ -1,9 +1,12 @@
+
 import { Component, Input, OnInit, Pipe } from '@angular/core';  
-import { Post } from '../models/post';
+import { Post } from '../../models/post';
 import { PostService } from '../../core/services/post.service';
 import { associations } from 'src/app/models/associations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -27,18 +30,19 @@ export class ProfilDetailComponent implements OnInit {
   }
 
   cards:associations ={
-    nom: '',
-    description: '',
+    nameAssociation: '',
+    infos: '',
     facebook: '',
     twitter: '',
     id: 0,
-    siege: '',
-    objet: '',
-    telephone: 0,
-    adresse: '',
-    code_postal: 0,
-    ville: '',
-    email: '',
+    sigleAssociation: '',
+    objetSocial: '',
+    phoneAssociation: 0,
+    address: '',
+    codePostal: '',
+    logo:'',
+    city: '',
+    emailAssociation: '',
     instagram: ''
   }
 
@@ -152,3 +156,4 @@ export class ProfilDetailComponent implements OnInit {
 
  }
 }
+
