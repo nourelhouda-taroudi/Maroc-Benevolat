@@ -236,7 +236,10 @@
         </div>
         <div class="form__group">
           <mat-label>Logo</mat-label>
-          <input formControlName="logo" type="file" required />
+          <input type="file" (change)="preview($event)" required />
+          <mat-error *ngIf="imageError!=''">
+            <strong>{{imageError}}</strong>
+          </mat-error>
         </div>
         <div class="form__group">
           <button mat-button matStepperPrevious mat-icon-button>

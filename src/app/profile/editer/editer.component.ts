@@ -1,7 +1,7 @@
+import { PostService } from 'src/app/features/home/services/Services';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PostService } from 'src/app/features/home/services/Services';
 import { associations } from 'src/app/models/associations';
 
 @Component({
@@ -46,7 +46,7 @@ export class EditerComponent implements OnInit {
 
   getAsso(id : number){
    
-    return this.assoService.getAssociationById(id).subscribe((response) => {
+    return this.assoService.getAssociationById(id).subscribe((response:any) => {
      this.association= response;
 
      console.log(this.association)
@@ -83,7 +83,7 @@ export class EditerComponent implements OnInit {
   }
 
    updateAsso(){
-    this.assoService.updateAsso(this.association).subscribe(post => {
+    this.assoService.updateAsso(this.association).subscribe((post:any) => {
       this.resetpost();
       this.edite = false;
       this.showForm =  false;
