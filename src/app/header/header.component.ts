@@ -4,9 +4,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { search } from '../features/home/search';
 import { associations } from '../models/associations';
-import { PostService } from '../features/home/services/Services';
 import { HomeComponent } from '../features/home/home.component';
-import { OverlayOutsideClickDispatcher } from '@angular/cdk/overlay';
+import { PostService } from '../core/services/Services';
 
 @Component({
   selector: 'app-header',
