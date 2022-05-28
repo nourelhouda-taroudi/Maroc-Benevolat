@@ -14,7 +14,7 @@ export class UploadsService {
     return this.httpClient.post(`${this.url}upload`,data)
   }
   getImage(image:string){
-    return this.httpClient.get(`${this.url}${image}`)
+    return `${this.url}${image}`
   }
 
 }
