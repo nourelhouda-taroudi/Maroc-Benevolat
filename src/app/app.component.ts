@@ -21,7 +21,7 @@ export class AppComponent {
 
  {
 
-      if (event['url'] == '/auth/login' ||  event['url'] == '/auth/register' || event['url'] == '/auth/forget-password' ||event['url'] == '/' 
+      if (event['url'] == '/auth/login' ||  event['url'] == '/auth/register' || event['url'] == '/auth/forget-password' 
       || event['url'] == '/editer' ) {
 
         this.showHead = false;
@@ -49,7 +49,7 @@ public searchFacture(key: string): void{
   const results: associations[] = [];
   console.log(key)
   for (const association of this.associations){
-    if (association.nom.indexOf(key) !== -1 || association.description.indexOf(key) !== -1){
+    if (association.nameAssociation.indexOf(key) !== -1 || association.infos.indexOf(key) !== -1){
       results.push(association);
     }
   }

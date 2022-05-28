@@ -40,18 +40,19 @@ export class HomeComponent implements OnInit {
   public associations!: associations[] ;
   associ!: associations[];
   cards:associations ={
-    nom: '',
-    description: '',
+    nameAssociation: '',
+    infos: '',
     facebook: '',
     twitter: '',
     id: 0,
-    siege: '',
-    objet: '',
-    telephone: 0,
-    adresse: '',
-    code_postal: 0,
-    ville: '',
-    email: '',
+    sigleAssociation: '',
+    objetSocial: '',
+    phoneAssociation: 0,
+    address: '',
+    codePostal: '',
+    logo:'',
+    city: '',
+    emailAssociation: '',
     instagram: ''
   }
   
@@ -108,7 +109,7 @@ export class HomeComponent implements OnInit {
     
     const results: associations[]= [];
     for (const card of this.associations){
-      if(card.description.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) !== -1 )   {
+      if(card.infos.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) !== -1 )   {
         results.push(card);
    
 
@@ -126,7 +127,7 @@ export class HomeComponent implements OnInit {
   //   const results: associations[] = [];
   //   console.log(key)
   //   for (const association of this.associations){
-  //     if (association.nom.indexOf(key) !== -1 || association.description.indexOf(key) !== -1){
+  //     if (association.nom.indexOf(key) !== -1 || association.infos.indexOf(key) !== -1){
   //       results.push(association);
   //     }
   //   }
@@ -142,7 +143,7 @@ export class HomeComponent implements OnInit {
     console.log(choix);
     const results: associations[] = [];
     for (const agences of this.associations){
-      if (agences.description.indexOf(choix) !== -1 ){
+      if (agences.infos.indexOf(choix) !== -1 ){
         results.push(agences);
        
       }
