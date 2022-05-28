@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { search } from './search';
 import { Router } from '@angular/router';
-import assoData from '../../../app/features/association.json';
 import slideData from '../../../app/features/slide.json';
 
-import { PostService } from './services/Services';
 import { associations } from '../../models/associations';
 
 
 
 
 import { HttpErrorResponse } from '@angular/common/http';
+import { PostService } from 'src/app/core/services/Services';
 
 // interface Association{
 //   id: number;
