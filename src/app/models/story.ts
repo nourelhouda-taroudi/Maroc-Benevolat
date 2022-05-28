@@ -1,4 +1,4 @@
-export interface story{
+export interface Story{
     id?:number;
     text:string;
     image:string;

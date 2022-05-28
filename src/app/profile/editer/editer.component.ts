@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PostService } from 'src/app/features/home/services/Services';
+import { PostService } from 'src/app/core/services/Services';
 import { associations } from 'src/app/models/associations';
 
 @Component({

@@ -1,5 +1,5 @@
 <a name="contact">
-    <div  class="container bg-white p-3 mt-3 rounded border shadow" style="display: block;" id="contact">
+    <div  class="container bg-white p-3 mt-3 rounded " style="display: block;" id="contact">
       <section class="contact-us">
         <div style="margin: 10px;">
           <div class="section-title">
@@ -9,15 +9,15 @@
         <div style="display: flex; justify-content: space-around;">
           <div style="display: flex;margin: 10px;">
             <i class="fa fa-home " style="font-size: 25px;margin-left: 20px;" aria-hidden="true"></i>
-            <p style="margin-left: 10px; color: black;margin-top: 3px;"> New York, NY 10012, US</p>
+            <p style="margin-left: 10px; color: black;margin-top: 3px;"> {{association.address}}</p>
           </div>
           <div style="display: flex;margin: 10px;">
             <i class="fa fa-envelope " style="font-size: 25px;margin-left: 20px;" aria-hidden="true"></i>
-            <p style="margin-left: 10px; color: black;margin-top: 3px;"> care-Association@gmail.com</p>
+            <p style="margin-left: 10px; color: black;margin-top: 3px;">{{association.emailAssociation}}</p>
           </div>
           <div style="display: flex;margin: 10px;">
           <i class="fa fa-phone " style="font-size: 25px;margin-left: 20px;" aria-hidden="true"></i>
-            <p style="margin-left: 10px; color: black;margin-top: 3px;"> 05-09-65-97-44</p>
+            <p style="margin-left: 10px; color: black;margin-top: 3px;"> {{association.phoneAssociation}}</p>
           </div>
         </div>
         <div class="map" style="text-align: center; margin-top: 40px;">

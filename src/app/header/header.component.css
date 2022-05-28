@@ -10,8 +10,8 @@
 .navbar {
   justify-content: space-around;
   display: flex;
-  margin-top: 25px;
   margin-bottom: 20px;
+ 
 }
 .link {
   color: #012d48;

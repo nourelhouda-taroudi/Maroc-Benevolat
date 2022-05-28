@@ -1,96 +1,130 @@
-<!-- posts and story -->
-<div class="container mt-3 d-flex justify-content-between position-relative shadow" id="event" data-bs-interval="false">
-    <div class="mx-1 bg-white rounded story" type="button" style="width: 6em; height: 40px; margin-top: 30px;">
-      <img src="https://source.unsplash.com/collection/happy-people" class="card-img-top mt-5 shadow" alt="story posts"
-        style="min-height: 125px; object-fit: cover" />
-      <div class=" d-flex align-items-center justify-content-center position-relative " style="min-height: 65px">
-        <p class="mb-0 text-center fs-7 fw-bold">Ajouter un evenement</p>
-      </div>
-      <i class="fa fa-plus-circle text-success" style="font-size: 30px;margin-left: 20px;" data-bs-toggle="modal" data-bs-target="#exampleModal2" aria-hidden="true"></i>
-    </div>
-    <!-- s 2 -->
-    <div class="rounded mx-1 story mt-5" type="button" style="width: 30em; height: 350px">
-      <img src="../../../assets/1.jpg" class="card-img-top rounded" alt="story posts" style=" object-fit: cover" />
-    </div>
-    <!-- s 3 -->
-    <div class="rounded mx-1 story mt-5" type="button" style="width: 30em; height: 350px">
-      <img src="../../../assets/1.jpg" class="card-img-top rounded" alt="story posts" style=" object-fit: cover" />
-    </div>
-    <!-- s 4 -->
-    <div class="rounded  story mt-5" type="button" style="width: 30em; height: 350px">
-      <img src="../../../assets/1.jpg" class="card-img-top rounded" alt="story posts" style="object-fit: cover" />
-    </div>
-    <!-- next icon -->
-    <div class=" position-absolute top-50 start-100 translate-middle  pointer d-none d-lg-block ">
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
-    <!-- create modal POST -->
-    <div  class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header align-items-center">
-            <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
-              Cree Post
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            </button>
-          </div>
-          <div class="modal-body" >
-            <form>
-              <div class="d-flex flex-column" >
-                <!-- name -->
-                <div class="d-flex align-items-center">
-                  <div class="p-2">
-                    <img src="https://source.unsplash.com/collection/happy-people" alt="from fb" class="rounded-circle"
-                      style="     width: 38px;  height: 38px;  object-fit: cover;" />
-                  </div>
-                  <div>
-                    <p class="m-0 fw-bold">Care</p>
-                    <select class="form-select border-0 bg-gray w-75 fs-7" aria-label="Default select example">
-                      <option selected value="1">Public</option>
-                      <option value="2">Pin To Top</option>
-                      <option value="3">Hide</option>
-                    </select>
-                  </div>
+<div class="container bg-white p-3 mt-3 mb-3 rounded border shadow">
+    <div>
+        <button type="button" class="form-control rounded-pill border-0 bg-gray pointer shadow"
+            style="background-color: rgb(250, 181, 96);" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+            Ajouter News...?
+        </button>
+        <!-- create modal ANNONCE -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header align-items-center">
+                        <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
+                            Cree annonce
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="d-flex flex-column">
+                                <!-- name -->
+                                <div class="d-flex align-items-center">
+                                    <div class="p-2">
+                                        <img src="https://source.unsplash.com/collection/happy-people" alt="from fb"
+                                            class="rounded-circle"
+                                            style="     width: 38px;  height: 38px;  object-fit: cover;" />
+                                    </div>
+                                    <div>
+                                        <p class="m-0 fw-bold">Care</p>
+                                        <select class="form-select border-0 bg-gray w-75 fs-7"
+                                            aria-label="Default select example">
+                                            <option selected value="1">Public</option>
+                                            <option value="2">Pin To Top</option>
+                                            <option value="3">Hide</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- text -->
+                                <div>
+                                    <textarea [(ngModel)]="mystory.text" [ngModelOptions]="{standalone: true}" cols="30"
+                                        rows="5" class="form-control border-0" style="margin: 10px;"></textarea>
+                                </div>
+                                <!-- emoji  -->
+                                <div class="  d-flex justify-content-between align-items-center  ">
+                                    <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png"
+                                        class="pointer" alt="fb text"
+                                        style="  width: 30px;  height: 30px;  object-fit: cover;" />
+                                    <i class="fa fa-smile-o text-warning" aria-hidden="true"></i>
+
+                                </div>
+                                <!-- options -->
+                                <div
+                                    class=" d-flex justify-content-between  border border-1 border-light  rounded  p-3 mt-3">
+                                    <div>
+                                        <input [(ngModel)]="mystory.image" [ngModelOptions]="{standalone: true}"
+                                            type="file" (change)="onFileSelected($event)">
+                                        <i class="fa fa-image   text-success "></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- end -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" style="width: 60px; height: 30px;"
+                            data-bs-dismiss="modal" (click)="close()">Close</button>
+                        <button *ngIf="!edite" (click)="persiststory()" data-bs-dismiss="modal" type="button"
+                            class="btn btn-success" style="width: 90px; height: 30px;">publier </button>
+                        <button *ngIf="edite" (click)="updatestory()" data-bs-dismiss="modal" type="button"
+                            class="btn btn-warning" style="width: 120px; height: 30px;">sauvgarder </button>
+                    </div>
                 </div>
-                <!-- text -->
-                <div>
-                  <textarea cols="30" rows="5" class="form-control border-0" style="margin: 10px;"></textarea>
-                </div>
-                <!-- emoji  -->
-                <div class="  d-flex justify-content-between align-items-center  "> 
-                   <img  src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" class="pointer"
-                    alt="fb text" style="  width: 30px;  height: 30px;  object-fit: cover;" />
-                  <i class="fa fa-smile-o text-warning" aria-hidden="true"></i>
-                 
-                </div>
-                <!-- options -->
-                <div class=" d-flex justify-content-between  border border-1 border-light  rounded  p-3 mt-3">
-                  <div>
-                    <input  type="file" >
-                    <i class="fa fa-image   text-success "></i>
-                  </div>
-                </div>
-              </div>
-            </form>
-    
-            <!-- end -->
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" style="width: 60px; height: 30px;"
-              data-bs-dismiss="modal" >ferme</button>
-            <button data-bs-dismiss="modal" type="button" class="btn btn-success" style="width: 90px; height: 30px;">publier </button>
-            <button data-bs-dismiss="modal"type="button" class="btn btn-warning" style="width: 120px; height: 30px;">sauvgarder </button>
-          </div>
+            </div>
         </div>
+    </div>
+    <div class="dropdown " style="text-align: end; margin-top:30px;">
+        <button class="btn btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li class="d-flex align-items-center" >
+                <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-pencil" >Editer</a>
+                
+            </li>
+            <li class="d-flex align-items-center"  >
+              <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-trash" >Supprimer</a>
+            </li>
+          </ul>
       </div>
-   </div>
-  
+    <div class=" div" *ngFor="let story of stories | paginate :{id:'listing_pagination',
+            itemsPerPage:3,currentPage:page,totalItems:total} | orderBy:'createdAt'" >
+        <div id="carouselExampleControls" class="carousel slide story shadow" data-bs-ride="carousel" style="margin-left:45px ;">
+           
+            <div class="carousel-inner"  >
+                <div class="carousel-item active">
+                    <img src="../../../assets/1.jpg" class=" w-100" alt="..."  style="border-radius: 30px;height:300px ;" >
+                </div>
+                <div class="carousel-item">
+                    <img src="../../../assets/1.jpg" class=" w-100" alt="..."  style="border-radius: 30px;height:300px ;">
+
+
+                </div>
+                <div class="carousel-item">
+                    <img src="../../../assets/1.jpg" class=" w-100" alt="..."  style="border-radius: 30px;height:300px ;">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <div style="text-align: center;">
+                <p>{{story.text}}</p>
+            </div>
+             <div class="date">
+                <p >{{story.createdAt | date: 'mediumDate'}}</p>
+             </div>
+        </div>
+
+    </div>
+    <div>
+        <pagination-controls id="listing_pagination" [maxSize]="3" [directionLinks]="true" (pageChange)="page=$event">
+        </pagination-controls>
+    </div>
+</div>
