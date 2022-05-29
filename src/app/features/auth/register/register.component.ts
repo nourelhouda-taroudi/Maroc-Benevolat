@@ -12,11 +12,12 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
   isLinear = true;
   number: number = 0;
-  imageError:string="";
-  selectedImg:File | undefined; 
-  imagePath:string="";
-  imgURL:any;
+  imageError: string = '';
+  selectedImg: File | undefined;
+  imagePath: string = '';
+  imgURL: any;
   samePassword: boolean = false;
+  sameEmail:boolean=false;
   formData: FormData = new FormData();
   registerForm1: FormGroup = new FormGroup({
     firstname: new FormControl(null, [Validators.required]),
@@ -64,7 +65,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private readonly userService: UserService,
-    private readonly uploadsService:UploadsService,
+    private readonly uploadsService: UploadsService,
     private readonly router: Router
   ) {}
 
@@ -155,8 +156,6 @@ export class RegisterComponent implements OnInit {
     this.number--;
   }
   isSamePassword() {
-    console.log('salam');
-
     const password = this.registerForm2.controls['password'];
     const passwordValidation =
       this.registerForm2.controls['passwordValidation'];
@@ -167,7 +166,18 @@ export class RegisterComponent implements OnInit {
       (passwordValidation.dirty || passwordValidation.touched);
     this.samePassword = tst;
   }
-  preview(event:any) {
+  isSameEmail() {
+    const email = this.registerForm2.controls['email'];
+    const emailValidation =
+      this.registerForm2.controls['emailValidation'];
+
+    const tst =
+      email.value !== emailValidation.value &&
+      (email.dirty || email.touched) &&
+      (emailValidation.dirty || emailValidation.touched);
+    this.sameEmail = tst;
+  }
+  preview(event: any) {
     if (event.target.files.length === 0) return;
 
     var mimeType = event.target.files[0].type;
@@ -187,20 +197,20 @@ export class RegisterComponent implements OnInit {
         this.imgURL = reader.result;
       };
     }
-    let data=new FormData();
-    data.append('image',this.selectedImg);
-    this.uploadsService.uploadImage(data).subscribe((res:any)=>{
-      // console.log(res);
-      this.registerForm3.get('logo')?.setValue(res.filename);
-      // console.log(this.registerForm3.get('logo')?.value);
-    },
-    err=>{
-      // console.log(err);
-      if(err.error.statusCode==400){
-         this.imageError=err.error.message;
+    let data = new FormData();
+    data.append('image', this.selectedImg);
+    this.uploadsService.uploadImage(data).subscribe(
+      (res: any) => {
+        // console.log(res);
+        this.registerForm3.get('logo')?.setValue(res.filename);
+        // console.log(this.registerForm3.get('logo')?.value);
+      },
+      (err) => {
+        // console.log(err);
+        if (err.error.statusCode == 400) {
+          this.imageError = err.error.message;
+        }
       }
-      
-    })
-
+    );
   }
 }
