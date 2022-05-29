@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { search } from './search';
+
 import { Router } from '@angular/router';
 import assoData from '../../../app/features/association.json';
 import slideData from '../../../app/features/slide.json';
@@ -33,8 +33,10 @@ interface Slide{
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public search : search = new search();
+
   edite = false;
+  slide : boolean= true;
+  searchText: string ='';
   
   constructor(  private asso: PostService, private router: Router) { }
  
@@ -123,13 +125,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
   // public searchFacture(key: string): void{
   //   const results: associations[] = [];
   //   console.log(key)
-  //   for (const association of this.associations){
-  //     if (association.nom.indexOf(key) !== -1 || association.infos.indexOf(key) !== -1){
-  //       results.push(association);
+  //   for (const agences of this.associations){
+  //     if (agences.nameAssociation.toLowerCase().indexOf(key.toLowerCase()) !== -1 
+   
+  //    ){
+  //       results.push(agences);
   //     }
   //   }
   //   this.associations = results;
@@ -137,6 +140,7 @@ export class HomeComponent implements OnInit {
   //   if (results.length === 0 || !key){
   //     this.getAsso();
   //   }
+  //   this.slide=false;
   // }
 
   public onChange(event: any): void {  //event will give you full breif of action
@@ -164,6 +168,16 @@ export class HomeComponent implements OnInit {
     console.log(this.cards.id)
     this.router.navigate(['profile',this.cards.id])
     
+ }
+
+ onSearchTextEntered(searchedValue: string){
+   this.searchText = searchedValue
+   console.log(this.searchText)
+   this.slide=false;
+   if(this.searchText === ''){
+     this,this.slide=true
+   }
+
  }
 
 }
