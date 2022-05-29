@@ -142,14 +142,11 @@ export class ProfilDetailComponent implements OnInit {
       (response) => {
         this.association = response;
         this.association.logo=this.uploadService.getImage(response.logo);
-        console.log(this.association);
+        // console.log(this.association);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
-  }
-  getAssociationLogo() {
-
   }
 }

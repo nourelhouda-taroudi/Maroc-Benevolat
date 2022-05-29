@@ -1,3 +1,5 @@
+import { AfterLoginGuard } from './core/guards/after-login.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 import { PageNotFoundComponent } from './shared/errors/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -6,7 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { 
-    path: 'auth' , 
+    path: 'auth' ,
+    canActivate:[AfterLoginGuard],
     loadChildren: () => 
     import('./features/auth/auth.module').then(m => m.AuthModule) 
   },
@@ -25,6 +28,7 @@ const routes: Routes = [
   },
   { 
     path: 'profile/:id',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
   },
   {
@@ -46,6 +50,7 @@ const routes: Routes = [
 
   {
     path: 'profile/editer/:id',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./profile/editer/editer.module').then(m=> m.EditerModule)
   },
   {
