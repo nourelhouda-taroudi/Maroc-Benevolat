@@ -22,6 +22,8 @@ import { SearchfilterPipe } from './searchfilter.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import {NgxPaginationModule} from 'ngx-pagination'
+import { SlideComponent } from './features/home/slide/slide.component';
+import { SearchComponent } from './features/search/search.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import {NgxPaginationModule} from 'ngx-pagination'
     MarocComponent,
     PartenairesComponent,
     SearchfilterPipe,
+    SlideComponent,
+    SearchComponent
  
   
   ],

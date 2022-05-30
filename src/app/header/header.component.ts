@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { search } from '../features/home/search';
+
 import { associations } from '../models/associations';
 import { HomeComponent } from '../features/home/home.component';
 import { OverlayOutsideClickDispatcher } from '@angular/cdk/overlay';
@@ -15,7 +15,9 @@ import { PostService } from '../core/services/Services';
 })
 export class HeaderComponent implements OnInit {
    home!: HomeComponent;
-  public search : search = new search();
+   slide : boolean= true;
+   searchText: string ='';
+
   constructor(private router: Router,private asso: PostService) { }
   public associations!: associations[] ;
 
@@ -53,7 +55,12 @@ export class HeaderComponent implements OnInit {
 
   
      
-
+     onSearchTextEntered(searchedValue: string){
+      this.searchText = searchedValue
+      console.log(this.searchText)
+      this.slide=false;
+   
+    }
   
 
    

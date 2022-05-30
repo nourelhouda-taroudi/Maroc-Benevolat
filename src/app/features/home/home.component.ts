@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
   edite = false;
   slide : boolean= true;
   searchText: string ='';
+  selectedText:string='';
   
   constructor(  private asso: PostService, private router: Router) { }
  
@@ -180,4 +181,27 @@ export class HomeComponent implements OnInit {
 
  }
 
+ selectChangeHandler(event: any){
+  const choix = event.target.value;
+
+  console.log(choix);
+
+  const results: associations[] = [];
+  for (const association of this.associations){
+    if (association.sigleAssociation.toLocaleLowerCase().indexOf(choix.toLocaleLowerCase()) !== -1 ){
+      results.push(association);
+     
+    }
+  }
+  this.associations = results;
+
+  if (results.length === 0 || !choix){
+    this.getAsso();
+  }
+ 
 }
+}
+
+
+
+

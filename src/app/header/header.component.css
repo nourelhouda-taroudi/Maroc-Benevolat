@@ -44,11 +44,7 @@
     background-color: rgb(227, 159, 32);
     color: white;
 }
-.btn {
-  margin-left: 15px;
-  border-radius: 20px;
 
-}
 input {
   margin-right: -10px;
 }
@@ -87,13 +83,7 @@ input {
   font-size: 18px;
 }
 
-.bi{
-    color: rgb(227, 159, 32);
-}
 
-.bi:hover{
-    color: white;
-}
 
 .boutton{
     margin-left: 15px;
