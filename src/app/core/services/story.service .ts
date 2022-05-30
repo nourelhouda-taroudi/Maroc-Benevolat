@@ -12,6 +12,7 @@ export class StoryService {
       {
       return  this.http.get<Story[]>(this.apiUrl);
     }
+    
     delete(id: any){
       return this.http.delete(`${this.apiUrl}/${id}`)
     }

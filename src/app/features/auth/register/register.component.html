@@ -49,8 +49,8 @@
             aria-label="Select an option"
             formControlName="gender"
           >
-            <mat-radio-button value="1">Femme</mat-radio-button>
-            <mat-radio-button value="2">Homme</mat-radio-button>
+            <mat-radio-button value="Femme">Femme</mat-radio-button>
+            <mat-radio-button value="Homme">Homme</mat-radio-button>
           </mat-radio-group>
         </div>
         <!-- <button mat-button matStepperNext>Next</button> -->
@@ -71,8 +71,12 @@
               matInput
               placeholder="Entrer Email"
               formControlName="email"
+              (change)="isSameEmail()"
               required
             />
+            <mat-error *ngIf="isControlHasError('email', 'required')">
+              <strong>Email est obligatoire</strong>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="form__group">
@@ -82,20 +86,27 @@
               matInput
               placeholder="Retaper l'email"
               formControlName="emailValidation"
+              (change)="isSameEmail()"
               required
             />
+            <mat-error *ngIf="isControlHasError('emailValidation', 'required')">
+              <strong>Email est obligatoire</strong>
+            </mat-error>
           </mat-form-field>
+          <div *ngIf="sameEmail"><small style="color: red;">Les deux emails ne sont pas identiques</small></div>
         </div>
         <div class="form__group">
           <mat-form-field appearance="outline" class="form__control">
             <mat-label>Mot de passe</mat-label>
             <input
               matInput
+              [type]="hide ? 'password' : 'text'"
               placeholder="Entrer mot de passe"
               formControlName="password"
               (change)="isSamePassword()"
               required
             />
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error *ngIf="isControlHasError('password', 'required')">
               <strong>Mot de passe est obligatoire</strong>
             </mat-error>
@@ -109,11 +120,13 @@
             <mat-label>Valider mot de passe</mat-label>
             <input
               matInput
+              [type]="hideValidation ? 'password' : 'text'" 
               placeholder="Retaper mot de passe"
               formControlName="passwordValidation"
               (change)="isSamePassword()"
               required
             />
+            <mat-icon matSuffix (click)="hideValidation = !hideValidation">{{hideValidation ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error *ngIf="isControlHasError('passwordValidation', 'required')">
               <strong>Mot de passe est obligatoire</strong>
             </mat-error>
@@ -134,7 +147,7 @@
             mat-button
             matStepperNext
             mat-icon-button
-            [disabled]="samePassword"
+            [disabled]="samePassword || sameEmail"
           >
             <mat-icon>arrow_forward_ios</mat-icon>
           </button>
@@ -236,7 +249,10 @@
         </div>
         <div class="form__group">
           <mat-label>Logo</mat-label>
-          <input formControlName="logo" type="file" required />
+          <input type="file" (change)="preview($event)" required />
+          <mat-error *ngIf="imageError!=''">
+            <strong>{{imageError}}</strong>
+          </mat-error>
         </div>
         <div class="form__group">
           <button mat-button matStepperPrevious mat-icon-button>
@@ -295,7 +311,7 @@
             />
           </mat-form-field>
         </div>
-        <button mat-raised-button matStepperNext color="primary" class="mx-2 p-2">
+        <button mat-raised-button matStepperNext style="background-color:#012d48 ; color: #fff;" class="mx-2 p-2">
           Valider
         </button>
       </form>
@@ -352,7 +368,7 @@
         </ul>
         <h6 class="fs-5 text-decoration-underline">Réseau d'association</h6>
         <ul>
-          <li><strong>email:</strong>{{ registerForm4.value.email }}</li>
+          <li><strong>email:</strong>{{ registerForm4.value.emailAssociation }}</li>
           <li><strong>Facebook:</strong>{{ registerForm4.value.facebook }}</li>
           <li>
             <strong>Instagram:</strong>{{ registerForm4.value.instagram }}
@@ -361,7 +377,7 @@
         </ul>
       </div>
       <div class="d-flex align-items-center mt-4">
-        <button mat-raised-button color="primary" class="mx-2 p-2" (click)="register()">
+        <button mat-raised-button style="background-color:#012d48 ; color: #fff;" class="mx-2 p-2" (click)="register()">
           Envoyer
         </button>
         <button mat-raised-button color="accent" class="p-2" routerLink="/">Annuler</button>

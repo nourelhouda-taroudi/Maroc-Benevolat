@@ -1,3 +1,4 @@
+import { UploadsService } from './../../core/services/uploads.service';
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/core/services/post.service';
 import { Post } from 'src/app/models/post';
@@ -8,6 +9,11 @@ import { Post } from 'src/app/models/post';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  index?:Number;
+  imageError:string="";
+  selectedImg:File | undefined; 
+  imagePath:string="";
+  imgURL:any;
   edite = false;
   showForm = true;
   mypost:Post ={
@@ -21,7 +27,7 @@ export class PostComponent implements OnInit {
   }
   posts: Post[]=[];
   addblogform: any;
-  constructor(private postservice:PostService) { }
+  constructor(private postservice:PostService,private readonly uploadService:UploadsService) { }
 
   ngOnInit(): void {
     this.getPosts();
@@ -41,11 +47,44 @@ export class PostComponent implements OnInit {
       this.showForm = false;
     })
   }
-  onFileSelected(event: any){
-    if(event.target.files.lenght>0){
-      const file=event.target.files[0];
-      this.addblogform.get('image').setValue(file);
+  // onFileSelected(event: any){
+  //   if(event.target.files.lenght>0){
+  //     const file=event.target.files[0];
+  //     this.addblogform.get('image').setValue(file);
+  //   }
+  // }
+  preview(event:any) {
+    if (event.target.files.length === 0) return;
+
+    var mimeType = event.target.files[0].type;
+
+    if (mimeType.match(/image\/*/) == null) {
+      this.imageError = 'Vous devez choisir une image!!!';
+      return;
+    } else {
+      this.imageError = '';
+      this.selectedImg = <File>event.target.files[0];
+
+      var reader = new FileReader();
+      this.imagePath = event.target.files;
+
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      };
     }
+    let data=new FormData();
+    data.append('image',this.selectedImg);
+    this.uploadService.uploadImage(data).subscribe((res:any)=>{
+      this.posts.push(res.filname);
+      // console.log(this.registerForm3.get('logo')?.value);
+    },
+    err=>{
+      // console.log(err);
+      if(err.error.statusCode==400){
+         this.imageError=err.error.message;
+      }
+    })
   }
   resetpost(){
     this.mypost={
@@ -68,7 +107,7 @@ export class PostComponent implements OnInit {
     })
   }
   editepost(post:any){
-     this.mypost=post
+     this.mypost=post;
      this.edite=true;
   }
   updatepost(){
@@ -81,5 +120,6 @@ export class PostComponent implements OnInit {
   close(){
       this.edite = false; 
       this.resetpost();
+
   }
 }

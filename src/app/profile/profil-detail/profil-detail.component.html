@@ -1,7 +1,7 @@
 <div class="container bg-white p-3 mt-300 rounded border shadow">
   
   <div class="image">
-    <img class="rounded1 " src="../../../assets/images.jpg">
+    <img class="rounded1 " [src]="association.logo">
 
   </div>
   <div class="text"  >
@@ -41,11 +41,11 @@
 
 
 <div class="container list bg-white p-3 mt-3 rounded border shadow">
-  <a class="link" routerLink="story">Evenements</a>
+  <a class="link" routerLink="story" routerLinkActive="active">Evenements</a>
 
-  <a class="link" routerLink="annonce">Annonces</a>
-  <a class="link" routerLink="contact">Contact</a>
-  <a class="link" routerLink="Qui nous">Qui Somme Nous</a>
+  <a class="link" routerLink="annonce" routerLinkActive="active">Annonces</a>
+  <a class="link" routerLink="contact" routerLinkActive="active">Contact</a>
+  <a class="link" routerLink="Qui nous" routerLinkActive="active">Qui Somme Nous</a>
 
 
 </div>
