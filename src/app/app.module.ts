@@ -21,7 +21,8 @@ import { SearchfilterPipe } from './searchfilter.pipe';
 
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import { TestComponent } from './test/test.component'
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { HeaderComponent } from './header/header.component';
     MarocComponent,
     PartenairesComponent,
     SearchfilterPipe,
+    TestComponent,
  
   
   ],
@@ -44,7 +46,7 @@ import { HeaderComponent } from './header/header.component';
     AngularMaterialModule,
     BrowserAnimationsModule,
     CommonModule,
-
+    NgxPaginationModule,
     MatTabsModule,
     FormsModule,
     MatIconModule,

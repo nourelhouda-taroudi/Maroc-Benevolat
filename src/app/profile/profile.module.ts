@@ -1,7 +1,7 @@
-import { OrderByPipe } from './profil-detail/pipe';
+import { OrderByPipe } from './pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
@@ -22,13 +22,15 @@ import { ContactComponent } from './contact/contact.component';
     OrderByPipe,
     EditerComponent,
     StoryComponent,
-    ContactComponent
+    ContactComponent,
+   
   ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
      AngularMaterialModule,
-     FormsModule,ReactiveFormsModule
+     FormsModule,ReactiveFormsModule,
+     NgxPaginationModule
     //BrowserAnimationsModule
   ]
 })

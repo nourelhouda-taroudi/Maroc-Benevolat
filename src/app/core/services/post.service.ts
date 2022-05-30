@@ -12,7 +12,7 @@ import { Post } from '../../models/post';
   providedIn: 'root'
 })
 export class PostService {
-  apiUrl="http://localhost:3000/api/story";
+  apiUrl="http://localhost:3000/api/post";
   constructor(private http:HttpClient) {}
     findAll()
       {

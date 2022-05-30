@@ -1,30 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { associations } from 'src/app/models/associations';
-import { Post } from '../../models/post';
+import { Story } from 'src/app/models/story';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class StoryService {
   apiUrl="http://localhost:3000/api/story";
   constructor(private http:HttpClient) {}
     findAll()
       {
-      return  this.http.get<Post[]>(this.apiUrl);
+      return  this.http.get<Story[]>(this.apiUrl);
     }
+    
     delete(id: any){
       return this.http.delete(`${this.apiUrl}/${id}`)
     }
-   persist(post:any){
-     return this.http.post<Post>(this.apiUrl,post)
+   persist(story:any){
+     return this.http.post<Story>(this.apiUrl,story)
    }
    likes( id: any,like: any){
     return this.http.patch(`${this.apiUrl}/${id}`,{like:!like})
    }
-   update(post:any){
-     return this.http.put(`${this.apiUrl}/${post.id}`,post);
+   update(story:any){
+     return this.http.put(`${this.apiUrl}/${story.id}`,story);
    }
 
 

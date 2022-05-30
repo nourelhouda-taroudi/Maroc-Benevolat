@@ -1,0 +1,167 @@
+.container{
+    display: flex;
+    margin-top: 0px ;
+  }
+  .counter{
+    margin-top: 40px;
+    margin-left: 40px;
+    display: flex;
+  }
+  .image{
+    text-align: center;
+    margin-left: 40px; 
+  }
+  .text{
+    width: 800px;
+    height: 210px;
+    text-align: left;
+    margin-top: 5px;
+    margin-top: 90px;
+    
+  }
+  
+  .btn{
+  
+    margin-left: 20px;
+    border-radius: 30px;
+   width: 27px;
+   height: 27px;
+   font-size: 18px;
+   padding: 0px;
+  
+    
+  }
+  .rounded-circle {
+    border-style: none;
+    width: 150px;
+    height: 150px;
+   border: 1px solid #030303;
+    text-align: left;
+    margin-top: 5px;
+    box-shadow: 10px 5px 5px 5px #d2d1d0;
+    
+  }
+  .rounded1 {
+   border: 1px solid #030303;
+    text-align: left;
+    margin-top: 5px;
+    box-shadow: 10px 5px 5px 5px rgba(0,0,0,0.6);
+    margin: 30px;
+      font-size: 20px;
+      border-radius: 28px;
+      transition: 0.5s ease;
+      cursor: pointer;
+      width: 250px;
+  }
+  .rounded1:hover {
+    transform: scale(1.15);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  }
+  .describ{
+    width: 600px;
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 50px;
+    background-color: rgb(224, 221, 221);
+    padding: 10px;
+    border-radius: 30px;
+  }
+  .name{
+    color: gray;
+    margin: 60px;
+    font-size: 22px;
+  }
+  .siege{
+   text-decoration: none;
+    color: gray;
+    font-size: 22px;
+    margin-right: 15px;
+    margin-left: 15px;
+  
+  }
+  .local{
+    margin-left: 70px;
+    margin-top: 15px;
+  }
+  
+  .link:hover{
+        color: green;
+        text-decoration: underline;
+        text-underline-offset: 0.8em;
+  }
+  .link{
+        justify-content: space-around;
+        margin: 10px;
+       margin-left: 130px;
+       text-decoration: none;
+       color: gray;
+  }
+  .list{
+    margin-top: 0px;
+    font-size: 18px;
+    padding-left: 100px;
+   
+  }
+  .story:hover {
+    opacity: 0.8;
+  }
+  .contact-us {
+    padding: 70px 0px;
+  
+    background: #ffffff;
+  
+    background: #796348;
+  
+  }
+  .section-title h2 {
+    color: black;
+    font-size: 30px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    border-bottom: 5px solid #625a58;
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+  .contact-us .map {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .imagepost{
+    width: 400px;
+    height: 300px;
+    margin: 20px;
+  }
+  .imagecenter{
+    text-align: center;
+    display: flex;
+    margin: 30px;
+  }
+  .like{
+    width: 80px;
+    height: 30px;
+    font-size: 28px;
+  
+  
+    
+  
+  
+    margin-left: 450px;
+  
+    
+  }
+  .decouvert{
+    display: flex;
+    margin: 50px;
+    justify-content: space-around;
+  }
+  .textp{
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    padding: 10px;
+  }
+  .edite {
+    position: absolute;
+    margin-left: 1060px;
+  }

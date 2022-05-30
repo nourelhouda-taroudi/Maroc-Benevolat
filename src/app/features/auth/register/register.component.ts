@@ -10,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  isLinear = true;
+  isLinear = false;
+  hide:boolean=true;
+  hideValidation:boolean=true;
   number: number = 0;
   imageError: string = '';
   selectedImg: File | undefined;
