@@ -14,43 +14,38 @@ import { PostService } from '../core/services/Services';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-   home!: HomeComponent;
-   slide : boolean= true;
-   searchText: string ='';
-   islogIn : boolean = false;
+  islogIn:boolean=false;
+  home!: HomeComponent;
 
-  constructor(private router: Router,private asso: PostService,private readonly tokenService : TokenService) { }
-  public associations!: associations[] ;
-
-
+  constructor(private router: Router, private asso: PostService,private tokenService:TokenService) {}
+  public associations!: associations[];
 
   associ: associations[] = [];
 
   ngOnInit(): void {
-
+    this.getAsso();
     this.isLoggedIn();
   }
 
   public Search(homeform: NgForm) {
     //stringify: convert javascript data to json-formatted string
-      console.log(JSON.stringify(homeform.value))
-  
-    }
-  
-    goToConn(pageName: string): void{
-  
-      this.router.navigate([`${pageName}`]);
-  
-    }
+    console.log(JSON.stringify(homeform.value));
+  }
 
+  goToConn(pageName: string): void {
+    this.router.navigate([`${pageName}`]);
+  }
 
-
-  
-     
-    
-  
-
- 
+  getAsso() {
+    return this.asso.getAssociation().subscribe(
+      (response: associations[]) => {
+        this.associations = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
   isLoggedIn(){
     // console.log(this.tokenService.loggedIn());
     this.islogIn=this.tokenService.loggedIn();

@@ -70,7 +70,7 @@
 
 <div class="div" id="associations">
 <ng-container *ngFor="let association of associations  ">
-    <div class="card" style="width: 22rem;" *ngIf="searchText === ''  || association.infos.toLocaleLowerCase().includes(searchText) || association.nameAssociation.toLocaleLowerCase().includes(searchText)  || association.sigleAssociation.toLocaleLowerCase().indexOf(selectedText)"  >
+    <div class="card" style="width: 22rem;" *ngIf="searchText === ''  ||  association.nameAssociation.toLocaleLowerCase().includes(searchText)  " >
     
     <button (click)="editeAnn(association)" class="btn_asso">
       <div class="card-body"  >
