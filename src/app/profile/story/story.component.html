@@ -1,7 +1,7 @@
 <div class="container bg-white p-3 mt-3 mb-3 rounded border shadow">
     <div>
         <button type="button" class="form-control rounded-pill border-0 bg-gray pointer shadow"
-            style="background-color: rgb(250, 181, 96);" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+            style="background-color: rgba(88, 180, 3, 0.723);" data-bs-toggle="modal" data-bs-target="#exampleModal1">
             Ajouter News...?
         </button>
         <!-- create modal ANNONCE -->
@@ -64,7 +64,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" style="width: 60px; height: 30px;"
-                            data-bs-dismiss="modal" (click)="close()">Close</button>
+                            data-bs-dismiss="modal" data-target="#modal" (click)="close(mystory)">Close</button>
                         <button *ngIf="!edite" (click)="persiststory()" data-bs-dismiss="modal" type="button"
                             class="btn btn-success" style="width: 90px; height: 30px;">publier </button>
                         <button *ngIf="edite" (click)="updatestory()" data-bs-dismiss="modal" type="button"
@@ -74,21 +74,9 @@
             </div>
         </div>
     </div>
-    <div class="dropdown " style="text-align: end; margin-top:30px;">
-        <button class="btn btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li class="d-flex align-items-center" >
-                <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-pencil" >Editer</a>
-                
-            </li>
-            <li class="d-flex align-items-center"  >
-              <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-trash" >Supprimer</a>
-            </li>
-          </ul>
-      </div>
+    
     <div class=" div" *ngFor="let story of stories | paginate :{id:'listing_pagination',
-            itemsPerPage:3,currentPage:page,totalItems:total} | orderBy:'createdAt'" >
+            itemsPerPage:3,currentPage:page,totalItems:total} | orderBy:'createdAt',reverse" >
         <div id="carouselExampleControls" class="carousel slide story shadow" data-bs-ride="carousel" style="margin-left:45px ;">
            
             <div class="carousel-inner"  >
@@ -117,11 +105,23 @@
             <div style="text-align: center;">
                 <p>{{story.text}}</p>
             </div>
-             <div class="date">
+             <div class="date">                 
                 <p >{{story.createdAt | date: 'mediumDate'}}</p>
              </div>
         </div>
-
+        <div   class="dropdown " style="text-align: end; margin-top:30px;">
+            <button   class="btn  fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li class="d-flex align-items-center" >
+                    <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-pencil" (click)="editestory(story)"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Editer</a>
+                    
+                </li>
+                <li class="d-flex align-items-center"  >
+                  <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-trash"   (click)="deletestory(story.id)">Supprimer</a>
+                </li>
+              </ul>
+          </div>
     </div>
     <div>
         <pagination-controls id="listing_pagination" [maxSize]="3" [directionLinks]="true" (pageChange)="page=$event">

@@ -1,18 +1,19 @@
 .story{
-    margin: 30px;
+    margin-top: 50px;
+    margin-bottom: 30px;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     font-size: 20px;
     border-radius: 30px;
     transition: 0.5s ease;
     cursor: pointer;
-    width: 350px;
+    width: 300px;
     height: 400px;
    
   }
 .story:hover {
     transform: scale(1.15);
     box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
-    background-color: rgb(197, 130, 53);
+    background-color: rgb(187, 186, 184);
     color: white;
 
     
@@ -20,23 +21,22 @@
   
   
   .btn{
-  
-    margin-left: 20px;
+  margin-right: 50px;
     border-radius: 30px;
-   width: 27px;
-   height: 27px;
+   width: 28px;
+   height: 29px;
    font-size: 18px;
    padding: 0px;  
   }
 .div{
   display: inline-flex;
 }
-.edite {
+/* .edite {
   position: absolute;
   margin-left: 1040px;
   margin-top: 20px;
   margin-bottom: 20px;
-}
+} */
 .date{
   text-align: end;
   margin-top: 55px;

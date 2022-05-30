@@ -157,3 +157,4 @@ export class ProfilDetailComponent implements OnInit {
  }
 }
 
+
