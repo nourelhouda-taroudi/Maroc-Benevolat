@@ -134,6 +134,7 @@ export class ProfilDetailComponent implements OnInit {
     this.cards = post;
     this.edite = true;
     console.log(this.cards.id);
+
     this.router.navigate(['profile/editer', this.cards.id]);
   }
 

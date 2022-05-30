@@ -1,22 +1,27 @@
 .container{
   display: flex;
   margin-top: 0px ;
+
 }
 .counter{
-  margin-top: 40px;
-  margin-left: 40px;
-  display: flex;
+  margin-top: -100px;
+  margin-left: 784px;
+display:grid;
+  width: 200px;
+  justify-content: space-around;
+  height: 200px;
 }
 .image{
   text-align: center;
   margin-left: 40px; 
 }
 .text{
-  width: 800px;
+  width: 450px;
   height: 210px;
   text-align: left;
-  margin-top: 5px;
-  margin-top: 90px;
+  margin-top: 50px;
+  margin-left: 30px;
+
   
 }
 
@@ -45,10 +50,10 @@
  border: 1px solid #030303;
   text-align: left;
   margin-top: 5px;
-  box-shadow: 10px 5px 5px 5px rgba(0,0,0,0.6);
+  
   margin: 30px;
     font-size: 20px;
-    border-radius: 28px;
+    border-radius: 50px;
     transition: 0.5s ease;
     cursor: pointer;
     width: 250px;
@@ -67,21 +72,28 @@
   border-radius: 30px;
 }
 .name{
-  color: gray;
-  margin: 60px;
-  font-size: 22px;
+  color: rgb(28, 35, 83);
+  margin-left: 30px;
+  font-size: 30px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-family:'Montserrat regular';
 }
 .siege{
  text-decoration: none;
-  color: gray;
+  color: rgb(60, 58, 58);
   font-size: 22px;
   margin-right: 15px;
   margin-left: 15px;
+  margin-top: 0;
+  font-family:'Montserrat regular';
 
 }
+
 .local{
-  margin-left: 70px;
-  margin-top: 15px;
+  margin-top: 30px;
+  margin-left: 20px;
+  height: 40px;
 }
 
 .link:hover{
@@ -165,3 +177,32 @@
   position: absolute;
   margin-left: 1060px;
 }
+
+.btn1{
+margin-left: 430px;
+margin-bottom: 0px;
+border-radius: 15px;
+background-color: transparent;
+border-color: rgb(58, 31, 58);
+width: 30px;
+height: 30px;
+color: black;
+
+}
+
+.bi{
+
+}
+
+
+.don{
+  margin-left: 740px;
+  color: rgb(38, 37, 35);
+  font-size: 20px;
+  margin-top: 0px;
+  height: 50px;
+  width: 180px;
+  padding: 12px;
+  text-align: center;
+
+ }

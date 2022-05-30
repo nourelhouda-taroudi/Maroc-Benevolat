@@ -1,0 +1,40 @@
+.me-2 {
+    margin-right: -0.5rem !important;
+    border-radius: 20px;
+  }
+  input{
+      width: 700px;
+      margin-top: 40px;
+      margin-left: 20px;
+      
+  }
+
+  .div{
+      display: flex;
+      margin-left: 40px;
+      
+
+  }
+  .dropdown{
+      margin-top: 40px;
+      margin-left: 40px;
+   
+  }
+
+  .btn{
+    margin-left: 15px;
+    border-radius: 20px;
+    border: rgb(227, 159, 32);
+}
+
+.btn:hover{
+    background-color: rgb(227, 159, 32);
+    color: white;
+}
+.bi{
+    color: rgb(227, 159, 32);
+}
+
+.bi:hover{
+    color: white;
+}
