@@ -100,12 +100,13 @@
             <mat-label>Mot de passe</mat-label>
             <input
               matInput
-              type="password"
+              [type]="hide ? 'password' : 'text'"
               placeholder="Entrer mot de passe"
               formControlName="password"
               (change)="isSamePassword()"
               required
             />
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error *ngIf="isControlHasError('password', 'required')">
               <strong>Mot de passe est obligatoire</strong>
             </mat-error>
@@ -119,12 +120,13 @@
             <mat-label>Valider mot de passe</mat-label>
             <input
               matInput
-              type="password"
+              [type]="hideValidation ? 'password' : 'text'" 
               placeholder="Retaper mot de passe"
               formControlName="passwordValidation"
               (change)="isSamePassword()"
               required
             />
+            <mat-icon matSuffix (click)="hideValidation = !hideValidation">{{hideValidation ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error *ngIf="isControlHasError('passwordValidation', 'required')">
               <strong>Mot de passe est obligatoire</strong>
             </mat-error>
