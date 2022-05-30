@@ -1,10 +1,7 @@
+import { associations } from './../../models/associations';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { associations } from 'src/app/models/associations';
-import { Post } from 'src/app/models/post';
-
-
 @Injectable({
   providedIn: 'root'
 })
