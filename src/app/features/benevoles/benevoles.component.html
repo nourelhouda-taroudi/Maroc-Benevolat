@@ -2,35 +2,14 @@
   <div class="div">
     <h1 class="titre">DEVENIR UN BENEVOLAT</h1>
     <p class="para">Vous souhaitez vous investir auprès d’une association et vous vous posez de nombreuses questions : Est-ce vraiment fait pour moi ? Puis-je concilier cet engagement avec mon emploi du temps ? Comment valoriser cette expérience ? Étudiants, salariés, retraités, demandeurs d’emploi… Rassurez-vous ! Tout le monde peut devenir bénévole, et c’est bien plus simple qu’on ne le pense.</p>
-    <div class="search"><input class="form-control me-2" type="search" placeholder="Choissisez votre association " aria-label="Search"  name="you searched " >
-    <button class="btn btn-outline-success" type="submit"><mat-icon class="icon">search</mat-icon></button></div>
+
   </div>
   <div class="img">
     <video width="550" height="400" controls="controls" id="myVideo">
        <source src="./../../../assets/Devenir bénévole au Maroc.mp4">
        <source src="./../../../assets/Devenir bénévole au Maroc.ogg">
       </video>
-      <script>
-        let options = {
-            root: null,
-            rootMargin:'0px',
-            threshold:1.0
-        };
-        let callback= (entries, observer) =>{
-            entries.forEach(entry => {
-                if (entry.target.id =='myVideo'){
-                    if(entry.isIntersecting){
-                        entry.target.play();
-                      }
-                      else{
-                          entry.target.pause();
-                      }
-                }
-            })
-        } 
-        let observer = new IntersectionObserver(callback,options);
-        observer.observe(document.querySelector('#myVideo'));
-    </script>
+     
   </div>
 </div>
 <div class="all">

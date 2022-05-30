@@ -24,7 +24,7 @@ input {
 }
 
 .carousel {
-  margin-top: 0px;
+  margin-top: 40px;
 
 }
 .carousel-inner {
@@ -40,7 +40,7 @@ input {
 
 .div {
   justify-content: space-around;
-  margin-top: 60px;
+  margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -54,6 +54,7 @@ input {
   width: 300px;
   min-height: 300px;
   min-width: 300px;
+
 }
 .card-img-top {
   grid-area: image;
@@ -72,7 +73,7 @@ input {
     font-size:13px;
   }
   .card-text p {
-    color: grey;
+    color: rgb(157, 47, 47);
     font-size:15px;
     font-weight: 300;
   }
@@ -137,9 +138,9 @@ input {
     
      
  }
- .card-text:hover{
+
      
- }
+ 
 
 
  
@@ -315,7 +316,7 @@ input {
 
 
 .btn_asso:hover{
-    background-color: rgb(227, 159, 32);
+    background-color: rgb(188, 217, 176);
     color: white;
 }
 
@@ -324,18 +325,14 @@ input {
     margin-left: 470px;
 }
 
-.dropdown-item{
-    color: gray;
-    font-size: 18px;
-    font-family:'Times New Roman', Times, serif;
-}
+
 
 .bi{
-    color: rgb(227, 159, 32);
+fill: #012d48;
 }
 
 .bi:hover{
-    color: white;
+    fill: white;
 }
 
 .boutton{
@@ -374,6 +371,35 @@ input {
     text-decoration: underline;
  
     text-underline-offset: 0.8em;
+}
+
+.search{
+  display: flex;
+  margin-left: 180px;
+}
+.select{
+  color: purple;
+  width: 70px;
+  border-radius: 10px;
+  background-color: white;
+  height: 30px;
+  margin-top: 45px;
+  margin-left: 80px;
+  border-color: purple
+  
+}
+
+select{
+background-color: #012d48;
+}
+
+.select-items {
+  position: absolute;
+  background-color: rgb(49, 52, 56);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
 }
 
 
