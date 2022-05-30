@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  isLinear = false;
+  isLinear = true;
   hide:boolean=true;
   hideValidation:boolean=true;
   number: number = 0;
