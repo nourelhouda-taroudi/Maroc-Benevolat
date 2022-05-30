@@ -22,11 +22,10 @@ import { SearchfilterPipe } from './searchfilter.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 
-import {NgxPaginationModule} from 'ngx-pagination'
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SlideComponent } from './features/home/slide/slide.component';
 import { SearchComponent } from './features/search/search.component';
-
-
+import { OtpValidationComponent } from './otp-validation/otp-validation.component';
 
 @NgModule({
   declarations: [
@@ -41,10 +40,8 @@ import { SearchComponent } from './features/search/search.component';
     SearchfilterPipe,
 
     SlideComponent,
-    SearchComponent
-
- 
-  
+    SearchComponent,
+    OtpValidationComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -60,9 +57,9 @@ import { SearchComponent } from './features/search/search.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
