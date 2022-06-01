@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import slideData from '../../../app/features/slide.json';
 
 import { associations } from '../../models/associations';
@@ -11,6 +11,7 @@ import { associations } from '../../models/associations';
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { PostService } from 'src/app/core/services/Services';
+import { UploadsService } from 'src/app/core/services/uploads.service';
 
 // interface Association{
 //   id: number;
@@ -36,8 +37,10 @@ export class HomeComponent implements OnInit {
   slide : boolean= true;
   searchText: string ='';
   selectedText:string='';
+  resp:string='';
+   Association!: associations;
   
-  constructor(  private asso: PostService, private router: Router) { }
+  constructor(  private asso: PostService, private router: Router, private uploadService: UploadsService, private route: ActivatedRoute) { }
  
   public associations!: associations[] ;
   associ!: associations[];
@@ -61,6 +64,11 @@ export class HomeComponent implements OnInit {
  
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((parameterMap) => {
+      const id = Number(parameterMap.get('id'));
+      this.getAssoci(id);
+      console.log(id);
+    });
     this.getAsso();
   
 
@@ -86,6 +94,8 @@ export class HomeComponent implements OnInit {
    
    return this.asso.getAssociation().subscribe((response: associations[]) => {
     this.associations = response;
+
+   
   },
   (error : HttpErrorResponse) => {
     alert(error.message)
@@ -94,7 +104,22 @@ export class HomeComponent implements OnInit {
 
   }
 
+  
 
+  getAssoci(id: number) {
+    return this.asso.getAssociationById(id).subscribe(
+      (response) => {
+        this.Association = response;
+        this.Association.logo=this.uploadService.getImage(response.logo);
+        // console.log(this.association);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+ 
+ 
 
 
   goToConn(pageName: string): void{

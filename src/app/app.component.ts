@@ -23,7 +23,11 @@ export class AppComponent {
             event['url'] == '/auth/login' ||
             event['url'] == '/auth/register' ||
             event['url'] == '/auth/forget-password' ||
-            event['url'] == '/editer'
+            event['url'] == '/editer' ||
+            event['url'] == '/login_admin' ||
+            event['url'] == '/home_admin'  ||
+            event['url'] == '/all_associations'  ||
+            event['url'] == '/Suppression'
           ) {
             this.showHead = false;
           } else {

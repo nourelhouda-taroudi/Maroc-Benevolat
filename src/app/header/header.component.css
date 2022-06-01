@@ -19,10 +19,7 @@
   text-decoration: none;
 }
 
-.link:hover{
-   color: #012d48;
-   text-decoration: underline;
-}
+
 .btn:hover {
   background-color: #012d48;
 }

@@ -74,7 +74,7 @@
     
     <button (click)="editeAnn(association)" class="btn_asso">
       <div class="card-body"  >
-        <img src="./../../../assets/img1.jpeg" class="card-img-top">
+        <img [src]="association.logo" class="card-img-top">
         <p class="card-text" style="font-weight: bold;">{{association.nameAssociation}}</p>
         <label style="margin: -20px;">_______________________</label>
         <p class="card-text">{{association.infos}}</p>
