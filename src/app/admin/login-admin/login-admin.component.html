@@ -1,0 +1,34 @@
+  <div class="all">
+  <form  #userForm="ngForm"  (ngSubmit)="login(userForm.value)">  
+
+    <h1 class="titre">S'enthentifier </h1>
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example1">Adresse Email</label>
+    <input type="email" id="form2Example1" class="form-control" name="email" ngModel/>
+    
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">Mot de Passe</label>
+    <input type="password" id="form2Example2" class="form-control"  name="password" ngModel/>
+   
+  </div>
+
+  <!-- 2 column grid layout for inline styling -->
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-center">
+      <!-- Checkbox -->
+      
+    </div>
+
+   
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4" value="Sign up">Sign up</button>
+
+  <!-- Register buttons -->
+  </div>
+</form>
+</div>
