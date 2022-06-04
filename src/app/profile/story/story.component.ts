@@ -1,10 +1,12 @@
+import { UploadsService } from './../../core/services/uploads.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
 import { associations } from 'src/app/models/associations';
-import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PostService } from 'src/app/core/services/Services';
 import { StoryService } from 'src/app/core/services/story.service ';
 import { Story } from 'src/app/models/story';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-story',
@@ -12,6 +14,16 @@ import { Story } from 'src/app/models/story';
   styleUrls: ['./story.component.css']
 })
 export class StoryComponent implements OnInit {
+  story?:Story;
+  stories: Story[]=[];
+  addblogform: any;
+  registerForm3: FormGroup = new FormGroup({
+    image: new FormControl(null),
+  });
+  imageError: string = '';
+  selectedImg: File | undefined;
+  imagePath: string = '';
+  imgURL: any;
   total?:number;
   page:number=1;
  
@@ -24,18 +36,22 @@ export class StoryComponent implements OnInit {
     like:true,
     commentaire:'',
     likeNum:0,
-    createdAt:new Date()
+    createdAt:new Date(),
   }
-  stories: Story[]=[];
-  addblogform: any;
-  constructor(
-    private storyService:StoryService,
-    private router: Router,
+  
+  constructor(private storyService:StoryService,private router: Router,
     private route: ActivatedRoute,
- 
+    private asso: PostService,
+    public uploadsService:UploadsService,
+
     ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((parameterMap) => {
+      const id = Number(parameterMap.get('id'));
+      this.getAssoci(id);
+      console.log(id);
+    });
     this.getStory();
   }
   getStory(){
@@ -48,18 +64,51 @@ export class StoryComponent implements OnInit {
     })
   }
   persiststory(){
+    this.mystory.image=this.registerForm3.getRawValue().image;
     this.storyService.persist(this.mystory).subscribe((story) =>{
+      console.log(this.mystory.image)
       this.stories=[story, ...this.stories]
       this.resetstory();
       this.showForm = false;
-    })
+    }) 
   }
-  onFileSelected(event: any){
-    if(event.target.files.lenght>0){
-      const file=event.target.files[0];
-      this.addblogform.get('image').setValue(file);
+  preview(event: any) {
+    if (event.target.files.length === 0) return;
+    
+    var mimeType = event.target.files[0].type;
+
+    if (mimeType.match(/image\/*/) == null) {
+      this.imageError = 'Vous devez choisir une image!!!';
+      return;
+    } else {
+      this.imageError = '';
+      this.selectedImg = <File>event.target.files[0];
+
+      var reader = new FileReader();
+      this.imagePath = event.target.files;
+      
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      };
     }
+    let data = new FormData();
+    data.append('image', this.selectedImg);
+    console.log(  this.uploadsService.uploadImage(data));
+    this.uploadsService.uploadImage(data).subscribe(
+
+      (res: any) => {
+        this.registerForm3.get('image')?.setValue(res.filename);
+    
+      },
+      (err) => {
+        if (err.error.statusCode == 400) {
+          this.imageError = err.error.message;
+        }
+      }
+    );
   }
+
   resetstory(){
     this.mystory={
       text:'',
@@ -67,7 +116,7 @@ export class StoryComponent implements OnInit {
     like:false,
     commentaire:'',
     likeNum:0,
-    createdAt:new Date()
+    createdAt:new Date(),
     }
   }
   tolike(story:any){
@@ -84,6 +133,7 @@ export class StoryComponent implements OnInit {
      this.edite=true;
   }
   updatestory(){
+    this.mystory.image=this.registerForm3.getRawValue().image;
     this.storyService.update(this.mystory).subscribe(story => {
       this.resetstory();
       this.edite = false;
@@ -95,6 +145,19 @@ export class StoryComponent implements OnInit {
       this.mystory=story;
       this.resetstory();
       this.router.navigate(['profile',this.mystory.id])
+  }
+  
+  getAssoci(id: number) {
+    return this.asso.getAssociationById(id).subscribe(
+      (response) => {
+        this.association = response;
+        this.association.logo=this.uploadsService.getImage(response.logo);
+        // console.log(this.association);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
 
