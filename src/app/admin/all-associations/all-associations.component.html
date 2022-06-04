@@ -1,0 +1,29 @@
+<app-header-admin ></app-header-admin>
+
+<h1> Toutes les associations</h1>
+
+<div class="search"><app-search  (searchTextChanged)="onSearchTextEntered($event)"  > </app-search></div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Nom Association</th>
+        <th scope="col">Email</th>
+        <th scope="col">Suppression</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+      <tr  *ngFor="let association of associations"  >
+    
+        <th scope="row"  *ngIf="searchText === ''  ||  association.nameAssociation.toLocaleLowerCase().includes(searchText)  ">{{association.id}}</th>
+        <td  *ngIf="searchText === ''  ||  association.nameAssociation.toLocaleLowerCase().includes(searchText)  ">{{association.nameAssociation}}</td>
+        <td  *ngIf="searchText === ''  ||  association.nameAssociation.toLocaleLowerCase().includes(searchText)  ">{{association.emailAssociation}}</td>
+        <td  *ngIf="searchText === ''  ||  association.nameAssociation.toLocaleLowerCase().includes(searchText)  "><button  (click)="deletepost(association.id)">Supprimer</button></td>
+     
+
+      </tr>
+
+     
+    </tbody>
+  </table>

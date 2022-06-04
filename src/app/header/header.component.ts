@@ -17,8 +17,11 @@ export class HeaderComponent implements OnInit {
   islogIn:boolean=false;
   home!: HomeComponent;
 
-  constructor(private router: Router, private asso: PostService,private tokenService:TokenService) {}
-  public associations!: associations[];
+  constructor(private router: Router, 
+    private asso: PostService,
+    private tokenService:TokenService
+    ) {}
+    public associations!: associations[];
 
   associ: associations[] = [];
 
@@ -57,4 +60,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
     this.islogIn=false;
   }
-}
+
+  
+
+ 
+  }
+
+

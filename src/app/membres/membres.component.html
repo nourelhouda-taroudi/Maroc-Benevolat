@@ -1,0 +1,16 @@
+<h1>Nos membres</h1>
+
+<div class="membre">
+
+<div class="card" style="width: 19rem;" *ngFor="let membre of membres  | paginate: { itemsPerPage: 3, currentPage: pages }" >
+    <div class="card-body">
+      <h2 class="card-title"><i class="fa fa-user"></i>{{membre.name}} {{membre.lastname}}</h2>
+      <h3 class="card-subtitle mb-2 text-muted"> <i class="fa fa-envelope"></i>{{membre.email}}</h3>
+      <h3 class="card-subtitle mb-2 text-muted"><i class="fa fa-briefcase"></i>{{membre.position}}</h3>
+   
+    </div>
+  </div>
+ 
+</div>
+
+<pagination-controls (pageChange)="pages = $event"  class="pagination"></pagination-controls>

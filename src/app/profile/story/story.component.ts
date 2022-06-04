@@ -1,10 +1,10 @@
 import { UploadsService } from './../../core/services/uploads.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { associations } from 'src/app/models/associations';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/core/services/Services';
 import { StoryService } from 'src/app/core/services/story.service ';
-import { associations } from 'src/app/models/associations';
 import { Story } from 'src/app/models/story';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -16,7 +16,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class StoryComponent implements OnInit {
   story?:Story;
   stories: Story[]=[];
-  association!: associations;
   addblogform: any;
   registerForm3: FormGroup = new FormGroup({
     image: new FormControl(null),
@@ -27,7 +26,9 @@ export class StoryComponent implements OnInit {
   imgURL: any;
   total?:number;
   page:number=1;
+ 
   edite = false;
+  @Input('association') association!:associations
   showForm = true;
   mystory:Story ={
     text:'',
@@ -159,4 +160,6 @@ export class StoryComponent implements OnInit {
     );
   }
 
+
+  
 }

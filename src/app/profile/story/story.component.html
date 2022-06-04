@@ -75,19 +75,9 @@
            
             <div class="carousel-inner"  >
                 <div class="carousel-item active">
-                    <img [src]="this.uploadsService.getImage(this.story.image)" class=" w-100" alt="..."  style="border-radius: 30px;height:300px ;" >
+                    <img [src]="this.uploadsService.getImage(this.story.image)" class=" w-100" alt="..."  style="border-radius: 15px;height:300px ;" >
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
             <div style="text-align: center;">
                 <p>{{story.text}}</p>
             </div>

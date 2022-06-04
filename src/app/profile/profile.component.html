@@ -1,9 +1,19 @@
-<div>
-    <app-profil-detail></app-profil-detail>
-    
-    <app-story id="news"></app-story>
-    <app-post id="annonce"></app-post>
-    <app-contact id="contact"></app-contact>
-    <router-outlet></router-outlet>    
+<div>     
+  <app-profil-detail
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-profil-detail>
+  <app-story id="news"
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-story>
+  <app-post id="annonce"
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-post>
+  <app-membres></app-membres>
+  <app-contact id="contact"
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-contact>
 </div>
-

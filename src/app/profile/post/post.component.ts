@@ -1,12 +1,12 @@
 import { UploadsService } from './../../core/services/uploads.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from 'src/app/core/services/post.service';
 import { Post } from 'src/app/models/post';
 import { associations } from 'src/app/models/associations';
-import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { likes } from 'src/app/models/likes';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -19,6 +19,10 @@ export class PostComponent implements OnInit {
 
   statusdata = [{"id":1,"name":"Appels de dons "},{"id":2,"name":"Appel aux volontaires"},{"id":3,"name":"Annonce pour un évènement"}];
   value = this.statusdata[0];
+
+  @Input('association') association!: associations;
+  public demandes!:likes
+  ipAddress = '';
   index?:Number;
   imageError:string="";
   selectedImg:File | undefined; 
@@ -39,20 +43,23 @@ export class PostComponent implements OnInit {
     likeNum:0,
     createdAt:new Date()
   }
+
+  data: likes={
+  
+    id_post:0,
+   adresse:''
+
+  }
+
   posts: Post[]=[];
   addblogform: any;
-  association!: associations;
   constructor(private postservice:PostService,
     public readonly uploadService:UploadsService,
     private asso: PostService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((parameterMap) => {
-      const id = Number(parameterMap.get('id'));
-      this.getAssoci(id);
-      console.log(id);
-    });
     this.getPosts(false,'');
   }
   // getPosts(){
@@ -138,15 +145,15 @@ export class PostComponent implements OnInit {
     createdAt:new Date()
     }
   }
-  tolike(post:any){
-    this.postservice.likes(post.id,post.like).subscribe(() => {
-      post.like= !post.like;
-      if(!post.like){
-        post.likeNum++;
-      }
-      else post.likeNum--;
-    })
-  }
+  // tolike(post:any){
+  //   this.postservice.likes(post.id,post.like).subscribe(() => {
+  //     post.like= !post.like;
+  //     if(!post.like){
+  //       post.likeNum++;
+  //     }
+  //     else post.likeNum--;
+  //   })
+  // }
   editepost(post:any){
      this.mypost=post;
      this.edite=true;
@@ -164,17 +171,86 @@ export class PostComponent implements OnInit {
       this.resetpost();
 
   }
-  
-  getAssoci(id: number) {
-    return this.asso.getAssociationById(id).subscribe(
+
+id!:number
+  tolike(post:any,data:any) {
+
+    this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
+      this.ipAddress = res.ip;
+    console.log(this.ipAddress)
+    console.log(post.id)
+    console.log(data.id)
+    this.data={
+    
+      id_post: Number(`${post.id}`),
+      adresse:`${this.ipAddress}`,
+   }
+
+   console.log(this.data)
+    return this.postservice.getAdress(this.data).subscribe(
+      
       (response) => {
-        this.association = response;
-        this.association.logo=this.uploadService.getImage(response.logo);
-        // console.log(this.association);
+        
+     
+       console.log(response)
+       if(response === null){
+      
+           this.postservice.saveAdresse(this.data).subscribe(
+            (res) => {
+           
+            },
+           
+          );
+        
+        this.postservice.likes(post.id,post.like).subscribe(() => {
+          post.like= !post.like;
+          if(!post.like){
+            post.likeNum++;
+      
+          }
+     
+        })
+
+   
+  
+
+
+
+       }else{
+         
+       
+        
+            post.likeNum--;
+       
+            this.postservice.deletelike(Object.values(response)[0]).subscribe(() =>{
+              
+              console.log("deleted")
+            })
+           
+      
+          
+     
+        }
+       
+      
+   
+       
+      
       },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
+     
     );
+  })
+
+  
   }
+
+
+  deleteDemande(id: any){
+    this.postservice.deletelike(id).subscribe(() =>{
+              
+      console.log("deleted")
+    })
+   
+  }
+
 }
