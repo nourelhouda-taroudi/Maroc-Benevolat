@@ -48,7 +48,7 @@ export class PostComponent implements OnInit {
   
     id_post:0,
    adresse:'',
-   nbr_likes:0
+
 
   }
 
@@ -160,19 +160,19 @@ export class PostComponent implements OnInit {
 
   }
 
-id!:number
-  tolike(post:any,data:any) {
+
+  tolike(post:any) {
 
     this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
       this.ipAddress = res.ip;
-    console.log(this.ipAddress)
-    console.log(post.id)
+    
+    console.log(post.likeNum)
 
     this.data={
     
       id_post: Number(`${post.id}`),
       adresse:`${this.ipAddress}`,
-      nbr_likes:this.data.nbr_likes
+ 
    }
 
    console.log(this.data)
@@ -195,7 +195,14 @@ id!:number
           post.like= !post.like;
           if(!post.like){
             post.likeNum++;
-      
+            this.mypost=post;
+            console.log("heree"+ post)
+            this.postservice.update(post).subscribe(post => {
+              this.resetpost();
+       
+             
+            })
+        
           }
      
         })
@@ -210,7 +217,13 @@ id!:number
        
         
             post.likeNum--;
+            this.mypost=post;
+         
+            this.postservice.update(post).subscribe(post => {
+              this.resetpost();
        
+             
+            })
             this.postservice.deletelike(Object.values(response)[0]).subscribe(() =>{
               
               console.log("deleted")
