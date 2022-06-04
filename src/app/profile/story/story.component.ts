@@ -26,7 +26,6 @@ export class StoryComponent implements OnInit {
   imgURL: any;
   total?:number;
   page:number=1;
- 
   edite = false;
   @Input('association') association!:associations
   showForm = true;
