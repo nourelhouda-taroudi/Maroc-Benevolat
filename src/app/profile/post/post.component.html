@@ -23,11 +23,11 @@
                   <!-- name -->
                   <div class="d-flex align-items-center">
                     <div class="p-2">
-                      <img src="https://source.unsplash.com/collection/happy-people" alt="from fb" class="rounded-circle"
+                      <img [src]="association.logo" alt="from fb" class="rounded-circle"
                         style="     width: 38px;  height: 38px;  object-fit: cover;" />
                     </div>
                     <div>
-                      <p class="m-0 fw-bold">Care</p>
+                      <p class="m-0 fw-bold">{{association?.nameAssociation}}</p>
                       <select [(ngModel)]="mypost.visualisation" [ngModelOptions]="{standalone: true}" class="form-select border-0 bg-gray w-75 fs-7" aria-label="Default select example">
                         <option selected value="1">Public</option>
                         <option value="2">Pin To Top</option>
@@ -73,10 +73,10 @@
       <div class="d-flex justify-content-between">
         <!-- avatar -->
         <div class="d-flex">
-          <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2"
+          <img [src]="association.logo" alt="avatar" class="rounded-circle me-2"
             style="width: 38px; height: 38px; object-fit: cover" />
           <div style="margin-left: 20px;">
-            <p class="m-0 fw-bold">Care</p>
+            <p class="m-0 fw-bold">{{association?.nameAssociation}}</p>
             <span class="text-muted fs-7" > {{post.createdAt | date: 'short'}}</span>
           </div>
         </div>

@@ -1,12 +1,12 @@
-import { UploadsService } from './../../core/services/uploads.service';
-
-import { Component, Input, OnInit, Pipe } from '@angular/core';
-import { Post } from '../../models/post';
-import { PostService } from '../../core/services/post.service';
-import { associations } from 'src/app/models/associations';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Membres } from 'src/app/models/membre';
+import { associations } from 'src/app/models/associations';
+import { PostService } from '../../core/services/post.service';
+import { Post } from '../../models/post';
+import { UploadsService } from './../../core/services/uploads.service';
+
 
 @Component({
   selector: 'app-profil-detail',
@@ -16,8 +16,9 @@ import { Membres } from 'src/app/models/membre';
 export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
-  association!: associations;
+ 
   membres!:Membres[];
+  @Input('association') association!: associations;
   mypost: Post = {
     text: '',
     visualisation: '',
@@ -57,11 +58,6 @@ export class ProfilDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((parameterMap) => {
-      const id = Number(parameterMap.get('id'));
-      this.getAssoci(id);
-      console.log(id);
-    });
     this.getPosts();
     this.getAsso();
     // this.getMembers();
@@ -157,7 +153,7 @@ export class ProfilDetailComponent implements OnInit {
 
   save(data: any) {
     return this.service.saveDemande(data).subscribe(
-      (response) => {
+      (response:{}) => {
         console.log(data)
       
        
@@ -174,7 +170,7 @@ export class ProfilDetailComponent implements OnInit {
 
   ajouter(data: any) {
     return this.service.ajoutMembre(data).subscribe(
-      (response) => {
+      (response:{}) => {
         console.log(data)
       
        

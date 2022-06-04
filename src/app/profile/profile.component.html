@@ -1,8 +1,21 @@
 <div>
-    <app-profil-detail></app-profil-detail>
-    <app-story></app-story>
-    <app-post></app-post>
-    <app-membres></app-membres>
-    <app-contact></app-contact>    
+   
+       
+  <app-profil-detail
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-profil-detail>
+  <app-story
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-story>
+  <app-post
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-post>
+  <app-membres></app-membres>
+  <app-contact
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-contact>
 </div>
-

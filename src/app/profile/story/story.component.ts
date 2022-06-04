@@ -1,5 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+
+import { associations } from 'src/app/models/associations';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoryService } from 'src/app/core/services/story.service ';
 import { Story } from 'src/app/models/story';
@@ -14,6 +16,7 @@ export class StoryComponent implements OnInit {
   page:number=1;
  
   edite = false;
+  @Input('association') association!:associations
   showForm = true;
   mystory:Story ={
     text:'',

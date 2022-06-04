@@ -21,7 +21,8 @@ import { SearchfilterPipe } from './searchfilter.pipe';
 
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import {NgxPaginationModule} from 'ngx-pagination'
+
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SlideComponent } from './features/home/slide/slide.component';
 import { SearchComponent } from './features/search/search.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
@@ -47,6 +48,7 @@ import { MembresComponent } from './membres/membres.component';
     MarocComponent,
     PartenairesComponent,
     SearchfilterPipe,
+
     SlideComponent,
     SearchComponent,
     LoginAdminComponent,
@@ -76,9 +78,9 @@ import { MembresComponent } from './membres/membres.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

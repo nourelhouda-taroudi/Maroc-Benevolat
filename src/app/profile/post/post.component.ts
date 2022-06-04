@@ -1,16 +1,17 @@
 import { UploadsService } from './../../core/services/uploads.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from 'src/app/core/services/post.service';
 import { Post } from 'src/app/models/post';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { likes } from 'src/app/models/likes';
-
+import { associations } from 'src/app/models/associations';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  @Input('association') association!: associations;
   public demandes!:likes
   ipAddress = '';
   index?:Number;
@@ -36,6 +37,7 @@ export class PostComponent implements OnInit {
    adresse:''
 
   }
+
   posts: Post[]=[];
   addblogform: any;
   constructor(private postservice:PostService,
@@ -184,7 +186,7 @@ id!:number
        }else{
          
        
-            
+        
             post.likeNum--;
        
             this.postservice.deletelike(Object.values(response)[0]).subscribe(() =>{

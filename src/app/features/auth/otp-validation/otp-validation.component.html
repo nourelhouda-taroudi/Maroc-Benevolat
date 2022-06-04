@@ -7,9 +7,9 @@
         </div>
         <div class="forget__body shadow-lg">
           <div
+          *ngFor="let error of errors"
           class="alert alert-danger d-flex align-items-center justify-content-between"
           role="alert"
-          *ngIf="hasFormErrors"
         >
           <div class="d-flex align-items-center">
             <svg
@@ -40,17 +40,16 @@
           </div>
           <span class="float-end" role="button" (click)="changeError()">X</span>
         </div>
-          <form action="#" [formGroup]="emailForm" class="form">
-            <div class="form-input">
-              <input placeholder="Email" type="text" formControlName="email" />
-              <span class="icon"><embed src="assets/images/email.svg" /></span>
+          <form action="#" [formGroup]="codeForm" class="form">
+            <div class="form-input" >
+              <input placeholder="******" type="text" formControlName="code" (change)="changeError()" />
+              <span class="icon"><embed src="assets/images/password.svg" /></span>
             </div>
             <div class="btn__actions">
               <button
                 color="primary"
                 class="submit"
-                (click)="forget()"
-                [disabled]="emailForm.invalid"
+                (click)="otpValidation()"
               >
                 Envoyer
               </button>

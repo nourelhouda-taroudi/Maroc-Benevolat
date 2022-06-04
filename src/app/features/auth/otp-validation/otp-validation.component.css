@@ -102,13 +102,13 @@ btn.btn__dark {
   display: none
 }
 
-.reset__head{
+.forget__head{
 
   font-size: 1rem;
   font-weight: 300;
   text-align: right;
 }
-.reset__link{
+.forget__link{
   color : rgba(black, 0.7)
 }
 
@@ -125,7 +125,7 @@ btn.btn__dark {
   color: #6c7378;
   top: -.7em;
 }
-.reset__btn-signin {
+.forget__btn-signin {
   font-weight: 500;
   font-size: 1rem;
   height: 50px;
@@ -136,7 +136,7 @@ btn.btn__dark {
   color: #2C2E2F;
   border-color: #2C2E2F;
 }
-.reset {
+.forget {
   min-height: 100vh;
   padding-bottom: 2.5rem;
   padding-top: 3rem
@@ -161,19 +161,19 @@ btn.btn__dark {
 }
 
 @media (min-width: 1024px) {
-  .reset {
+  .forget {
     padding-top: 5rem;
   }
 }
 
-.reset__row {
+.forget__row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%
 }
 
-.reset__col {
+.forget__col {
   width: 100%
 }
 .register__col {
@@ -190,7 +190,7 @@ btn.btn__dark {
 }
 
 @media (min-width: 1024px) {
-  .reset__col {
+  .forget__col {
     width: 33.333333%;
   }
   .register__col {
@@ -198,19 +198,19 @@ btn.btn__dark {
   }
 }
 
-.reset__header {
+.forget__header {
   margin-bottom: 1.5rem;
   text-align: center
 }
 
-.reset__title {
+.forget__title {
   color: #012d48;
   font-size: 30px ;
   font-family: "Montserrat", sans-serif;
   
 }
 
-.reset__body {
+.forget__body {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
   border-radius: 0.375rem;
