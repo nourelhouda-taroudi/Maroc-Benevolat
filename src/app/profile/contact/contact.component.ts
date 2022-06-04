@@ -1,4 +1,3 @@
-import { UploadsService } from './../../core/services/uploads.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -23,10 +22,6 @@ export class ContactComponent implements OnInit {
   }
 
   generateMapUrl() {
-    // replace spaces with %20
-    // method 1
-    // let address = this.association.address.split(' ').join("%20");
-    // method 2
     let address = encodeURIComponent(this.association.address);
     let city = encodeURIComponent(this.association.city);
     this.url = `https://maps.google.com/maps?q=${address}$${city}&t=&z=20&ie=UTF8&iwloc=&output=embed`;

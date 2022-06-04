@@ -56,18 +56,14 @@ export class PostComponent implements OnInit {
   addblogform: any;
   constructor(private postservice:PostService,
     public readonly uploadService:UploadsService,
-    private asso: PostService,
     private route: ActivatedRoute,
     private http:HttpClient) { }
 
   ngOnInit(): void {
     this.getPosts(false,'');
   }
-  // getPosts(){
-  //   this.postservice.findAll().subscribe(posts => this.posts = posts)
-  // }
   getPosts(isInitialLoad: boolean, event:any) {
-    if (this.skipPosts === 3) {
+    if (this.skipPosts === 50) {
       event.target.disabled = true;
     }
     this.queryParams = `?take=${this.numberOfPosts}&skip=${this.skipPosts}`;
@@ -78,7 +74,7 @@ export class PostComponent implements OnInit {
         for (let postIndex = 0; postIndex < posts.length; postIndex++) {
           this.posts.push(posts[postIndex]);
         }
-        if (isInitialLoad) event.target.complete();
+        if (isInitialLoad) event.target.complete;
         this.skipPosts = this.skipPosts + 3;
       });
   }
@@ -146,15 +142,6 @@ export class PostComponent implements OnInit {
     createdAt:new Date()
     }
   }
-  // tolike(post:any){
-  //   this.postservice.likes(post.id,post.like).subscribe(() => {
-  //     post.like= !post.like;
-  //     if(!post.like){
-  //       post.likeNum++;
-  //     }
-  //     else post.likeNum--;
-  //   })
-  // }
   editepost(post:any){
      this.mypost=post;
      this.edite=true;
