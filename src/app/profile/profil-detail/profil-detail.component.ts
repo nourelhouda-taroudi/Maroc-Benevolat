@@ -1,12 +1,11 @@
-import { Observable } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { associations } from 'src/app/models/associations';
+import { PostService } from '../../core/services/post.service';
+import { Post } from '../../models/post';
 import { UploadsService } from './../../core/services/uploads.service';
 
-import { Component, Input, OnInit, Pipe } from '@angular/core';
-import { Post } from '../../models/post';
-import { PostService } from '../../core/services/post.service';
-import { associations } from 'src/app/models/associations';
-import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil-detail',
@@ -16,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
-  @Input('association') association!:associations
+  @Input('association') association!: associations;
   mypost: Post = {
     text: '',
     visualisation: '',
