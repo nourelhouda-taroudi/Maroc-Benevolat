@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { UploadsService } from './../../core/services/uploads.service';
 
 import { Component, Input, OnInit, Pipe } from '@angular/core';
@@ -15,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
-  association!: associations;
+  @Input('association') association!:associations
   mypost: Post = {
     text: '',
     visualisation: '',
@@ -55,11 +56,6 @@ export class ProfilDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((parameterMap) => {
-      const id = Number(parameterMap.get('id'));
-      this.getAssoci(id);
-      console.log(id);
-    });
     this.getPosts();
     this.getAsso();
   }
@@ -136,18 +132,5 @@ export class ProfilDetailComponent implements OnInit {
     console.log(this.cards.id);
 
     this.router.navigate(['profile/editer', this.cards.id]);
-  }
-
-  getAssoci(id: number) {
-    return this.asso.getAssociationById(id).subscribe(
-      (response) => {
-        this.association = response;
-        this.association.logo=this.uploadService.getImage(response.logo);
-        // console.log(this.association);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
   }
 }

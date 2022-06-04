@@ -1,5 +1,6 @@
+import { associations } from 'src/app/models/associations';
 import { UploadsService } from './../../core/services/uploads.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from 'src/app/core/services/post.service';
 import { Post } from 'src/app/models/post';
 
@@ -16,6 +17,7 @@ export class PostComponent implements OnInit {
   imgURL:any;
   edite = false;
   showForm = true;
+  @Input('association') association!:associations
   mypost:Post ={
     text:'',
     visualisation:'',

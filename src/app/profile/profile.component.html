@@ -1,7 +1,7 @@
 <div>
-    <app-profil-detail></app-profil-detail>
-    <app-story></app-story>
-    <app-post></app-post>
-    <app-contact></app-contact>    
+    <app-profil-detail *ngIf="association!=undefined" [association]="association"></app-profil-detail>
+    <app-story *ngIf="association!=undefined" [association]="association"></app-story>
+    <app-post *ngIf="association!=undefined" [association]="association"></app-post>
+    <!-- <app-contact></app-contact>     -->
 </div>
 
