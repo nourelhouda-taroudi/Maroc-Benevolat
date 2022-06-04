@@ -1,4 +1,4 @@
-import { OtpValidationComponent } from './../../otp-validation/otp-validation.component';
+import { OtpValidationComponent } from './otp-validation/otp-validation.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -32,8 +32,10 @@ const routes: Routes = [
         component:ResetPasswordComponent
       },
       {
-        path:'otpValidation',
-        component:OtpValidationComponent
+        path:'otp-validation',
+        component:OtpValidationComponent,
+        data:{email:""}
+        
       }
 
     ]

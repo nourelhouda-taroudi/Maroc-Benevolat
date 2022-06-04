@@ -19,12 +19,9 @@ export class AppComponent {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         {
-          if (
-            event['url'] == '/auth/login' ||
-            event['url'] == '/auth/register' ||
-            event['url'] == '/auth/forget-password' ||
-            event['url'] == '/editer'
-          ) {
+          const paths = event['url'].split('/');
+
+          if (paths[1] === 'auth' || paths[1] === 'editer') {
             this.showHead = false;
           } else {
             // console.log("NU")

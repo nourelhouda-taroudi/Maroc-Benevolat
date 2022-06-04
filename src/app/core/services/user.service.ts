@@ -31,10 +31,7 @@ export class UserService {
     return this.http.post(`${this.url}forget-password?email=${email}`,{});
 }
 otpValidation(code:string,email:string){
-  const  params=new HttpParams();
-  params.append('code',code);
-  params.append('email',email);
-  return this.http.post(`${this.url}otpValidation`,{params});
+  return this.http.post(`${this.url}otpValidation?email=${email}&code=${code}`,{});
 }
 resetPassword(email:string,newPassword:string){
  const  params=new HttpParams();
