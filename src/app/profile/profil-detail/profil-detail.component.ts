@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Membres } from 'src/app/models/membre';
 import { associations } from 'src/app/models/associations';
 import { PostService } from '../../core/services/post.service';
 import { Post } from '../../models/post';
@@ -15,6 +16,8 @@ import { UploadsService } from './../../core/services/uploads.service';
 export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
+ 
+  membres!:Membres[];
   @Input('association') association!: associations;
   mypost: Post = {
     text: '',
@@ -48,7 +51,7 @@ export class ProfilDetailComponent implements OnInit {
   addblogform: any;
   constructor(
     private postservice: PostService,
-    private asso: PostService,
+    private service: PostService,
     private router: Router,
     private route: ActivatedRoute,
     private readonly uploadService: UploadsService
@@ -57,6 +60,7 @@ export class ProfilDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getPosts();
     this.getAsso();
+    // this.getMembers();
   }
   getPosts() {
     this.postservice.findAll().subscribe((posts) => (this.posts = posts));
@@ -115,7 +119,7 @@ export class ProfilDetailComponent implements OnInit {
   }
 
   getAsso() {
-    return this.asso.getAssociation().subscribe(
+    return this.service.getAssociation().subscribe(
       (response: associations[]) => {
         this.associations = response;
       },
@@ -132,4 +136,53 @@ export class ProfilDetailComponent implements OnInit {
 
     this.router.navigate(['profile/editer', this.cards.id]);
   }
+
+  getAssoci(id: number) {
+    return this.service.getAssociationById(id).subscribe(
+      (response) => {
+        this.association = response;
+        this.association.logo=this.uploadService.getImage(response.logo);
+        // console.log(this.association);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+  save(data: any) {
+    return this.service.saveDemande(data).subscribe(
+      (response:{}) => {
+        console.log(data)
+      
+       
+    
+        this.router.navigate(['Demande'])
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+
+  ajouter(data: any) {
+    return this.service.ajoutMembre(data).subscribe(
+      (response:{}) => {
+        console.log(data)
+      
+       
+    
+        // this.router.navigate(['Demande'])
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+
 }

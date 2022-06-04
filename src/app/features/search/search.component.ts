@@ -21,11 +21,12 @@ export class SearchComponent implements OnInit {
 
   onSearchTextChanged(){
     this.searchTextChanged.emit(this.enteredSEarchVAlue)
-    console.log(this.enteredSEarchVAlue)
+
+   
   }
 
   selectedValue: string = '';
-
+  
   @Output()
   selected: EventEmitter<string>= new EventEmitter<string>();
 

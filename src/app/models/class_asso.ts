@@ -12,4 +12,10 @@ export class associa{
     facebook!: string;
     instagram!: string;
     twitter!: string;
+
+    get_Id(){
+        return this.id
+    
+
+    }
 }

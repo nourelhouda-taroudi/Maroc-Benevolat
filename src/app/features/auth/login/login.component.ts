@@ -1,8 +1,11 @@
 import { TokenService } from './../../../core/services/token.service';
 import { UserService } from './../../../core/services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { associa } from 'src/app/models/class_asso';
+
+
 
 @Component({
   selector: 'app-login',
@@ -24,7 +27,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly userService: UserService,
     private token: TokenService,
-    private router: Router
+    private router: Router,
+
+
   ) {}
 
   ngOnInit(): void {}
@@ -50,10 +55,14 @@ export class LoginComponent implements OnInit {
       email,
       password,
     };
+
+    
     // connect to the userservice
     this.userService.signIn(payload).subscribe(
       (response) => {
+        
         console.log(response);
+        
         this.handleResponse(response);
       },
       (err) => {
@@ -75,7 +84,12 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+
+
   }
+
+
+
   handleResponse(data:any) {
     this.token.handle(data);
     this.userService.changeAuthStatus(true);
@@ -105,4 +119,10 @@ export class LoginComponent implements OnInit {
       return;
     }
   }
+
+
+
+  
+ 
+  
 }

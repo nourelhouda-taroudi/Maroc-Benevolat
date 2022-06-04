@@ -1,3 +1,5 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
 import { associations } from 'src/app/models/associations';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +14,7 @@ import { Story } from 'src/app/models/story';
 export class StoryComponent implements OnInit {
   total?:number;
   page:number=1;
+ 
   edite = false;
   @Input('association') association!:associations
   showForm = true;
@@ -25,7 +28,12 @@ export class StoryComponent implements OnInit {
   }
   stories: Story[]=[];
   addblogform: any;
-  constructor(private storyService:StoryService,private router: Router,private route: ActivatedRoute) { }
+  constructor(
+    private storyService:StoryService,
+    private router: Router,
+    private route: ActivatedRoute,
+ 
+    ) { }
 
   ngOnInit(): void {
     this.getStory();
@@ -89,4 +97,6 @@ export class StoryComponent implements OnInit {
       this.router.navigate(['profile',this.mystory.id])
   }
 
+
+  
 }

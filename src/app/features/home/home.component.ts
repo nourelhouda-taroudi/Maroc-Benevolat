@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import slideData from '../../../app/features/slide.json';
 
 import { associations } from '../../models/associations';
@@ -9,15 +9,11 @@ import { associations } from '../../models/associations';
 
 
 
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { PostService } from 'src/app/core/services/Services';
+import { UploadsService } from 'src/app/core/services/uploads.service';
 
-// interface Association{
-//   id: number;
-//   img:String;
-//   desc:String;
 
-// }
 
 interface Slide{
   img: String;
@@ -31,13 +27,21 @@ interface Slide{
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  ipAddress = '';
   edite = false;
   slide : boolean= true;
   searchText: string ='';
   selectedText:string='';
+  resp:string='';
+  public  association!: associations;
   
-  constructor(  private asso: PostService, private router: Router) { }
+  constructor( 
+     private asso: PostService,
+     private router: Router, 
+     public uploadService: UploadsService,
+      private route: ActivatedRoute,
+      private http:HttpClient
+      ) { }
  
   public associations!: associations[] ;
   associ!: associations[];
@@ -61,24 +65,17 @@ export class HomeComponent implements OnInit {
  
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((parameterMap) => {
+      const id = Number(parameterMap.get('id'));
+      this.getAssoci(id);
+      console.log(id);
+    });
     this.getAsso();
   
 
   }
 
-  public Search(homeform: NgForm){
-  //stringify: convert javascript data to json-formatted string
-    console.log(JSON.stringify(homeform.value))
 
-  }
-
-  // goToConn(pageName: string): void{
-
-  //   this.router.navigate([`${pageName}`]);
-
-  // }
-
-  // associations: Association[]=assoData;
 
   slides: Slide[]=slideData;
 
@@ -86,15 +83,40 @@ export class HomeComponent implements OnInit {
    
    return this.asso.getAssociation().subscribe((response: associations[]) => {
     this.associations = response;
-  },
+  
+    
+        
+        
+      });
+ 
+    
+  
+ 
+
+  
   (error : HttpErrorResponse) => {
     alert(error.message)
   }
-);
+
 
   }
 
+  
 
+  getAssoci(id: number) {
+    return this.asso.getAssociationById(id).subscribe(
+      (response) => {
+        this.association = response;
+        this.association.logo=this.uploadService.getImage(response.logo);
+        // console.log(this.association);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+ 
+ 
 
 
   goToConn(pageName: string): void{
@@ -124,23 +146,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // public searchFacture(key: string): void{
-  //   const results: associations[] = [];
-  //   console.log(key)
-  //   for (const agences of this.associations){
-  //     if (agences.nameAssociation.toLowerCase().indexOf(key.toLowerCase()) !== -1 
-   
-  //    ){
-  //       results.push(agences);
-  //     }
-  //   }
-  //   this.associations = results;
-  //   console.log(results)
-  //   if (results.length === 0 || !key){
-  //     this.getAsso();
-  //   }
-  //   this.slide=false;
-  // }
+
 
   public onChange(event: any): void {  //event will give you full breif of action
     const choix = event.target.value;
@@ -198,6 +204,11 @@ export class HomeComponent implements OnInit {
   }
  
 }
+
+
+
+
+
 }
 
 

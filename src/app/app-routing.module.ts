@@ -3,6 +3,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { PageNotFoundComponent } from './shared/errors/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageComponent } from './page/page.component';
 
 
 
@@ -63,8 +64,24 @@ const routes: Routes = [
     loadChildren: () => import('./profile/post/post.module').then(m=> m.PostModule)
   },
   {
-    path: 'test',
-    loadChildren: () => import('./test/test.module').then(m=> m.TestModule)
+    path: 'login_admin',
+    loadChildren: () => import('./admin/login-admin/login-admin.module').then(m=> m.LoginAdminModule)
+  },
+  {
+    path: 'home_admin',
+    loadChildren: () => import('./admin/home-admin/home-admin.module').then(m=> m.HomeAdminModule)
+  },
+  {
+    path: 'all_associations',
+    loadChildren: () => import('./admin/all-associations/all-associations.module').then(m=> m.AllAssociationsModule)
+  },
+  {
+    path: 'Suppression',
+    loadChildren: () => import('./admin/suppression/suppression.module').then(m=> m.SuppressionModule)
+  },
+  {
+    path: 'Demande',
+  component:PageComponent
   },
 
  
