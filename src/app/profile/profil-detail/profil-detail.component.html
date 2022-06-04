@@ -1,54 +1,79 @@
-<div class="container bg-white p-3 mt-300 rounded border shadow" *ngIf="association!=null">
+<div
+  class="container bg-white p-3 mt-300 rounded border shadow"
+  *ngIf="association != null"
+>
   <div class="image">
-<<<<<<< HEAD
-    <img class="rounded1 " src="{{association.logo}}">
-=======
-    <img class="rounded1 " [src]="association.logo">
->>>>>>> 867405633aaf858478bcdbe64dd04e5970e336fd
-
+    <img class="rounded1" [src]="association.logo" />
   </div>
-  <div class="text"  >
-    <h1 class="name">{{association.nameAssociation}}</h1>
+  <div class="text">
+    <h1 class="name">{{ association.nameAssociation }}</h1>
 
     <div class="local">
-      <p class="siege">{{association.sigleAssociation}}</p><br>
-      <p class="siege">{{association.city}} </p><br>
-      <p class="siege" >{{association.infos}}</p>
-    
+      <p class="siege">{{ association.sigleAssociation }}</p>
+      <br />
+      <p class="siege">{{ association.city }}</p>
+      <br />
+      <p class="siege">{{ association.infos }}</p>
     </div>
-   
-    <div class="counter">
 
-      <a href="https://web.facebook.com" class="btn-floating pulse indigo darken-3 btn btn-outline-success"><i class="fa fa-facebook"></i></a>
-      <a href="" class="btn-floating pulse light-blue darken-3 btn btn-outline-success"><i
-          class="fa fa-twitter"></i></a>
-      <a href="" class="btn-floating pulse red darken-3 btn btn-outline-success"> <i class="fa fa-envelope" aria-hidden="true"></i> </a>
-      <a href="" class="btn-floating pulse brown darken-3 btn btn-outline-success"><i class="fa fa-instagram"></i></a>
+    <div class="counter">
+      <a
+        href="https://web.facebook.com"
+        class="btn-floating pulse indigo darken-3 btn btn-outline-success"
+        ><i class="fa fa-facebook"></i
+      ></a>
+      <a
+        href=""
+        class="btn-floating pulse light-blue darken-3 btn btn-outline-success"
+        ><i class="fa fa-twitter"></i
+      ></a>
+      <a
+        href=""
+        class="btn-floating pulse red darken-3 btn btn-outline-success"
+      >
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+      </a>
+      <a
+        href=""
+        class="btn-floating pulse brown darken-3 btn btn-outline-success"
+        ><i class="fa fa-instagram"></i
+      ></a>
     </div>
-    <a href="#" style="text-decoration: none;"><h3 class="don" >J'AIME <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-    </svg> </h3></a>
+    <a href="#" style="text-decoration: none"
+      ><h3 class="don">
+        J'AIME
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-heart"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+          />
+        </svg></h3
+    ></a>
   </div>
   <div>
-
-    <button class="btn1 btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" (click)="editeAnn(association)">
-    </button>
-   </div>
-  
- 
-   
- 
+    <button
+      class="btn1 btn-success fa fa-pencil"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      (click)="editeAnn(association)"
+    ></button>
+  </div>
 </div>
-
-  
-
 
 <div class="container list bg-white p-3 mt-3 rounded border shadow">
   <a class="link" routerLink="story" routerLinkActive="active">Evenements</a>
 
   <a class="link" routerLink="annonce" routerLinkActive="active">Annonces</a>
   <a class="link" routerLink="contact" routerLinkActive="active">Contact</a>
-  <a class="link" routerLink="Qui nous" routerLinkActive="active">Qui Somme Nous</a>
-
-
+  <a class="link" routerLink="Qui nous" routerLinkActive="active"
+    >Qui Somme Nous</a
+  >
 </div>
