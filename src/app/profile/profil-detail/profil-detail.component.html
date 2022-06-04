@@ -1,7 +1,6 @@
 <div class="container bg-white p-3 mt-300 rounded border shadow" *ngIf="association!=null">
   <div class="image">
     <img class="rounded1 " [src]="association.logo">
-  
   </div>
   <div class="text"  >
     <h1 class="name">{{association.nameAssociation}}</h1>
@@ -16,11 +15,11 @@
    
     <div class="counter">
 
-      <a href="https://web.facebook.com" class="btn-floating pulse indigo darken-3 btn btn-outline-success"><i class="fa fa-facebook"></i></a>
-      <a href="" class="btn-floating pulse light-blue darken-3 btn btn-outline-success"><i
+      <a href="{{association.facebook}}" class="btn-floating pulse indigo darken-3 btn btn-outline-success"><i class="fa fa-facebook"></i></a>
+      <a href="{{association.twitter}}" class="btn-floating pulse light-blue darken-3 btn btn-outline-success"><i
           class="fa fa-twitter"></i></a>
-      <a href="" class="btn-floating pulse red darken-3 btn btn-outline-success"> <i class="fa fa-envelope" aria-hidden="true"></i> </a>
-      <a href="" class="btn-floating pulse brown darken-3 btn btn-outline-success"><i class="fa fa-instagram"></i></a>
+      <a href="{{association.emailAssociation}}" class="btn-floating pulse red darken-3 btn btn-outline-success"> <i class="fa fa-envelope" aria-hidden="true"></i> </a>
+      <a href="{{association.instagram}}" class="btn-floating pulse brown darken-3 btn btn-outline-success"><i class="fa fa-instagram"></i></a>
     </div>
    
   </div>
@@ -48,17 +47,12 @@
    
  
 </div>
-
-  
-
-
 <div class="container list bg-white p-3 mt-3 rounded border shadow">
-  <a class="link" routerLink="story" routerLinkActive="active">Evenements</a>
-
-  <a class="link" routerLink="annonce" routerLinkActive="active">Annonces</a>
-  <a class="link" routerLink="contact" routerLinkActive="active">Contact</a>
-  <a class="link" routerLink="Qui nous" routerLinkActive="active">Qui Sommes Nous</a>
-  <a class="link" routerLink="Qui nous" routerLinkActive="active">Nos membres</a>
+  <a class="link" href="profile/{{association.id}}#news">Evenements</a>
+  <a class="link" href="profile/{{association.id}}#annonce">Annonces</a>
+  <a class="link" href="profile/{{association.id}}#contact">Contact</a>
+  <a class="link" href="profile/{{association.id}}#nous">Qui Somme Nous</a>
+  <a class="link" href="profile/{{association.id}}#membre">Membres</a>
 
 
 </div>

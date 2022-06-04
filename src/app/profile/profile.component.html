@@ -1,20 +1,18 @@
-<div>
-   
-       
+<div>     
   <app-profil-detail
     *ngIf="association != undefined"
     [association]="association"
   ></app-profil-detail>
-  <app-story
+  <app-story id="news"
     *ngIf="association != undefined"
     [association]="association"
   ></app-story>
-  <app-post
+  <app-post id="annonce"
     *ngIf="association != undefined"
     [association]="association"
   ></app-post>
-  <app-membres></app-membres>
-  <app-contact
+  <app-membres id="membre"></app-membres>
+  <app-contact id="contact"
     *ngIf="association != undefined"
     [association]="association"
   ></app-contact>

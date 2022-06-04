@@ -2,15 +2,24 @@ import { UploadsService } from './../../core/services/uploads.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from 'src/app/core/services/post.service';
 import { Post } from 'src/app/models/post';
+import { associations } from 'src/app/models/associations';
+import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { likes } from 'src/app/models/likes';
-import { associations } from 'src/app/models/associations';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  queryParams!: string;
+  numberOfPosts = 3;
+  skipPosts = 0;
+
+  statusdata = [{"id":1,"name":"Appels de dons "},{"id":2,"name":"Appel aux volontaires"},{"id":3,"name":"Annonce pour un évènement"}];
+  value = this.statusdata[0];
+
   @Input('association') association!: associations;
   public demandes!:likes
   ipAddress = '';
@@ -21,6 +30,10 @@ export class PostComponent implements OnInit {
   imgURL:any;
   edite = false;
   showForm = true;
+  registerForm3: FormGroup = new FormGroup({
+    image: new FormControl(null),
+  });
+  
   mypost:Post ={
     text:'',
     visualisation:'',
@@ -34,22 +47,43 @@ export class PostComponent implements OnInit {
   data: likes={
   
     id_post:0,
-   adresse:''
+   adresse:'',
+   nbr_likes:0
 
   }
 
   posts: Post[]=[];
   addblogform: any;
   constructor(private postservice:PostService,
-    private readonly uploadService:UploadsService,
-    private http:HttpClient
-    ) { }
+    public readonly uploadService:UploadsService,
+    private asso: PostService,
+    private route: ActivatedRoute,
+    private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.getPosts();
+    this.getPosts(false,'');
   }
-  getPosts(){
-    this.postservice.findAll().subscribe(posts => this.posts = posts)
+  // getPosts(){
+  //   this.postservice.findAll().subscribe(posts => this.posts = posts)
+  // }
+  getPosts(isInitialLoad: boolean, event:any) {
+    if (this.skipPosts === 3) {
+      event.target.disabled = true;
+    }
+    this.queryParams = `?take=${this.numberOfPosts}&skip=${this.skipPosts}`;
+
+    this.postservice
+      .findAll(this.queryParams)
+      .subscribe((posts: Post[]) => {
+        for (let postIndex = 0; postIndex < posts.length; postIndex++) {
+          this.posts.push(posts[postIndex]);
+        }
+        if (isInitialLoad) event.target.complete();
+        this.skipPosts = this.skipPosts + 3;
+      });
+  }
+  loadData(event:any) {
+    this.getPosts(true, event);
   }
   deletepost(id: any){
     this.postservice.delete(id).subscribe(() =>{
@@ -57,21 +91,17 @@ export class PostComponent implements OnInit {
     })
   }
   persistpost(){
+    this.mypost.image=this.registerForm3.getRawValue().image; 
     this.postservice.persist(this.mypost).subscribe((post) =>{
       this.posts=[post, ...this.posts]
       this.resetpost();
       this.showForm = false;
+      
     })
   }
-  // onFileSelected(event: any){
-  //   if(event.target.files.lenght>0){
-  //     const file=event.target.files[0];
-  //     this.addblogform.get('image').setValue(file);
-  //   }
-  // }
-  preview(event:any) {
+  preview(event: any) {
     if (event.target.files.length === 0) return;
-
+    
     var mimeType = event.target.files[0].type;
 
     if (mimeType.match(/image\/*/) == null) {
@@ -83,24 +113,27 @@ export class PostComponent implements OnInit {
 
       var reader = new FileReader();
       this.imagePath = event.target.files;
-
+      
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (_event) => {
         this.imgURL = reader.result;
       };
     }
-    let data=new FormData();
-    data.append('image',this.selectedImg);
-    this.uploadService.uploadImage(data).subscribe((res:any)=>{
-      this.posts.push(res.filname);
-      // console.log(this.registerForm3.get('logo')?.value);
-    },
-    err=>{
-      // console.log(err);
-      if(err.error.statusCode==400){
-         this.imageError=err.error.message;
+    let data = new FormData();
+    data.append('image', this.selectedImg);
+    console.log(  this.uploadService.uploadImage(data));
+    this.uploadService.uploadImage(data).subscribe(
+
+      (res: any) => {
+        this.registerForm3.get('image')?.setValue(res.filename);
+    
+      },
+      (err) => {
+        if (err.error.statusCode == 400) {
+          this.imageError = err.error.message;
+        }
       }
-    })
+    );
   }
   resetpost(){
     this.mypost={
@@ -127,6 +160,7 @@ export class PostComponent implements OnInit {
      this.edite=true;
   }
   updatepost(){
+    this.mypost.image=this.registerForm3.getRawValue().image;
     this.postservice.update(this.mypost).subscribe(post => {
       this.resetpost();
       this.edite = false;
@@ -146,11 +180,12 @@ id!:number
       this.ipAddress = res.ip;
     console.log(this.ipAddress)
     console.log(post.id)
-    console.log(data.id)
+
     this.data={
     
       id_post: Number(`${post.id}`),
       adresse:`${this.ipAddress}`,
+      nbr_likes:this.data.nbr_likes
    }
 
    console.log(this.data)
