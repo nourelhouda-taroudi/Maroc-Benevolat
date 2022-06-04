@@ -5,11 +5,13 @@ import { Observable } from 'rxjs';
 import { Demande } from 'src/app/models/demandes';
 import { AdminInter } from 'src/app/models/admin';
 import { SuppInter } from 'src/app/models/suppression';
+import { likes } from 'src/app/models/likes';
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
   constructor(private http : HttpClient) { }
+  ipAddress = '';
 
   getAssociationById(id: number ): Observable<associations>{
     return this.http.get<associations>(`http://localhost:3000/api/association/${id}`);
@@ -68,4 +70,10 @@ export class PostService {
     return this.http.get<SuppInter[]>('http://localhost:3000/api/suppression');
   
   }
+
+  
+
+
+  
+ 
 }

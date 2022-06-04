@@ -6,6 +6,7 @@ import { PostService } from '../../core/services/post.service';
 import { associations } from 'src/app/models/associations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Membres } from 'src/app/models/membre';
 
 @Component({
   selector: 'app-profil-detail',
@@ -16,6 +17,7 @@ export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
   association!: associations;
+  membres!:Membres[];
   mypost: Post = {
     text: '',
     visualisation: '',
@@ -48,7 +50,7 @@ export class ProfilDetailComponent implements OnInit {
   addblogform: any;
   constructor(
     private postservice: PostService,
-    private asso: PostService,
+    private service: PostService,
     private router: Router,
     private route: ActivatedRoute,
     private readonly uploadService: UploadsService
@@ -62,6 +64,7 @@ export class ProfilDetailComponent implements OnInit {
     });
     this.getPosts();
     this.getAsso();
+    // this.getMembers();
   }
   getPosts() {
     this.postservice.findAll().subscribe((posts) => (this.posts = posts));
@@ -120,7 +123,7 @@ export class ProfilDetailComponent implements OnInit {
   }
 
   getAsso() {
-    return this.asso.getAssociation().subscribe(
+    return this.service.getAssociation().subscribe(
       (response: associations[]) => {
         this.associations = response;
       },
@@ -139,7 +142,7 @@ export class ProfilDetailComponent implements OnInit {
   }
 
   getAssoci(id: number) {
-    return this.asso.getAssociationById(id).subscribe(
+    return this.service.getAssociationById(id).subscribe(
       (response) => {
         this.association = response;
         this.association.logo=this.uploadService.getImage(response.logo);
@@ -150,4 +153,40 @@ export class ProfilDetailComponent implements OnInit {
       }
     );
   }
+
+
+  save(data: any) {
+    return this.service.saveDemande(data).subscribe(
+      (response) => {
+        console.log(data)
+      
+       
+    
+        this.router.navigate(['Demande'])
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+
+  ajouter(data: any) {
+    return this.service.ajoutMembre(data).subscribe(
+      (response) => {
+        console.log(data)
+      
+       
+    
+        // this.router.navigate(['Demande'])
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+
 }

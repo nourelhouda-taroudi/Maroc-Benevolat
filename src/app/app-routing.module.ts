@@ -3,6 +3,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { PageNotFoundComponent } from './shared/errors/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageComponent } from './page/page.component';
 
 
 
@@ -78,7 +79,10 @@ const routes: Routes = [
     path: 'Suppression',
     loadChildren: () => import('./admin/suppression/suppression.module').then(m=> m.SuppressionModule)
   },
-
+  {
+    path: 'Demande',
+  component:PageComponent
+  },
 
  
  

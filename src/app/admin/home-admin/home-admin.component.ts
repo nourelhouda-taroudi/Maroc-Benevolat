@@ -50,7 +50,7 @@ getDemande(id: number) {
       })
 
       this.asso.deleteDemande(id).subscribe(() =>{
-        this.demandes=this.demandes.filter(post => post.id !=id)
+        this.demandes=this.demandes.filter(demande => demande.id !=id)
       })
     },
     (error: HttpErrorResponse) => {
@@ -61,7 +61,7 @@ getDemande(id: number) {
 
 deleteDemande(id: any){
   this.asso.deleteDemande(id).subscribe(() =>{
-    this.demandes=this.demandes.filter(post => post.id !=id)
+    this.demandes=this.demandes.filter(demande => demande.id !=id)
   })
 }
 

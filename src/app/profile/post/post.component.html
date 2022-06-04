@@ -115,8 +115,8 @@
               <!-- comment & like bar -->
               <div class="d-flex justify-content-around">
                 <div class="  dropdown-item  rounded  d-flex  justify-content-center align-items-center  pointer  text-muted  p-1 ">
-                  <span (click)="tolike(post)" [ngClass]="{  'text-danger':!post.like,'text-primary':post.like }">
-                    <i class="fa" [ngClass]="{'fa-thumbs-up':post.like, 'fa-thumbs-down':!post.like }">
+                  <span (click)="tolike(post,data)" >
+                    <i class="fa  fa-thumbs-up" >
                     </i>
                     {{post.likeNum}}
                   </span>

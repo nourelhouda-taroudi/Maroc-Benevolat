@@ -206,3 +206,17 @@ color: black;
   text-align: center;
 
  }
+
+ .btn2{
+
+
+  width: 100px;
+  border-radius: 18px;
+ }
+
+ .add{
+   width: 200px;
+   height: 30px;
+   margin-right: 200px;
+
+ }

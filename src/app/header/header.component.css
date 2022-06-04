@@ -4,27 +4,25 @@
 .navbar1 {
   justify-content: space-around;
   display: flex;
-  margin-top: 25px;
+
   margin-bottom: 20px;
 }
 .navbar {
   justify-content: space-around;
   display: flex;
-  margin-bottom: 20px;
+
  
 }
 .link {
-  color: #012d48;
+  color: #192F78;
   font-size: 18px;
   text-decoration: none;
 }
 
 
-.btn:hover {
-  background-color: #012d48;
-}
+
 .link:hover {
-  color: #012d48;
+  color: #D81515;
   text-decoration: underline;
 
 
@@ -34,13 +32,11 @@
 .btn{
     margin-left: 15px;
     border-radius: 20px;
-    border: rgb(227, 159, 32);
+    border-color: #192F78 ;
+    color: #192F78 ;
 }
 
-.btn:hover{
-    background-color: rgb(227, 159, 32);
-    color: white;
-}
+
 
 input {
   margin-right: -10px;
@@ -54,7 +50,7 @@ input {
 }
 .active {
 
-    color: #012d48;
+    color: #D81515;
     text-decoration: underline;
  
     text-underline-offset: 0.8em;
@@ -75,10 +71,7 @@ input {
   margin-left: 470px;
 }
 
-.dropdown-item {
-  color: #012d48;
-  font-size: 18px;
-}
+
 
 
 
@@ -106,6 +99,11 @@ input {
 }
 
 .btn:hover{
-    background-color:  rgb(227, 159, 32);
+    background-color:  #192F78;
     color: white;
+}
+
+.container-fluid{
+  margin-top: 50px;
+  margin-bottom: 50px;
 }

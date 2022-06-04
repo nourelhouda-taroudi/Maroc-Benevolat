@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { PostService } from './core/services/Services';
@@ -12,9 +12,12 @@ import { associations } from './models/associations';
 export class AppComponent {
   title = 'pfs-clients';
   public associations!: associations[];
+
   private asso!: PostService;
   showHead: boolean = false;
-  constructor(private router: Router) {
+  constructor(private router: Router,
+  
+    ) {
     // on route change to '/login', set the variable showHead to false
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
@@ -66,4 +69,6 @@ export class AppComponent {
       this.getAsso();
     }
   }
+
+  
 }

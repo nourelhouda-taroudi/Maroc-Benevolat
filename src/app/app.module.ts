@@ -31,6 +31,8 @@ import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
 import { AllAssociationsComponent } from './admin/all-associations/all-associations.component';
 import { SuppressionComponent } from './admin/suppression/suppression.component';
+import { PageComponent } from './page/page.component';
+import { MembresComponent } from './membres/membres.component';
 
 
 
@@ -53,7 +55,9 @@ import { SuppressionComponent } from './admin/suppression/suppression.component'
     HomeAdminComponent,
             HeaderAdminComponent,
             AllAssociationsComponent,
-            SuppressionComponent
+            SuppressionComponent,
+            PageComponent
+           
 
  
   

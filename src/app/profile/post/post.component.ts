@@ -2,6 +2,8 @@ import { UploadsService } from './../../core/services/uploads.service';
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/core/services/post.service';
 import { Post } from 'src/app/models/post';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { likes } from 'src/app/models/likes';
 
 @Component({
   selector: 'app-post',
@@ -9,6 +11,8 @@ import { Post } from 'src/app/models/post';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  public demandes!:likes
+  ipAddress = '';
   index?:Number;
   imageError:string="";
   selectedImg:File | undefined; 
@@ -25,9 +29,19 @@ export class PostComponent implements OnInit {
     likeNum:0,
     createdAt:new Date()
   }
+
+  data: likes={
+  
+    id_post:0,
+   adresse:''
+
+  }
   posts: Post[]=[];
   addblogform: any;
-  constructor(private postservice:PostService,private readonly uploadService:UploadsService) { }
+  constructor(private postservice:PostService,
+    private readonly uploadService:UploadsService,
+    private http:HttpClient
+    ) { }
 
   ngOnInit(): void {
     this.getPosts();
@@ -97,15 +111,15 @@ export class PostComponent implements OnInit {
     createdAt:new Date()
     }
   }
-  tolike(post:any){
-    this.postservice.likes(post.id,post.like).subscribe(() => {
-      post.like= !post.like;
-      if(!post.like){
-        post.likeNum++;
-      }
-      else post.likeNum--;
-    })
-  }
+  // tolike(post:any){
+  //   this.postservice.likes(post.id,post.like).subscribe(() => {
+  //     post.like= !post.like;
+  //     if(!post.like){
+  //       post.likeNum++;
+  //     }
+  //     else post.likeNum--;
+  //   })
+  // }
   editepost(post:any){
      this.mypost=post;
      this.edite=true;
@@ -122,4 +136,86 @@ export class PostComponent implements OnInit {
       this.resetpost();
 
   }
+
+id!:number
+  tolike(post:any,data:any) {
+
+    this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
+      this.ipAddress = res.ip;
+    console.log(this.ipAddress)
+    console.log(post.id)
+    console.log(data.id)
+    this.data={
+    
+      id_post: Number(`${post.id}`),
+      adresse:`${this.ipAddress}`,
+   }
+
+   console.log(this.data)
+    return this.postservice.getAdress(this.data).subscribe(
+      
+      (response) => {
+        
+     
+       console.log(response)
+       if(response === null){
+      
+           this.postservice.saveAdresse(this.data).subscribe(
+            (res) => {
+           
+            },
+           
+          );
+        
+        this.postservice.likes(post.id,post.like).subscribe(() => {
+          post.like= !post.like;
+          if(!post.like){
+            post.likeNum++;
+      
+          }
+     
+        })
+
+   
+  
+
+
+
+       }else{
+         
+       
+            
+            post.likeNum--;
+       
+            this.postservice.deletelike(Object.values(response)[0]).subscribe(() =>{
+              
+              console.log("deleted")
+            })
+           
+      
+          
+     
+        }
+       
+      
+   
+       
+      
+      },
+     
+    );
+  })
+
+  
+  }
+
+
+  deleteDemande(id: any){
+    this.postservice.deletelike(id).subscribe(() =>{
+              
+      console.log("deleted")
+    })
+   
+  }
+
 }
