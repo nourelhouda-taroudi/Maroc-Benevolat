@@ -11,15 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
   isLinear = false;
-  hide:boolean=true;
-  hideValidation:boolean=true;
+  hide: boolean = true;
+  hideValidation: boolean = true;
   number: number = 0;
   imageError: string = '';
   selectedImg: File | undefined;
   imagePath: string = '';
   imgURL: any;
   samePassword: boolean = false;
-  sameEmail:boolean=false;
+  sameEmail: boolean = false;
   formData: FormData = new FormData();
   registerForm1: FormGroup = new FormGroup({
     firstname: new FormControl(null, [Validators.required]),
@@ -170,8 +170,7 @@ export class RegisterComponent implements OnInit {
   }
   isSameEmail() {
     const email = this.registerForm2.controls['email'];
-    const emailValidation =
-      this.registerForm2.controls['emailValidation'];
+    const emailValidation = this.registerForm2.controls['emailValidation'];
 
     const tst =
       email.value !== emailValidation.value &&

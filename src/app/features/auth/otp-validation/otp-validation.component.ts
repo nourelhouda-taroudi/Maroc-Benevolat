@@ -23,7 +23,7 @@ export class OtpValidationComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.email = params.email || '/offers/list';
-        });
+    });
   }
 
   codeForm: FormGroup = new FormGroup({
