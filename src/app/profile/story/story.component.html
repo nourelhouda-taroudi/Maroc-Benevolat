@@ -21,18 +21,12 @@
                                 <!-- name -->
                                 <div class="d-flex align-items-center">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/collection/happy-people" alt="from fb"
+                                        <img [src]="association.logo" alt="from fb"
                                             class="rounded-circle"
                                             style="     width: 38px;  height: 38px;  object-fit: cover;" />
                                     </div>
                                     <div>
-                                        <p class="m-0 fw-bold">Care</p>
-                                        <select class="form-select border-0 bg-gray w-75 fs-7"
-                                            aria-label="Default select example">
-                                            <option selected value="1">Public</option>
-                                            <option value="2">Pin To Top</option>
-                                            <option value="3">Hide</option>
-                                        </select>
+                                        <p class="m-0 fw-bold" style="font-size: 18px;">{{association.nameAssociation}}</p>
                                     </div>
                                 </div>
                                 <!-- text -->
@@ -53,7 +47,7 @@
                                     class=" d-flex justify-content-between  border border-1 border-light  rounded  p-3 mt-3">
                                     <div>
                                         <input [(ngModel)]="mystory.image" [ngModelOptions]="{standalone: true}"
-                                            type="file" (change)="onFileSelected($event)">
+                                            type="file" (change)="preview($event)" required>
                                         <i class="fa fa-image   text-success "></i>
                                     </div>
                                 </div>
@@ -65,7 +59,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" style="width: 60px; height: 30px;"
                             data-bs-dismiss="modal" data-target="#modal" (click)="close(mystory)">Close</button>
-                        <button *ngIf="!edite" (click)="persiststory()" data-bs-dismiss="modal" type="button"
+                        <button *ngIf="!edite" (click)="persiststory()"  data-bs-dismiss="modal" type="button"
                             class="btn btn-success" style="width: 90px; height: 30px;">publier </button>
                         <button *ngIf="edite" (click)="updatestory()" data-bs-dismiss="modal" type="button"
                             class="btn btn-warning" style="width: 120px; height: 30px;">sauvgarder </button>
@@ -81,15 +75,7 @@
            
             <div class="carousel-inner"  >
                 <div class="carousel-item active">
-                    <img src="../../../assets/1.jpg" class=" w-100" alt="..."  style="border-radius: 30px;height:300px ;" >
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../assets/1.jpg" class=" w-100" alt="..."  style="border-radius: 30px;height:300px ;">
-
-
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../assets/1.jpg" class=" w-100" alt="..."  style="border-radius: 30px;height:300px ;">
+                    <img [src]="this.uploadsService.getImage(this.story.image)" class=" w-100" alt="..."  style="border-radius: 30px;height:300px ;" >
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"

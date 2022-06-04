@@ -1,3 +1,4 @@
+import { UploadsService } from './../../core/services/uploads.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -13,7 +14,9 @@ import { associations } from 'src/app/models/associations';
 export class ContactComponent implements OnInit {
   association !: associations;
   public associations!: associations[] ;
-  constructor(private asso: PostService,private router: Router,private route: ActivatedRoute,public sanitizer: DomSanitizer) { }
+  constructor(private asso: PostService,private router: Router,
+    private route: ActivatedRoute,public sanitizer: DomSanitizer,
+    private uploadService:UploadsService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(parameterMap => {
@@ -21,36 +24,24 @@ export class ContactComponent implements OnInit {
       this.getAssoci(id);
       console.log(id)
          })
-    this.getAsso();
+   
   }
   
-  getAsso(){
-   
-    return this.asso.getAssociation().subscribe((response: associations[]) => {
-     this.associations = response;
-   },
-   (error : HttpErrorResponse) => {
-     alert(error.message)
-   }
- );
+
+
  
-   }
-
-
- getAssoci(id : number){
-   
-  return this.asso.getAssociationById(id).subscribe((response) => {
-   this.association= response;
-
-   console.log(this.association)
- 
- },
- (error : HttpErrorResponse) => {
-   alert(error.message)
- }
-);
-
- }
+  getAssoci(id: number) {
+    return this.asso.getAssociationById(id).subscribe(
+      (response) => {
+        this.association = response;
+        this.association.logo=this.uploadService.getImage(response.logo);
+        // console.log(this.association);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 
 }
   

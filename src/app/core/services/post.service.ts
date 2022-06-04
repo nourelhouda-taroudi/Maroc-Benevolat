@@ -14,9 +14,9 @@ import { Post } from '../../models/post';
 export class PostService {
   apiUrl="http://localhost:3000/api/post";
   constructor(private http:HttpClient) {}
-    findAll()
+    findAll(params: string | undefined)
       {
-      return  this.http.get<Post[]>(this.apiUrl);
+      return  this.http.get<Post[]>(this.apiUrl+params);
     }
     delete(id: any){
       return this.http.delete(`${this.apiUrl}/${id}`)
