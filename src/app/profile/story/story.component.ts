@@ -3,8 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { associations } from 'src/app/models/associations';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StoryService } from 'src/app/core/services/story.service';
 import { PostService } from 'src/app/core/services/Services';
-import { StoryService } from 'src/app/core/services/story.service ';
 import { Story } from 'src/app/models/story';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -48,13 +48,12 @@ export class StoryComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((parameterMap) => {
       const id = Number(parameterMap.get('id'));
+      this.getStories(id);
       this.getAssoci(id);
-      console.log(id);
     });
-    this.getStory();
   }
-  getStory(){
-    this.storyService.findAll().subscribe(stories => this.stories = stories)
+  getStories(idAssociation: number){
+    this.storyService.getAssociationStories(idAssociation).subscribe(stories => this.stories = stories)
     this.total=this.stories.length;
   }
   deletestory(id: any){
