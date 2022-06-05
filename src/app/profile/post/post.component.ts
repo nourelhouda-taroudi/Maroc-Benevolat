@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { associations } from 'src/app/models/associations';
 import { UploadsService } from './../../core/services/uploads.service';
 import { Component, Input, OnInit } from '@angular/core';
@@ -31,14 +32,19 @@ export class PostComponent implements OnInit {
   addblogform: any;
   constructor(
     private postservice: PostService,
-    private readonly uploadService: UploadsService
+    private readonly uploadService: UploadsService,
+    private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.getPosts();
+    this.route.paramMap.subscribe((parameterMap) => {
+      const id = Number(parameterMap.get('id'));
+      this.getPosts(id);
+    });
   }
-  getPosts() {
-    this.postservice.findAll().subscribe((posts) => (this.posts = posts));
+  // Get association posts
+  getPosts(idAssociation: number) {
+    this.postservice.getAssociationPosts(idAssociation).subscribe((posts) => (this.posts = posts));
   }
   deletepost(id: any) {
     this.postservice.delete(id).subscribe(() => {

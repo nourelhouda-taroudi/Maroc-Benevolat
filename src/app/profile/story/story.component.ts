@@ -1,7 +1,7 @@
 import { associations } from 'src/app/models/associations';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StoryService } from 'src/app/core/services/story.service ';
+import { StoryService } from 'src/app/core/services/story.service';
 import { Story } from 'src/app/models/story';
 
 @Component({
@@ -28,10 +28,13 @@ export class StoryComponent implements OnInit {
   constructor(private storyService:StoryService,private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getStory();
+    this.route.paramMap.subscribe((parameterMap) => {
+      const id = Number(parameterMap.get('id'));
+      this.getStories(id);
+    });
   }
-  getStory(){
-    this.storyService.findAll().subscribe(stories => this.stories = stories)
+  getStories(idAssociation: number){
+    this.storyService.getAssociationStories(idAssociation).subscribe(stories => this.stories = stories)
     this.total=this.stories.length;
   }
   deletestory(id: any){
