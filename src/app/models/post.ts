@@ -7,4 +7,5 @@ export interface Post {
     commentaire:string;
     likeNum:number;
     createdAt:Date;
+    associationId?: number;
 }
