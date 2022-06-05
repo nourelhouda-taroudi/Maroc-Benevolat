@@ -11,6 +11,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { EditerComponent } from './editer/editer.component'
 import { StoryComponent } from './story/story.component';
 import { ContactComponent } from './contact/contact.component';
+import { MembresComponent } from '../membres/membres.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -23,6 +24,8 @@ import { ContactComponent } from './contact/contact.component';
     EditerComponent,
     StoryComponent,
     ContactComponent,
+    MembresComponent
+ 
    
   ],
   imports: [

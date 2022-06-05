@@ -1,6 +1,7 @@
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { associations } from 'src/app/models/associations';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,9 @@ export class UploadsService {
   getImage(image:string){
     return `${this.url}${image}`
   }
+  
 
+
+
+  
 }

@@ -1,0 +1,31 @@
+h1{
+    text-align: center;
+    font-size: 50px;
+    color: green;
+    margin-left: -100px;
+
+   
+}
+
+.div{
+    width: 900px;
+    height: 100px;
+    margin-top: 150px;
+
+    margin-left: 250px;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 300px;
+    padding: 40px;
+}
+
+.bi{
+    margin-top: -30px;
+}
+
+.para{
+    margin-bottom: 400px;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+}

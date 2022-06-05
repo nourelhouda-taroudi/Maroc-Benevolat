@@ -25,7 +25,17 @@ import { HeaderComponent } from './header/header.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SlideComponent } from './features/home/slide/slide.component';
 import { SearchComponent } from './features/search/search.component';
-import { OtpValidationComponent } from './otp-validation/otp-validation.component';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+
+
+import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
+import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
+import { AllAssociationsComponent } from './admin/all-associations/all-associations.component';
+import { SuppressionComponent } from './admin/suppression/suppression.component';
+import { PageComponent } from './page/page.component';
+import { MembresComponent } from './membres/membres.component';
+
+
 
 @NgModule({
   declarations: [
@@ -41,7 +51,18 @@ import { OtpValidationComponent } from './otp-validation/otp-validation.componen
 
     SlideComponent,
     SearchComponent,
-    OtpValidationComponent,
+    LoginAdminComponent,
+    
+  
+    HomeAdminComponent,
+            HeaderAdminComponent,
+            AllAssociationsComponent,
+            SuppressionComponent,
+            PageComponent
+           
+
+ 
+  
   ],
   imports: [
     AppRoutingModule,

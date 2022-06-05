@@ -1,16 +1,32 @@
-import { ActivatedRoute } from '@angular/router';
-import { associations } from 'src/app/models/associations';
-import { UploadsService } from './../../core/services/uploads.service';
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/core/services/post.service';
+import { associations } from 'src/app/models/associations';
+import { likes } from 'src/app/models/likes';
 import { Post } from 'src/app/models/post';
-
+import { UploadsService } from './../../core/services/uploads.service';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
+  queryParams!: string;
+  numberOfPosts = 3;
+  skipPosts = 0;
+
+  statusdata = [
+    { id: 1, name: 'Appels de dons ' },
+    { id: 2, name: 'Appel aux volontaires' },
+    { id: 3, name: 'Annonce pour un évènement' },
+  ];
+  value = this.statusdata[0];
+
+  @Input('association') association!: associations;
+  public demandes!: likes;
+  ipAddress = '';
   index?: Number;
   imageError: string = '';
   selectedImg: File | undefined;
@@ -18,7 +34,10 @@ export class PostComponent implements OnInit {
   imgURL: any;
   edite = false;
   showForm = true;
-  @Input('association') association!: associations;
+  registerForm3: FormGroup = new FormGroup({
+    image: new FormControl(null),
+  });
+
   mypost: Post = {
     text: '',
     visualisation: '',
@@ -28,42 +47,78 @@ export class PostComponent implements OnInit {
     likeNum: 0,
     createdAt: new Date(),
   };
+
+  data: likes = {
+    id_post: 0,
+    adresse: '',
+  };
+  idAssociation!: number;
+
   posts: Post[] = [];
   addblogform: any;
   constructor(
     private postservice: PostService,
     private readonly uploadService: UploadsService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((parameterMap) => {
-      const id = Number(parameterMap.get('id'));
-      this.getPosts(id);
+      this.idAssociation = Number(parameterMap.get('id'));
+      this.getPosts();
     });
   }
   // Get association posts
-  getPosts(idAssociation: number) {
-    this.postservice.getAssociationPosts(idAssociation).subscribe((posts) => (this.posts = posts));
+  getPosts() {
+    this.postservice
+      .getAssociationPosts(this.idAssociation)
+      .subscribe((posts) => (this.posts = posts));
   }
-  deletepost(id: any) {
-    this.postservice.delete(id).subscribe(() => {
-      this.posts = this.posts.filter((post) => post.id != id);
-    });
-  }
+  //   constructor(private postservice:PostService,
+  //     public readonly uploadService:UploadsService,
+  //     private route: ActivatedRoute,
+  //     private http:HttpClient) { }
+
+  //   ngOnInit(): void {
+  //     this.getPosts(false,'');
+  //   }
+  //   getPosts(isInitialLoad: boolean, event:any) {
+  //     if (this.skipPosts === 50) {
+  //       event.target.disabled = true;
+  //     }
+  //     this.queryParams = `?take=${this.numberOfPosts}&skip=${this.skipPosts}`;
+
+  //     this.postservice
+  //       .findAll(this.queryParams)
+  //       .subscribe((posts: Post[]) => {
+  //         for (let postIndex = 0; postIndex < posts.length; postIndex++) {
+  //           this.posts.push(posts[postIndex]);
+  //         }
+  //         if (isInitialLoad) event.target.complete;
+  //         this.skipPosts = this.skipPosts + 3;
+  //       });
+  //   }
+  //   loadData(event:any) {
+  //     this.getPosts(true, event);
+  // >>>>>>> 44c8c83f90a0704f0ba9d53b1410ae34814f1f0a
+  //   }
+    deletepost(id: any){
+      this.postservice.delete(id).subscribe(() =>{
+        this.posts =this.posts.filter(post => post.id !=id)
+      })
+    }
   persistpost() {
+    this.mypost.image = this.registerForm3.getRawValue().image;
     this.postservice.persist(this.mypost).subscribe((post) => {
       this.posts = [post, ...this.posts];
       this.resetpost();
       this.showForm = false;
     });
   }
-  // onFileSelected(event: any){
-  //   if(event.target.files.lenght>0){
-  //     const file=event.target.files[0];
-  //     this.addblogform.get('image').setValue(file);
-  //   }
-  // }
+  loadData(event: any) {
+    this.getPosts();
+  }
   preview(event: any) {
     if (event.target.files.length === 0) return;
 
@@ -86,13 +141,12 @@ export class PostComponent implements OnInit {
     }
     let data = new FormData();
     data.append('image', this.selectedImg);
+    console.log(this.uploadService.uploadImage(data));
     this.uploadService.uploadImage(data).subscribe(
       (res: any) => {
-        this.posts.push(res.filname);
-        // console.log(this.registerForm3.get('logo')?.value);
+        this.registerForm3.get('image')?.setValue(res.filename);
       },
       (err) => {
-        // console.log(err);
         if (err.error.statusCode == 400) {
           this.imageError = err.error.message;
         }
@@ -110,19 +164,12 @@ export class PostComponent implements OnInit {
       createdAt: new Date(),
     };
   }
-  tolike(post: any) {
-    this.postservice.likes(post.id, post.like).subscribe(() => {
-      post.like = !post.like;
-      if (!post.like) {
-        post.likeNum++;
-      } else post.likeNum--;
-    });
-  }
   editepost(post: any) {
     this.mypost = post;
     this.edite = true;
   }
   updatepost() {
+    this.mypost.image = this.registerForm3.getRawValue().image;
     this.postservice.update(this.mypost).subscribe((post) => {
       this.resetpost();
       this.edite = false;
@@ -132,5 +179,57 @@ export class PostComponent implements OnInit {
   close() {
     this.edite = false;
     this.resetpost();
+  }
+
+  tolike(post: any) {
+    this.http.get('http://api.ipify.org/?format=json').subscribe((res: any) => {
+      this.ipAddress = res.ip;
+      this.data = {
+        id_post: Number(`${post.id}`),
+        adresse: `${this.ipAddress}`,
+      };
+
+      console.log(this.data);
+      return this.postservice.getAdress(this.data).subscribe((response) => {
+        console.log(response);
+        if (response === null) {
+          this.postservice.saveAdresse(this.data).subscribe((res) => {});
+
+          this.postservice.likes(post.id, post.like).subscribe(() => {
+            post.like = !post.like;
+            if (!post.like) {
+              post.likeNum++;
+              this.mypost = post;
+              console.log('heree' + post);
+              this.postservice.update(post).subscribe((post) => {
+                this.resetpost();
+              });
+            }
+          });
+        } else {
+          post.likeNum--;
+          this.mypost = post;
+
+          this.postservice.update(post).subscribe((post) => {
+            this.resetpost();
+          });
+          this.postservice
+            .deletelike(Object.values(response)[0])
+            .subscribe(() => {
+              console.log('deleted');
+            });
+        }
+      });
+    });
+  }
+
+  deleteDemande(id: any) {
+    this.postservice.deletelike(id).subscribe(() => {
+      console.log('deleted');
+    });
+  }
+
+  getImage(image: string){
+    return this.uploadService.getImage(image);
   }
 }
