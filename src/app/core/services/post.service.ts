@@ -20,7 +20,9 @@ export class PostService {
   delete(id: any) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
-  persist(post: any) {
+  persist(post: Post) {
+    console.log({post});
+    
     return this.http.post<Post>(this.apiUrl, post);
   }
   likes(id: any, like: any) {
@@ -69,7 +71,7 @@ export class PostService {
   }
 
   getAssociationPosts(associationId: number) {
-    return this.http.get<Post[]>(`this.apiUrl/association/${associationId}`);
+    return this.http.get<Post[]>(`${this.apiUrl}/association/${associationId}`);
   }
   deletelike(id: any) {
     return this.http.delete(`http://localhost:3000/api/likes/${id}`);

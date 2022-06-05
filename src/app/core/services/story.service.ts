@@ -15,7 +15,7 @@ export class StoryService {
   delete(id: any) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
-  persist(story: any) {
+  persist(story: Story) {
     return this.http.post<Story>(this.apiUrl, story);
   }
   likes(id: any, like: any) {
@@ -25,6 +25,6 @@ export class StoryService {
     return this.http.put(`${this.apiUrl}/${story.id}`, story);
   }
   getAssociationStories(associationId: number){
-    return this.http.get<Story[]>(`this.apiUrl/association/${associationId}`);
+    return this.http.get<Story[]>(`${this.apiUrl}/association/${associationId}`);
   }
 }

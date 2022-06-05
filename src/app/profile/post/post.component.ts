@@ -46,6 +46,7 @@ export class PostComponent implements OnInit {
     commentaire: '',
     likeNum: 0,
     createdAt: new Date(),
+    associationId: undefined
   };
 
   data: likes = {
@@ -71,9 +72,15 @@ export class PostComponent implements OnInit {
   }
   // Get association posts
   getPosts() {
+    console.log(this.idAssociation);
+    
     this.postservice
       .getAssociationPosts(this.idAssociation)
-      .subscribe((posts) => (this.posts = posts));
+      .subscribe((posts) =>{
+        this.posts = posts;
+        console.log({posts});
+      });
+      
   }
   //   constructor(private postservice:PostService,
   //     public readonly uploadService:UploadsService,
@@ -110,6 +117,7 @@ export class PostComponent implements OnInit {
     }
   persistpost() {
     this.mypost.image = this.registerForm3.getRawValue().image;
+    this.mypost.associationId = this.idAssociation;
     this.postservice.persist(this.mypost).subscribe((post) => {
       this.posts = [post, ...this.posts];
       this.resetpost();
