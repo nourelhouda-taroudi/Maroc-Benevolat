@@ -32,8 +32,8 @@
 .btn{
     margin-left: 15px;
     border-radius: 20px;
-    border-color: #192F78 ;
-    color: #192F78 ;
+    border-color: #fbc352 ;
+    color: #fbc352 ;
 }
 
 
@@ -55,26 +55,21 @@ input {
  
     text-underline-offset: 0.8em;
   }
-
-
-
-
-
-
-
-.btn1 {
-  width: 20px;
+.rounded-circle {
+  border: black;
+  border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    
+  
 }
-
+.rounded-circle:hover{
+  background-color: rgb(227, 159, 32);
+}
 .dropdown {
   position: absolute;
   margin-left: 470px;
 }
-
-
-
-
-
 .boutton{
     margin-left: 15px;
     border-radius: 20px;
@@ -99,7 +94,7 @@ input {
 }
 
 .btn:hover{
-    background-color:  #192F78;
+    background-color:  #287f10;
     color: white;
 }
 

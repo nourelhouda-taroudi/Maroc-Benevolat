@@ -50,7 +50,7 @@ export class StoryComponent implements OnInit {
     this.route.paramMap.subscribe((parameterMap) => {
       const id = Number(parameterMap.get('id'));
       this.getAssoci(id);
-      console.log(id);
+      //console.log(id);
     });
     this.getStory();
   }
@@ -66,7 +66,7 @@ export class StoryComponent implements OnInit {
   persiststory(){
     this.mystory.image=this.registerForm3.getRawValue().image;
     this.storyService.persist(this.mystory).subscribe((story) =>{
-      console.log(this.mystory.image)
+      //console.log(this.mystory.image)
       this.stories=[story, ...this.stories]
       this.resetstory();
       this.showForm = false;
@@ -94,7 +94,7 @@ export class StoryComponent implements OnInit {
     }
     let data = new FormData();
     data.append('image', this.selectedImg);
-    console.log(  this.uploadsService.uploadImage(data));
+    //console.log(  this.uploadsService.uploadImage(data));
     this.uploadsService.uploadImage(data).subscribe(
 
       (res: any) => {

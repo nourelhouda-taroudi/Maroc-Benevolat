@@ -31,11 +31,9 @@ export class ProfileComponent implements OnInit {
     return this.postService.getAssociationById(id).subscribe(
       (response) => {
         this.association = response;
-        console.log(response);
 
         this.association.logo = this.uploadService.getImage(response.logo);
         this.dataExiste = true
-        // console.log(this.association);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
