@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../core/services/post.service';
+import { associations } from '../models/associations';
 import { Membres } from '../models/membre';
 
 @Component({
@@ -9,25 +11,61 @@ import { Membres } from '../models/membre';
   styleUrls: ['./membres.component.css']
 })
 export class MembresComponent implements OnInit {
-
+  @Input('association') association!: associations;
   pages: number = 1;
   membres!:Membres[]
-  constructor(private service:PostService) { }
+  data:Membres ={
+    id_asso: 0,
+    name: '',
+    lastname: '',
+    email: '',
+    position: ''
+  }
+  constructor(private service:PostService,    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getMembre()
+    this.route.paramMap.subscribe((parameterMap) => {
+      const id = Number(parameterMap.get('id'));
+      this.getAssoci(id);
+      console.log("idd is "+id);
+    });
   }
-
-  getMembre(){
-    this.service.getMembres().subscribe((response: Membres[]) => {
-      this.membres = response;
+  
+  // getMembre(){
+  //   this.service.getMembres().subscribe((response: Membres[]) => {
+  //     this.membres = response;
   
      
-    },
-    (error : HttpErrorResponse) => {
-      alert(error.message)
-    }
-  );
+  //   },
+  //   (error : HttpErrorResponse) => {
+  //     alert(error.message)
+  //   }
+  // );
+  // }
+
+  getAssoci(id: number) {
+    return this.service.getAssociationById(id).subscribe(
+      (response) => {
+        this.association = response;
+        this.data={
+          id_asso: Object.values(response)[0],
+          name: '',
+          lastname: '',
+          email: '',
+          position: ''
+        }
+
+        this.service.getMembreById(this.data).subscribe((respon: Membres[]) => {
+              this.membres = respon;
+          
+             
+            },)
+  
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
 }
