@@ -75,4 +75,9 @@ export class PostService {
   deletelike(id: any){
     return this.http.delete(`http://localhost:3000/api/likes/${id}`)
   }
+
+  getMembreById(data:Membres){
+    return this.http.post<Membres[]>('http://localhost:3000/api/membres/find',data);
+  }
+
 }
