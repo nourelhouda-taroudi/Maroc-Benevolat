@@ -47,17 +47,19 @@ export class TokenService {
   isValid() {
     const token = this.getToken();
     const id = this.getId();
+    //console.log(id);
 
     if (token) {
 
       const payload = this.payload(token);
-      console.log(payload);
+      //console.log(payload);
       
       if (payload) {
         return id == payload.sub;
       }
     }
     return false;
+    
   }
 
   getInfos() {
