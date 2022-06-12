@@ -7,6 +7,7 @@ import { StoryService } from 'src/app/core/services/story.service';
 import { PostService } from 'src/app/core/services/Services';
 import { Story } from 'src/app/models/story';
 import { FormControl, FormGroup } from '@angular/forms';
+import { TokenService } from 'src/app/core/services/token.service';
 
 @Component({
   selector: 'app-story',
@@ -17,6 +18,7 @@ export class StoryComponent implements OnInit {
   story?: Story;
   stories: Story[] = [];
   addblogform: any;
+  islogIn:boolean=false;
   registerForm3: FormGroup = new FormGroup({
     image: new FormControl(null),
   });
@@ -45,7 +47,8 @@ export class StoryComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private asso: PostService,
-    public uploadsService: UploadsService
+    public uploadsService: UploadsService,
+    private tokenService:TokenService,
   ) {}
 
   ngOnInit(): void {
@@ -53,13 +56,17 @@ export class StoryComponent implements OnInit {
       this.idAssociation = Number(parameterMap.get('id'));
       this.getStories(this.idAssociation);
       this.getAssoci(this.idAssociation);
+      this.isLoggedIn();
     });
   }
   getStories(idAssociation: number) {
     this.storyService
       .getAssociationStories(idAssociation)
-      .subscribe((stories) => (this.stories = stories));
-    this.total = this.stories.length;
+      .subscribe((stories) => {
+        this.stories = stories;
+        this.total = this.stories.length;
+      });
+    
   }
   deletestory(id: any) {
     this.storyService.delete(id).subscribe(() => {
@@ -158,5 +165,8 @@ export class StoryComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+  isLoggedIn(){
+    this.islogIn=this.tokenService.loggedIn();
   }
 }

@@ -1,11 +1,16 @@
 <div class="container bg-white p-3 mt-3 mb-3 rounded border shadow">
+  
   <div>
+    <div style="text-align: center" *ngIf="!islogIn && total!=0" >
+      <img src="./../../../assets//images/index.png"  style="margin: 5px;" width="70px" height="50px"/><h2>LES EVENEMENTS</h2>
+    </div>
     <button
       type="button"
       class="form-control rounded-pill border-0 bg-gray pointer shadow"
       style="background-color: rgba(88, 180, 3, 0.723)"
       data-bs-toggle="modal"
       data-bs-target="#exampleModal1"
+      *ngIf="islogIn"
     >
       Ajouter News...?
     </button>
@@ -19,9 +24,9 @@
     >
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header align-items-center">
+          <div class="modal-header align-items-center" >
             <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
-              Cree annonce
+              crée un Post
             </h5>
             <button
               type="button"
@@ -90,7 +95,7 @@
 
             <!-- end -->
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" >
             <button
               type="button"
               class="btn btn-secondary"
@@ -166,7 +171,7 @@
         <p>{{ story.createdAt | date: "mediumDate" }}</p>
       </div>
     </div>
-    <div class="dropdown" style="text-align: end; margin-top: 30px">
+    <div class="dropdown" style="text-align: end; margin-top: 30px" *ngIf="islogIn">
       <button
         class="btn fa fa-pencil"
         type="button"
@@ -174,7 +179,7 @@
         data-bs-toggle="dropdown"
         aria-expanded="false"
       ></button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" >
         <li class="d-flex align-items-center">
           <a
             class="dropdown-item d-flex justify-content-around align-items-center fs-7 fa fa-pencil"
@@ -194,7 +199,7 @@
       </ul>
     </div>
   </div>
-  <div>
+  <div *ngIf="total!=0">
     <pagination-controls
       id="listing_pagination"
       [maxSize]="3"

@@ -23,7 +23,7 @@
     </div>
    
   </div>
-  <div class="dropdown">
+  <div class="dropdown" *ngIf="islogIn">
     <button class="btn1 btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" ></button>
 
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -130,7 +130,7 @@
           
 
           <div class="modal-footer">
-            <button type="submit" class="btn2 btn-primary"  data-bs-dismiss="modal">Ajouter</button>
+            <button  type="submit" class="btn2 btn-primary"  data-bs-dismiss="modal" >Ajouter</button>
             <button type="button" class="btn2 btn-secondary" data-bs-dismiss="modal" style="background-color: red; border-color: red;">Close</button>
  
           </div>
