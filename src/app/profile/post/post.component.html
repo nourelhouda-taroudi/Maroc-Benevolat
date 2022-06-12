@@ -2,10 +2,17 @@
 <div id="annonce" class="container list bg-white p-3 mt-3 rounded "  style="display: block;" >
 
     <div>
-      <button type="button" class="form-control rounded-pill border-0 bg-gray pointer shadow"
-        style="background-color: rgb(250, 181, 96);" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <div style="text-align: center" *ngIf="!islogIn && total!=0" >
+        <img src="./../../../assets/images/poster.png"  style="margin: 5px;" width="70px" height="50px"/><h2>LES ANNONCES</h2>
+      </div>
+      <div *ngIf="islogIn">
+        <button type="button" class="form-control rounded-pill border-0 bg-gray pointer shadow"
+        style="background-color: rgb(250, 181, 96);" data-bs-toggle="modal" data-bs-target="#exampleModal" >
         Ajouter Annonce...?
       </button>
+      </div>
+      
+
       <!-- create modal ANNONCE -->
       <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -37,7 +44,7 @@
                   
                   <!-- text -->
                   <div>
-                    <textarea [(ngModel)]="mypost.text" [ngModelOptions]="{standalone: true}" cols="40" rows="6" class="form-control border-3" style="margin-top: 20px;"></textarea>
+                    <textarea [(ngModel)]="mypost.text" [ngModelOptions]="{standalone: true}" cols="40" rows="6" class="form-control border-3" style="margin-top: 20px;" ></textarea>
                   </div>
                   <!-- emoji  -->
                   <div class="  d-flex justify-content-between align-items-center  "> 
@@ -68,7 +75,15 @@
         </div>
       </div>
     </div>
-    <div class="bg-white p-4 rounded shadow mt-3" *ngFor="let post of posts | orderBy:'createdAt',reverse">
+    
+    <div class="bg-white p-4 rounded shadow mt-3" *ngFor="
+    let post of posts | paginate
+    : {
+        id: 'listing_pagination',
+        itemsPerPage: 1,
+        currentPage: page,
+        totalItems: total
+      } | orderBy:'createdAt',reverse">
       <!-- author -->
       <div class="d-flex justify-content-between">
         <!-- avatar -->
@@ -85,7 +100,7 @@
           <p style="margin:7px ;">{{post.visualisation}}</p>
         </div>
         <!-- edit -->
-        <div class="dropdown">
+        <div class="dropdown" *ngIf="islogIn">
           <button class="btn btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -131,9 +146,13 @@
         </div>
       </div>
     </div>
-    <button type="button" class="form-control rounded-pill mt-3 border-0 bg-gray pointer shadow"
-        style="background-color: rgb(164, 209, 245);" (click)="loadData($event)" >
-       <i class="fa fa-plus-circle" aria-hidden="true"></i>
-        Plus d'annonce 
-      </button>
+    <div *ngIf=" total!=0" style="margin-top: 15px;">
+      <pagination-controls
+        id="listing_pagination"
+        [maxSize]="1"
+        [directionLinks]="true"
+        (pageChange)="page = $event"
+      >
+      </pagination-controls>
+    </div>
   </div>

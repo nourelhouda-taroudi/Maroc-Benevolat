@@ -6,6 +6,7 @@ import { associations } from 'src/app/models/associations';
 import { PostService } from '../../core/services/post.service';
 import { Post } from '../../models/post';
 import { UploadsService } from './../../core/services/uploads.service';
+import { TokenService } from 'src/app/core/services/token.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { UploadsService } from './../../core/services/uploads.service';
 export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
- 
+  islogIn:boolean=false;
   membres!:Membres[];
   @Input('association') association!: associations;
   mypost: Post = {
@@ -54,12 +55,14 @@ export class ProfilDetailComponent implements OnInit {
     private service: PostService,
     private router: Router,
     private route: ActivatedRoute,
-    private readonly uploadService: UploadsService
+    private readonly uploadService: UploadsService,
+    private tokenService:TokenService,
   ) {}
 
   ngOnInit(): void {
    // this.getPosts();
     this.getAsso();
+    this.isLoggedIn();
     //this.getMembers();
   }
   getAsso() {
@@ -116,9 +119,6 @@ export class ProfilDetailComponent implements OnInit {
     return this.service.ajoutMembre(data).subscribe(
       (response:{}) => {
         console.log(data)
-      
-       
-    
         // this.router.navigate(['Demande'])
       },
       (error: HttpErrorResponse) => {
@@ -127,6 +127,8 @@ export class ProfilDetailComponent implements OnInit {
     );
   }
 
-
+  isLoggedIn(){
+    this.islogIn=this.tokenService.loggedIn(); 
+  }
 
 }

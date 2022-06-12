@@ -1,22 +1,29 @@
+import { TokenService } from '../../core/services/token.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/core/services/post.service';
+
 import { associations } from 'src/app/models/associations';
 import { likes } from 'src/app/models/likes';
 import { Post } from 'src/app/models/post';
-import { UploadsService } from './../../core/services/uploads.service';
+import { UploadsService } from '../../core/services/uploads.service';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
+  //param pagenation
+  page: number = 1;
+  total?: number;
+
   queryParams!: string;
   numberOfPosts = 3;
   skipPosts = 0;
-
+  //param login
+  islogIn:boolean=false;
   statusdata = [
     { id: 1, name: 'Appels de dons ' },
     { id: 2, name: 'Appel aux volontaires' },
@@ -61,55 +68,27 @@ export class PostComponent implements OnInit {
     private postservice: PostService,
     private readonly uploadService: UploadsService,
     private readonly route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private tokenService:TokenService,
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((parameterMap) => {
       this.idAssociation = Number(parameterMap.get('id'));
       this.getPosts();
+      this.isLoggedIn();
     });
   }
   // Get association posts
   getPosts() {
-    console.log(this.idAssociation);
-    
     this.postservice
       .getAssociationPosts(this.idAssociation)
       .subscribe((posts) =>{
         this.posts = posts;
-        console.log({posts});
-      });
-      
+        this.total = this.posts.length;
+      });    
   }
-  //   constructor(private postservice:PostService,
-  //     public readonly uploadService:UploadsService,
-  //     private route: ActivatedRoute,
-  //     private http:HttpClient) { }
-
-  //   ngOnInit(): void {
-  //     this.getPosts(false,'');
-  //   }
-  //   getPosts(isInitialLoad: boolean, event:any) {
-  //     if (this.skipPosts === 50) {
-  //       event.target.disabled = true;
-  //     }
-  //     this.queryParams = `?take=${this.numberOfPosts}&skip=${this.skipPosts}`;
-
-  //     this.postservice
-  //       .findAll(this.queryParams)
-  //       .subscribe((posts: Post[]) => {
-  //         for (let postIndex = 0; postIndex < posts.length; postIndex++) {
-  //           this.posts.push(posts[postIndex]);
-  //         }
-  //         if (isInitialLoad) event.target.complete;
-  //         this.skipPosts = this.skipPosts + 3;
-  //       });
-  //   }
-  //   loadData(event:any) {
-  //     this.getPosts(true, event);
-  // >>>>>>> 44c8c83f90a0704f0ba9d53b1410ae34814f1f0a
-  //   }
+ 
     deletepost(id: any){
       this.postservice.delete(id).subscribe(() =>{
         this.posts =this.posts.filter(post => post.id !=id)
@@ -123,9 +102,6 @@ export class PostComponent implements OnInit {
       this.resetpost();
       this.showForm = false;
     });
-  }
-  loadData(event: any) {
-    this.getPosts();
   }
   preview(event: any) {
     if (event.target.files.length === 0) return;
@@ -240,4 +216,8 @@ export class PostComponent implements OnInit {
   getImage(image: string){
     return this.uploadService.getImage(image);
   }
+  isLoggedIn(){
+    this.islogIn=this.tokenService.loggedIn();
+  }
 }
+
