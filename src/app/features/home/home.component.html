@@ -70,7 +70,7 @@
 <ng-container *ngFor="let association of associations  ">
     <div class="card" style="width: 22rem;" *ngIf="searchText === ''  ||  association.nameAssociation.toLocaleLowerCase().includes(searchText)  " >
     
-    <button (click)="editeAnn(association)" class="btn_asso">
+    <button (click)="navigateTo(association)" class="btn_asso">
       <div class="card-body"  >
         <img [src]="this.uploadService.getImage(this.association.logo)" class="card-img-top">
         <p class="card-text" style="font-weight: bold;">{{association.nameAssociation}}</p>

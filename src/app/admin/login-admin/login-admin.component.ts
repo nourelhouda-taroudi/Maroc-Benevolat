@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostService } from 'src/app/core/services/Services';
 import { AdminInter } from 'src/app/models/admin';
@@ -7,7 +7,8 @@ import { AdminInter } from 'src/app/models/admin';
 @Component({
   selector: 'app-login-admin',
   templateUrl: './login-admin.component.html',
-  styleUrls: ['./login-admin.component.css']
+  styleUrls: ['./login-admin.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginAdminComponent implements OnInit {
 

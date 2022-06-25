@@ -67,7 +67,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" style="width: 90px; height: 30px;"
-                data-bs-dismiss="modal" (click)="close()" >Annuler</button>
+                data-bs-dismiss="modal" (click)="close()">Annuler</button>
               <button *ngIf="!edite" (click)="persistpost()" data-bs-dismiss="modal" type="button" class="btn btn-success" style="width: 90px; height: 30px;">publier </button>
               <button *ngIf="edite"  (click)="updatepost()" data-bs-dismiss="modal"type="button" class="btn btn-warning" style="width: 120px; height: 30px;">sauvgarder </button>
             </div>

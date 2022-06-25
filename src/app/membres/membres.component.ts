@@ -16,6 +16,7 @@ export class MembresComponent implements OnInit {
   member1=new Membres();
   pages: number = 1;
   membres!:Membres[]
+  membre!:Membres;
   data:Membres ={
     id_asso: 0,
     name: '',
