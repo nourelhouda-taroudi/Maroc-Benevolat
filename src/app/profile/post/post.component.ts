@@ -203,17 +203,19 @@ export class PostComponent implements OnInit {
         if (response === null) {
           this.postservice.saveAdresse(this.data).subscribe((res) => {});
 
-          this.postservice.likes(post.id, post.like).subscribe(() => {
-            post.like = !post.like;
-            if (!post.like) {
+        
+          
+    
+
               post.likeNum++;
+              console.log(post.likeNum)
               this.mypost = post;
               console.log('heree' + post);
               this.postservice.update(post).subscribe((post) => {
                 this.resetpost();
               });
-            }
-          });
+            
+       
         } else {
           post.likeNum--;
           this.mypost = post;

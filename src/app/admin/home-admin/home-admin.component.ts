@@ -59,10 +59,13 @@ getDemande(id: number) {
   );
 }
 
+
 deleteDemande(id: any){
   this.asso.deleteDemande(id).subscribe(() =>{
     this.demandes=this.demandes.filter(demande => demande.id !=id)
   })
 }
+
+
 
 }

@@ -167,23 +167,23 @@ export class HomeComponent implements OnInit {
   }
 
     
-  editeAnn(post:any){
+  navigateTo(post:any){
     this.cards=post
     this.edite=true;
     console.log(this.cards.id)
     this.router.navigate(['profile',this.cards.id])
     
  }
+ 
 
  onSearchTextEntered(searchedValue: string){
    this.searchText = searchedValue
    console.log(this.searchText)
-   this.slide=false;
-   if(this.searchText === ''){
-     this,this.slide=true
-   }
+  
 
  }
+
+
 
  selectChangeHandler(event: any){
   const choix = event.target.value;

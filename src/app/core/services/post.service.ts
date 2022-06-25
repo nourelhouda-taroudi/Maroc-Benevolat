@@ -25,9 +25,7 @@ export class PostService {
     
     return this.http.post<Post>(this.apiUrl, post);
   }
-  likes(id: any, like: any) {
-    return this.http.patch(`${this.apiUrl}/${id}`, { like: !like });
-  }
+ 
   update(post: any) {
     return this.http.put(`${this.apiUrl}/${post.id}`, post);
   }
@@ -53,6 +51,12 @@ export class PostService {
     return this.http.get<Membres[]>('http://localhost:3000/api/membres');
   }
 
+  updateMembre(membre: any) {
+    return this.http.put(`http://localhost:3000/api/membres/${membre.id}`, membre);
+  }
+  deleteMembre(id: any) {
+    return this.http.delete(`http://localhost:3000/api/membres/${id}`);
+  }
   saveAdresse(data: any) {
     return this.http.post<likes[]>('http://localhost:3000/api/likes', data);
   }

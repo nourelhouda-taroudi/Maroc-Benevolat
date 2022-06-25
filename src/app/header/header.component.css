@@ -14,7 +14,7 @@
  
 }
 .link {
-  color: #192F78;
+  color: #216114;
   font-size: 18px;
   text-decoration: none;
 }
@@ -22,7 +22,7 @@
 
 
 .link:hover {
-  color: #D81515;
+  color: #d89015;
   text-decoration: underline;
 
 
@@ -50,7 +50,7 @@ input {
 }
 .active {
 
-    color: #D81515;
+    color: #d89015;
     text-decoration: underline;
  
     text-underline-offset: 0.8em;

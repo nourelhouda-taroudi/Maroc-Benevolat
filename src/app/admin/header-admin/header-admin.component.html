@@ -7,19 +7,31 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/all_associations" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Toutes les associations</a>
-              </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/home_admin" routerLinkActive="active" >Demandes d'Inscription</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/Suppression" routerLinkActive="active" >Demandes de Suppression</a>
-          </li>
+        <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            
+                <a class="link" routerLink="/all_associations" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Toutes les associations</a>
+          
+         
+            <a class="link " aria-current="page" routerLink="/home_admin" routerLinkActive="active" >Demandes d'Inscription</a>
+
+  
+      
+            <a class="link " aria-current="page" routerLink="/Suppression" routerLinkActive="active" >Demandes de Suppression</a>
+    
         
          
-        </ul>
+        </ul> -->
+
+        <div class="navbar1  navbar navbar-expand-lg navbar-light "  >
+
+          <a class="link " aria-current="page" routerLink="/all_associations"  routerLinkActive="active"  [routerLinkActiveOptions]="{exact : true}">Toutes les associations</a>
+          <a class="link " aria-current="page" routerLink="/home_admin" routerLinkActive="active">Demandes d'inscription</a>
+          <a class="link " aria-current="page" routerLink="/Suppression"  routerLinkActive="active">Demandes de suppression</a>
+
+        
+        
+         
+         </div>
 
         <button (click)="goToConn('login_admin')" >Deconnexion</button>
        

@@ -14,6 +14,7 @@ export class MembresComponent implements OnInit {
   @Input('association') association!: associations;
   pages: number = 1;
   membres!:Membres[]
+  membre!:Membres;
   data:Membres ={
     id_asso: 0,
     name: '',
@@ -66,6 +67,14 @@ export class MembresComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+
+
+  deleteMembre(id: any){
+    this.service.deleteMembre(id).subscribe(() =>{
+      this.membres=this.membres.filter(demande => demande.id !=id)
+    })
   }
 
 }
