@@ -7,6 +7,7 @@ import { PostService } from '../../core/services/post.service';
 import { Post } from '../../models/post';
 import { UploadsService } from './../../core/services/uploads.service';
 import { TokenService } from 'src/app/core/services/token.service';
+import { ResourceLoader } from '@angular/compiler';
 
 
 @Component({
@@ -63,7 +64,6 @@ export class ProfilDetailComponent implements OnInit {
    // this.getPosts();
     this.getAsso();
     this.isLoggedIn();
-    //this.getMembers();
   }
   getAsso() {
     return this.service.getAssociation().subscribe(
@@ -102,9 +102,6 @@ export class ProfilDetailComponent implements OnInit {
     return this.service.saveDemande(data).subscribe(
       (response:{}) => {
         console.log(data)
-      
-       
-    
         this.router.navigate(['Demande'])
       },
       (error: HttpErrorResponse) => {
@@ -118,8 +115,9 @@ export class ProfilDetailComponent implements OnInit {
   ajouter(data: any) {
     return this.service.ajoutMembre(data).subscribe(
       (response:{}) => {
-        console.log(data)
-        // this.router.navigate(['Demande'])
+        console.log("here"+data)
+        window.location.reload()
+      
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

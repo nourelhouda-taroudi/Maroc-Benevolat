@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../core/services/post.service';
+import { TokenService } from '../core/services/token.service';
 import { associations } from '../models/associations';
 import { Membres } from '../models/membre';
 
@@ -12,6 +13,7 @@ import { Membres } from '../models/membre';
 })
 export class MembresComponent implements OnInit {
   @Input('association') association!: associations;
+  member1=new Membres();
   pages: number = 1;
   membres!:Membres[]
   data:Membres ={
@@ -19,9 +21,11 @@ export class MembresComponent implements OnInit {
     name: '',
     lastname: '',
     email: '',
-    position: ''
+    position: '',
+    id:0
   }
-  constructor(private service:PostService,    private route: ActivatedRoute) { }
+  islogIn:boolean=false;
+  constructor(private service:PostService,    private route: ActivatedRoute,private tokenService:TokenService,) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((parameterMap) => {
@@ -29,14 +33,13 @@ export class MembresComponent implements OnInit {
       this.getAssoci(id);
       console.log("idd is "+id);
       this.getMembre();
+      this.isLoggedIn();
     });
   }
   
   getMembre(){
     this.service.getMembres().subscribe((response: Membres[]) => {
-      this.membres = response;
-  
-     
+      this.membres = response;   
     },
     (error : HttpErrorResponse) => {
       alert(error.message)
@@ -53,7 +56,8 @@ export class MembresComponent implements OnInit {
           name: '',
           lastname: '',
           email: '',
-          position: ''
+          position: '',
+          id:0
         }
 
         this.service.getMembreById(this.data).subscribe((respon: Membres[]) => {
@@ -68,6 +72,27 @@ export class MembresComponent implements OnInit {
       }
     );
   }
-  
-
+  edite(membre:Membres){
+    this.member1=membre;
+  }
+  deleteMembre(id: any){
+    this.service.deleteMembre(id).subscribe(() =>{
+      this.membres=this.membres.filter(demande => demande.id =id)
+      console.log(id);
+      this.getMembre()
+    })
+  }
+  public updateMember(member:Membres):void{
+    this.service.updateMembre(member,member.id).subscribe((response: Membres) => {
+      console.log(response);
+      this.getMembre();
+    },
+    (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  );
+  }
+  isLoggedIn(){
+    this.islogIn=this.tokenService.loggedIn(); 
+  }
 }

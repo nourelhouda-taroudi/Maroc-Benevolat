@@ -127,7 +127,7 @@
             <label for="recipient-name" class="col-form-label" >Position </label>
             <input type="text" class="form-control" id="recipient-name" name="position" ngModel>
           </div>
-          
+          <input type="hidden" class="form-control" id="recipient-name" name="id_asso" [ngModel]="association.id">
 
           <div class="modal-footer">
             <button  type="submit" class="btn2 btn-primary"  data-bs-dismiss="modal" >Ajouter</button>

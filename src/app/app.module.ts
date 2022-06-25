@@ -34,6 +34,8 @@ import { AllAssociationsComponent } from './admin/all-associations/all-associati
 import { SuppressionComponent } from './admin/suppression/suppression.component';
 import { PageComponent } from './page/page.component';
 import { MembresComponent } from './membres/membres.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SignalsComponent } from './admin/signals/signals.component';
 
 
 
@@ -58,7 +60,8 @@ import { MembresComponent } from './membres/membres.component';
             HeaderAdminComponent,
             AllAssociationsComponent,
             SuppressionComponent,
-            PageComponent
+            PageComponent,
+            SignalsComponent
            
 
  
@@ -79,6 +82,7 @@ import { MembresComponent } from './membres/membres.component';
     FormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

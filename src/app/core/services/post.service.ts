@@ -78,7 +78,22 @@ export class PostService {
   }
 
   getMembreById(data:Membres){
-    return this.http.post<Membres[]>('http://localhost:3000/api/membres/find',data);
+    return this.http.post<Membres[]>(`http://localhost:3000/api/membres/find`,data);
   }
-
+ 
+  updateMembre(membre: any,id:number) : Observable<Membres>{
+    return this.http.put<Membres>(`http://localhost:3000/api/membres/${id}`, membre);
+  }
+  deleteMembre(id: any) {
+    return this.http.delete(`http://localhost:3000/api/membres/${id}`);
+  }
+  postSignal(data:any){
+    return this.http.post(`http://localhost:3000/api/signaler`,data);
+  }
+  getSignal(){
+    this.http.get(`http://localhost:3000/api/signaler`)
+  }
+  deleteSignal(id:number){
+    this.http.delete(`http://localhost:3000/api/signaler/${id}`)
+  }
 }

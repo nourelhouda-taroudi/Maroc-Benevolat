@@ -1,3 +1,4 @@
+import { SignalsComponent } from './admin/signals/signals.component';
 import { AfterLoginGuard } from './core/guards/after-login.guard';
 import { AuthGuard } from './core/guards/auth.guard';
 import { PageNotFoundComponent } from './shared/errors/page-not-found/page-not-found.component';
@@ -78,6 +79,10 @@ const routes: Routes = [
   {
     path: 'Suppression',
     loadChildren: () => import('./admin/suppression/suppression.module').then(m=> m.SuppressionModule)
+  },
+  {
+    path: 'Signaler',
+    loadChildren: () => import('./admin/signals/signals.module').then(m=> m.SignalsModule)
   },
   {
     path: 'Demande',
