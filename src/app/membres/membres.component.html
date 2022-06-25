@@ -1,7 +1,8 @@
-<h1>Nos membres</h1>
 
-<div class="membre">
-
+<div class="container bg-white p-3 mt-3 mb-3 rounded border shadow membre">
+  <div style="text-align: center"  >
+    <img src="./../../assets/images/membres.png"  style="margin: 5px;" width="70px" height="50px"/><h2>NOS MEMBRES</h2>
+  </div>
 <div class="card" style="width: 19rem;" *ngFor="let membre of membres  | paginate: { itemsPerPage: 3, currentPage: pages }" >
     <div class="card-body" >
       <h2 class="card-title"><i class="fa fa-user"  ></i>{{membre.name}} {{membre.lastname}}</h2>

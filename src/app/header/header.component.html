@@ -1,15 +1,28 @@
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
-    <img width="200"  src="./../../../assets/logo.PNG" />
-   
-
-
-
+    <img width="230"  src="./../../../assets/logo.PNG" />
+    <div *ngIf="islogIn" class=" align-items-center " > 
+      <div class="dropdown d-block ">       
+          <img [src]="this.uploadService.getImage(this.association.logo)"  alt=""
+            class="rounded-circle " style="width: 70px;
+            height: 70px;"
+            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"/>
+            <p style="font-size: 18px; margin-top:5px;">{{association.nameAssociation}}</p>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <button
+      (click)="Logout()"
+      class="btn btn-outline-success"
+      type="submit"
+      *ngIf="islogIn"
      
-
-
-    
-
+    >
+      Déconnexion
+    </button>
+          <li><a  class="btn btn-outline-success" href="profile/{{association.id}}">Profile</a></li>
+          
+        </ul>
+      </div>
+  </div>
     <form class="d-flex">
       <button
         (click)="goToConn('auth/login')"
@@ -28,17 +41,10 @@
       >
         S'inscrire
       </button>
-      <button
-      (click)="Logout()"
-      class="btn btn-outline-success"
-      type="submit"
-      *ngIf="islogIn"
-      style="background-color: rgb(227, 159, 32); color: white"
-    >
-      Déconnexion
-    </button>
+      
+    
      
-    </form>
+    </form>   
   </div>
 </nav>
 

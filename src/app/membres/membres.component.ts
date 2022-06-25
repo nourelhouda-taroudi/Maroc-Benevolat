@@ -29,20 +29,21 @@ export class MembresComponent implements OnInit {
       const id = Number(parameterMap.get('id'));
       this.getAssoci(id);
       console.log("idd is "+id);
+      this.getMembre();
     });
   }
   
-  // getMembre(){
-  //   this.service.getMembres().subscribe((response: Membres[]) => {
-  //     this.membres = response;
+  getMembre(){
+    this.service.getMembres().subscribe((response: Membres[]) => {
+      this.membres = response;
   
      
-  //   },
-  //   (error : HttpErrorResponse) => {
-  //     alert(error.message)
-  //   }
-  // );
-  // }
+    },
+    (error : HttpErrorResponse) => {
+      alert(error.message)
+    }
+  );
+  }
 
   getAssoci(id: number) {
     return this.service.getAssociationById(id).subscribe(
@@ -68,6 +69,7 @@ export class MembresComponent implements OnInit {
       }
     );
   }
+  
 
 
 

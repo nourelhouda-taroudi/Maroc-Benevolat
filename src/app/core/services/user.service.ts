@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AdminInter } from 'src/app/models/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,8 @@ resetPassword(email:string,newPassword:string){
  params.append('email',email);
  params.append('newPassword',newPassword);
   return this.http.put(`${this.url}resetPassword`,{params})
+}
+findOneEmail(email: string ): Observable<AdminInter>{
+  return this.http.get<AdminInter>(`http://localhost:3000/api/user/${email}`);
 }
 }
