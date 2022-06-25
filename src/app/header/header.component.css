@@ -1,0 +1,104 @@
+.container {
+  justify-content: space-around;
+}
+.navbar1 {
+  justify-content: space-around;
+  display: flex;
+
+  margin-bottom: 20px;
+}
+.navbar {
+  justify-content: space-around;
+  display: flex;
+
+ 
+}
+.link {
+  color: #216114;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+
+
+.link:hover {
+  color: #d89015;
+  text-decoration: underline;
+
+
+  text-underline-offset: 0.8em;
+}
+
+.btn{
+    margin-left: 15px;
+    border-radius: 20px;
+    border-color: #fbc352 ;
+    color: #fbc352 ;
+}
+
+
+
+input {
+  margin-right: -10px;
+}
+.d-flex {
+  text-align: center;
+}
+.me-2 {
+  margin-right: -0.5rem !important;
+  border-radius: 20px;
+}
+.active {
+
+    color: #d89015;
+    text-decoration: underline;
+ 
+    text-underline-offset: 0.8em;
+  }
+.rounded-circle {
+  border: black;
+  border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    
+  
+}
+.rounded-circle:hover{
+  background-color: rgb(227, 159, 32);
+}
+.dropdown {
+  position: absolute;
+  margin-left: 470px;
+}
+.boutton{
+    margin-left: 15px;
+    border-radius: 20px;
+    border: rgb(227, 159, 32);
+    color: rgb(227, 159, 32);
+    background-color: white;
+    font-size: 1rem;
+}
+
+.boutton:hover{
+    background-color: rgb(227, 159, 32);
+    color: white;
+}
+
+.icon{
+    color: rgb(227, 159, 32);
+}
+
+.icon:hover{
+  color: white;
+    
+}
+
+.btn:hover{
+    background-color:  #287f10;
+    color: white;
+}
+
+.container-fluid{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

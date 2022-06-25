@@ -1,1 +1,141 @@
-<p>home works!</p>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
+ 
+
+  <div class="carousel-inner"  >
+    <div class="carousel-item active">
+      <img src="./../../../assets/img1.jpeg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item " *ngFor="let slide of slides">
+      <img src="{{slide.img}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+   
+    
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div>
+
+
+
+
+
+<div class="titre">
+<a href="#associations" style="text-decoration: none;"><h2 class="name"><img  width="80px" src="./../../../assets/assos.jpeg">NOS ASSOCIATIONS</h2></a>
+<a href="#asso" style="text-decoration: none;"><h2 class="name" ><img  width="80px" src="./../../../assets/nous.webp">A PROPOS DE NOUS</h2></a>
+
+
+
+
+</div>
+<div class="search"> 
+  <select class="select"  (change)=" selectChangeHandler($event)">
+    <option value="" > All</option>
+    <option  >Orphelins</option>
+    <option  >Enfant</option>
+    <option  >Others</option>
+  
+   
+  </select>
+<app-search  (searchTextChanged)="onSearchTextEntered($event)"  > </app-search>
+
+
+</div>
+
+
+<div class="div" id="associations">
+<ng-container *ngFor="let association of associations  ">
+    <div class="card" style="width: 22rem;" *ngIf="searchText === ''  ||  association.nameAssociation.toLocaleLowerCase().includes(searchText)  " >
+    
+    <button (click)="navigateTo(association)" class="btn_asso">
+      <div class="card-body"  >
+        <img [src]="this.uploadService.getImage(this.association.logo)" class="card-img-top">
+        <p class="card-text" style="font-weight: bold;">{{association.nameAssociation}}</p>
+        <label style="margin: -20px;">_______________________</label>
+        <p class="card-text">{{association.infos}}</p>
+        
+        <div class="social">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+          </svg>
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+            </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+              <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+            </svg>
+           
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>
+            
+          
+             
+            
+          </div>
+      </div>
+    </button>
+    </div>
+    
+   
+  </ng-container>
+    </div>
+
+
+
+   
+   
+    
+
+  <div id="asso">
+  <h2><img src="./../../../assets/decouvrir.png" width="100px"> NOUS DECOUVRIR</h2>
+  <div class="nous" >
+    <div> <img src="./../../../assets/logo.PNG" width="500px" ></div>
+   
+    <div class="para"><p>À partir de votre page d’accueil, vos visiteurs doivent pouvoir rapidement trouver une réponse aux questions suivantes : « Qu’est-ce que cette entreprise ? », « Que fait-elle, que propose-t-elle ? », « Que puis-je faire grâce à ce site ? ».
+
+      Si vous êtes une entreprise qui a pignon sur rue (Nestlé, Fnac…), vous n’avez pas besoin de décrire qui vous êtes, et ce que vous faites. Mais pour la plupart des entreprises, donner une réponse à ces questions de manière claire sur la page d’accueil est indispensable. Il faut que vos visiteurs qui viennent d’arriver sur votre site puissent se dire tout de suite : « je suis au bon endroit ».
+      
+      Facilitez la navigation sur votre site par la même occasion. Vos visiteurs sont à la recherche de produits ou de services que vous avez à leur offrir. Guidez-les vers les pages qui les intéressent par un design clair, simple à comprendre et une navigation fluide et intuitive.</p>
+   
+    </div>
+  </div>
+</div>
+ 
+
+
+
+
+
+
+  
+ 
+
+  
+
+  
+  

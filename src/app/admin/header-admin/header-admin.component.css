@@ -1,0 +1,52 @@
+.image{
+  width: 200px;
+  height: 100px;
+
+}
+
+.navbar{
+  margin-top: 50px;
+  justify-content: space-around;
+}
+
+a{
+  font-size: 20px;
+  margin-left: 50px;
+
+ 
+}
+button{
+  width: 124px;
+  height: 40px;
+  background-color: green;
+  border-radius: 18px;
+  color: white;
+  border-color: green;
+  margin-left: 1150px;
+  margin-top: 40px;
+}
+
+.active {
+  background-color: aliceblue;
+  text-decoration: underline;
+
+
+  text-underline-offset: 0.8em;
+}
+
+.link {
+  color: #20271f;
+  font-size: 20px;
+  text-decoration: none;
+
+}
+
+
+
+.link:hover {
+  color: #d89015;
+  text-decoration: underline;
+
+
+  text-underline-offset: 0.8em;
+}

@@ -1,0 +1,42 @@
+[
+    {  
+        "id":1,
+        "img":"assets/img1.jpeg",
+        "desc":"Some quick example text to build on the card title and make up the bulk of the card's contentjgjtot"
+    },
+    {
+        "id":2,
+        "img":"assets/img1.jpeg",
+        "desc":"Some quick example text to build on the card title and make up the bulk of the card's contentjgjtot"
+    },
+    {
+        "id":3,
+        "img":"assets/assos.png",
+        "desc":"Some quick example text to build on the card title and make up the bulk of the card's contentjgjtot"
+    },
+    {
+        "id":4,
+        "img":"assets/img3.png",
+        "desc":"Some quick example text to build on the card title and make up the bulk of the card's contentjgjtot"
+    },
+    {
+        "id":5,
+        "img":"assets/assos.png",
+        "desc":"Some quick example text to build on the card title and make up the bulk of the card's contentjgjtot"
+    },
+    {
+        "id":6,
+        "img":"assets/img1.jpeg",
+        "desc":"Some quick example text to build on the card title and make up the bulk of the card's contentjgjtot"
+    },
+    {
+        "id":6,
+        "img":"assets/img1.jpeg",
+        "desc":"Some quick example text to build on the card title and make up the bulk of the card's contentjgjtot"
+    },
+    {
+        "id":6,
+        "img":"assets/assos.png",
+        "desc":"Skfmglrt;g;t text to build on the card title and make up the bulk of the card's contentjgjtot"
+    }
+]

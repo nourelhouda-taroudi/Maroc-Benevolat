@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+ <div>
+  <div class="container-fluid">
+  
+    <img  class="image"   src ="../../../assets/logo.PNG">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+ 
+     <button (click)="goToConn('login_admin')" >Deconnexion</button>
+      
+      
+     </div>
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+ 
+       <div class="navbar1  navbar navbar-expand-lg navbar-light "  >
+ 
+         <a class="link " aria-current="page" routerLink="/all_associations"  routerLinkActive="active"  [routerLinkActiveOptions]="{exact : true}">Toutes les associations</a>
+         <a class="link " aria-current="page" routerLink="/home_admin" routerLinkActive="active">Demandes d'inscription</a>
+         <a class="link " aria-current="page" routerLink="/Suppression"  routerLinkActive="active">Demandes de suppression</a>
+ 
+         <a class="link " aria-current="page" routerLink="/Signaler"  routerLinkActive="active">Associations signales</a>    
+        </div>
+   </div>
+ </div>
+</nav>

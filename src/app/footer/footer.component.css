@@ -1,0 +1,25 @@
+.pourquoi{
+    display: flex;
+    margin: 20px;
+    justify-content: space-around;
+}
+.social{
+    justify-content: space-around;
+    display: flex;
+}
+
+.container {
+    background-color: #012d48;
+    
+
+
+
+
+}
+.section{
+    margin-top: 30px;
+}
+.btn{
+    margin-left: 15px;
+    border-radius: 20px;
+}

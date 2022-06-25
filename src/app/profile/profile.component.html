@@ -1,1 +1,19 @@
-<p>profile works!</p>
+<div>     
+  <app-profil-detail
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-profil-detail>
+  <app-story id="news"
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-story>
+  <app-post id="annonce"
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-post>
+  <app-membres id="membre"></app-membres>
+  <app-contact id="contact"
+    *ngIf="association != undefined"
+    [association]="association"
+  ></app-contact>
+</div>

@@ -1,0 +1,32 @@
+<app-header-admin></app-header-admin>
+
+<h1> Toutes les demandes de Suppression</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Demandes</th>
+        <th scope="col">Nom Directeur</th>
+        <th scope="col">Nom Association</th>
+        <th scope="col">Email Association</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+   
+      <tr  *ngFor="let demande of demandes"  >
+    
+        <th scope="row"  >{{demande.id}}</th>
+        <td  >{{demande.demandes}} </td>
+        <td >{{demande.name}}</td>
+        <td  >{{demande.name_asso}}</td>
+        <td  >{{demande.email_asso}}</td>
+      
+     
+
+      </tr>
+
+     
+    </tbody>
+  </table>
