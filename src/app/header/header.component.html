@@ -11,16 +11,18 @@
             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"/>
             <p style="font-size: 18px; margin-top:6px;margin-left: 490px;">{{association.nameAssociation}}</p>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <button
-      (click)="Logout()"
-      class="btn btn-outline-success"
-      type="submit"
-      *ngIf="islogIn"
+          <a  class="" href="profile/{{association.id}}" style="text-decoration:none ; font-size:15px ;color: black;">Profile</a>
+          <br/>
+          ___________________
+          <br/>
+          <br/>
+          
+          <a (click)="Logout()" class="" type="submit" *ngIf="islogIn"
      
     >
       Déconnexion
-    </button>
-          <li><a  class="btn btn-outline-success" href="profile/{{association.id}}">Profile</a></li>
+        </a>
+          
           
         </ul>
       </div>
