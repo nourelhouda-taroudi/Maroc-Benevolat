@@ -4,9 +4,12 @@
 
 }
 
-.navbar{
-  margin-top: 50px;
-  justify-content: space-around;
+.navbar {
+  justify-content: space-between;
+  display: flex;
+margin-top: 50px;
+margin-bottom: 20px;
+ 
 }
 
 a{
