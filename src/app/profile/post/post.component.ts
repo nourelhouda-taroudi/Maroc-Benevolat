@@ -15,15 +15,10 @@ import { UploadsService } from '../../core/services/uploads.service';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
-  //param pagenation
-  page: number = 1;
-  total?: number;
 
-  queryParams!: string;
-  numberOfPosts = 3;
-  skipPosts = 0;
   //param login
   islogIn:boolean=false;
+  EmailVerfication!:string;
   statusdata = [
     { id: 1, name: 'Appels de dons ' },
     { id: 2, name: 'Appel aux volontaires' },
@@ -85,7 +80,6 @@ export class PostComponent implements OnInit {
       .getAssociationPosts(this.idAssociation)
       .subscribe((posts) =>{
         this.posts = posts;
-        this.total = this.posts.length;
       });    
   }
  
@@ -178,18 +172,15 @@ export class PostComponent implements OnInit {
         console.log(response);
         if (response === null) {
           this.postservice.saveAdresse(this.data).subscribe((res) => {});
-
-          this.postservice.likes(post.id, post.like).subscribe(() => {
-            post.like = !post.like;
-            if (!post.like) {
               post.likeNum++;
+              console.log(post.likeNum)
               this.mypost = post;
               console.log('heree' + post);
               this.postservice.update(post).subscribe((post) => {
                 this.resetpost();
               });
-            }
-          });
+            
+       
         } else {
           post.likeNum--;
           this.mypost = post;
@@ -218,6 +209,7 @@ export class PostComponent implements OnInit {
   }
   isLoggedIn(){
     this.islogIn=this.tokenService.loggedIn();
+    this.EmailVerfication=this.tokenService.getInfos().email;
   }
 }
 

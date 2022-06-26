@@ -1,3 +1,4 @@
+import { Signaler } from './../../models/signaler';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +8,7 @@ import { PostService } from '../../core/services/post.service';
 import { Post } from '../../models/post';
 import { UploadsService } from './../../core/services/uploads.service';
 import { TokenService } from 'src/app/core/services/token.service';
+import { ResourceLoader } from '@angular/compiler';
 
 
 @Component({
@@ -18,7 +20,15 @@ export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
   islogIn:boolean=false;
+  signale=new Signaler();
   membres!:Membres[];
+  EmailVerfication!:string;
+  statusdata = [
+    { id: 1, name: 'Faux compte ' },
+    { id: 2, name: 'Publication de contenus inappropriés' },
+  ];
+  value = this.statusdata[0];
+
   @Input('association') association!: associations;
   mypost: Post = {
     text: '',
@@ -63,7 +73,6 @@ export class ProfilDetailComponent implements OnInit {
    // this.getPosts();
     this.getAsso();
     this.isLoggedIn();
-    //this.getMembers();
   }
   getAsso() {
     return this.service.getAssociation().subscribe(
@@ -79,7 +88,6 @@ export class ProfilDetailComponent implements OnInit {
   editeAnn(post: any) {
     this.cards = post;
     this.edite = true;
-    console.log(this.cards.id);
 
     this.router.navigate(['profile/editer', this.cards.id]);
   }
@@ -102,9 +110,6 @@ export class ProfilDetailComponent implements OnInit {
     return this.service.saveDemande(data).subscribe(
       (response:{}) => {
         console.log(data)
-      
-       
-    
         this.router.navigate(['Demande'])
       },
       (error: HttpErrorResponse) => {
@@ -118,8 +123,9 @@ export class ProfilDetailComponent implements OnInit {
   ajouter(data: any) {
     return this.service.ajoutMembre(data).subscribe(
       (response:{}) => {
-        console.log(data)
-        // this.router.navigate(['Demande'])
+        console.log("here"+data)
+        window.location.reload()
+      
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -129,6 +135,15 @@ export class ProfilDetailComponent implements OnInit {
 
   isLoggedIn(){
     this.islogIn=this.tokenService.loggedIn(); 
+    this.EmailVerfication=this.tokenService.getInfos().email;
   }
+saveSignale(data:any){
+  this.signale.nom=this.association.nameAssociation;
+ return this.postservice.postSignal(data).subscribe((response:{})=>{
+  
+  console.log(this.signale.nom)
+  window.location.reload()
 
+  })
+}
 }

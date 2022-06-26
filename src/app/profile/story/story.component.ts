@@ -19,6 +19,7 @@ export class StoryComponent implements OnInit {
   stories: Story[] = [];
   addblogform: any;
   islogIn:boolean=false;
+  EmailVerfication!:string;
   registerForm3: FormGroup = new FormGroup({
     image: new FormControl(null),
   });
@@ -168,5 +169,6 @@ export class StoryComponent implements OnInit {
   }
   isLoggedIn(){
     this.islogIn=this.tokenService.loggedIn();
+    this.EmailVerfication=this.tokenService.getInfos().email;
   }
 }

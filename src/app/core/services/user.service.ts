@@ -23,7 +23,7 @@ export class UserService {
   }
   signUp(payload: any){
     console.log(payload);
-    return this.http.post(`${this.url}signUp`,payload)
+    return this.http.post("http://localhost:3000/api/demandes",payload)
   }
   changeAuthStatus(value:boolean){
     this.loggedIn.next(value);

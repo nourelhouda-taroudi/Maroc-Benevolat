@@ -1,7 +1,7 @@
 <div class="container bg-white p-3 mt-3 mb-3 rounded border shadow">
   
   <div>
-    <div style="text-align: center" *ngIf="!islogIn && total!=0" >
+    <div style="text-align: center"  >
       <img src="./../../../assets//images/index.png"  style="margin: 5px;" width="70px" height="50px"/><h2>LES EVENEMENTS</h2>
     </div>
     <button
@@ -10,9 +10,9 @@
       style="background-color: rgba(88, 180, 3, 0.723)"
       data-bs-toggle="modal"
       data-bs-target="#exampleModal1"
-      *ngIf="islogIn"
+      *ngIf="islogIn && EmailVerfication===association.emailAssociation"
     >
-      Ajouter News...?
+      Ajouter Post...?
     </button>
     <!-- create modal ANNONCE -->
     <div
@@ -26,7 +26,7 @@
         <div class="modal-content">
           <div class="modal-header align-items-center" >
             <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
-              crée un Post
+              Crée un Post
             </h5>
             <button
               type="button"
@@ -99,7 +99,7 @@
             <button
               type="button"
               class="btn btn-secondary"
-              style="width: 60px; height: 30px"
+              style="width: 80px; height: 30px"
               data-bs-dismiss="modal"
               data-target="#modal"
               (click)="close(mystory)"
@@ -171,7 +171,7 @@
         <p>{{ story.createdAt | date: "mediumDate" }}</p>
       </div>
     </div>
-    <div class="dropdown" style="text-align: end; margin-top: 30px" *ngIf="islogIn">
+    <div class="dropdown" style="text-align: end; margin-top: 30px" *ngIf="islogIn && EmailVerfication===association.emailAssociation">
       <button
         class="btn fa fa-pencil"
         type="button"
@@ -199,7 +199,7 @@
       </ul>
     </div>
   </div>
-  <div *ngIf="total!=0">
+  <div >
     <pagination-controls
       id="listing_pagination"
       [maxSize]="3"

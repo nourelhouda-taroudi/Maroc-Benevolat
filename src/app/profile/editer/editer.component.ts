@@ -82,7 +82,7 @@ export class EditerComponent implements OnInit {
   updateAsso() {
     this.assoService.updateAsso(this.association).subscribe((post: any) => {
       this.resetpost();
-      this.edite = false;
+  
       this.showForm = false;
       this.router.navigate([`profile/${this.association.id}`]);
     });

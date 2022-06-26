@@ -30,7 +30,8 @@ export class AppComponent {
             event['url'] == '/login_admin' ||
             event['url'] == '/home_admin'  ||
             event['url'] == '/all_associations'  ||
-            event['url'] == '/Suppression'
+            event['url'] == '/Suppression'||
+            event['url'] == '/Signaler'
           ) {
             this.showHead = false;
           } else {

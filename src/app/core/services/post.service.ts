@@ -1,3 +1,4 @@
+import { Signaler } from './../../models/signaler';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -25,9 +26,7 @@ export class PostService {
     
     return this.http.post<Post>(this.apiUrl, post);
   }
-  likes(id: any, like: any) {
-    return this.http.patch(`${this.apiUrl}/${id}`, { like: !like });
-  }
+ 
   update(post: any) {
     return this.http.put(`${this.apiUrl}/${post.id}`, post);
   }
@@ -78,7 +77,22 @@ export class PostService {
   }
 
   getMembreById(data:Membres){
-    return this.http.post<Membres[]>('http://localhost:3000/api/membres/find',data);
+    return this.http.post<Membres[]>(`http://localhost:3000/api/membres/find`,data);
   }
-
+ 
+  updateMembre(membre: any,id:number) : Observable<Membres>{
+    return this.http.put<Membres>(`http://localhost:3000/api/membres/${id}`, membre);
+  }
+  deleteMembre(id: any) {
+    return this.http.delete(`http://localhost:3000/api/membres/${id}`);
+  }
+  postSignal(data:any){
+    return this.http.post(`http://localhost:3000/api/signaler`,data);
+  }
+  getSignal():Observable<Signaler[]>{
+    return this.http.get<Signaler[]>(`http://localhost:3000/api/signaler`);
+  }
+  deleteSignal(id:number){
+    this.http.delete(`http://localhost:3000/api/signaler/${id}`)
+  }
 }

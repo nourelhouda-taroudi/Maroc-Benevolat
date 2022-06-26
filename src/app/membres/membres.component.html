@@ -1,17 +1,81 @@
-
-<div class="container bg-white p-3 mt-3 mb-3 rounded border shadow membre">
-  <div style="text-align: center"  >
-    <img src="./../../assets/images/membres.png"  style="margin: 5px;" width="70px" height="50px"/><h2>NOS MEMBRES</h2>
+<div class=" container list bg-white p-3 mt-3 rounded shadow">
+  <div style="text-align: center" >
+    <img src="./../../assets/images/membres.png" style="margin: 5px;" width="70px" height="50px" />
+    <h2>NOS MEMBRES</h2>
   </div>
-<div class="card" style="width: 19rem;" *ngFor="let membre of membres  | paginate: { itemsPerPage: 3, currentPage: pages }" >
-    <div class="card-body">
-      <h2 class="card-title"><i class="fa fa-user"></i>{{membre.name}} {{membre.lastname}}</h2>
-      <h3 class="card-subtitle mb-2 text-muted"> <i class="fa fa-envelope"></i>{{membre.email}}</h3>
-      <h3 class="card-subtitle mb-2 text-muted"><i class="fa fa-briefcase"></i>{{membre.position}}</h3>
-   
+  <div class="membre">
+    
+  
+    <div class="card " style="width: 19rem;margin: 30px;"
+      *ngFor="let membre of membres  | paginate: { itemsPerPage: 3, currentPage: pages }">
+  
+      <div class="card-body">
+        <h2 class="card-title"><i class="fa fa-user"></i>{{membre.name}} {{membre.lastname}}</h2>
+        <h3 class="card-subtitle mb-2 text-muted"> <i class="fa fa-envelope"></i>{{membre.email}}</h3>
+        <h3 class="card-subtitle mb-2 text-muted"><i class="fa fa-briefcase"></i>{{membre.position}}</h3>
+  
+  
+      </div>
+      <div class="d-flex justify-content-around" *ngIf="islogIn && EmailVerfication===association.emailAssociation">
+        <a data-bs-toggle="modal" data-bs-target="#editerMembre" (click)="edite(membre)" class="btn btn-success m-1"><i
+            class="fa fa-pencil" aria-hidden="true" style="width: 4px; height:4px;"></i></a>
+        <a (click)="deleteMembre(membre.id)" class="btn btn-danger m-1"><i class="fa fa-trash" aria-hidden="true"
+            style="width: 4px; height:4px;"></i></a>
+            
+      </div>
+  
     </div>
+  
   </div>
- 
 </div>
 
-<pagination-controls (pageChange)="pages = $event"  class="pagination"></pagination-controls>
+
+<pagination-controls (pageChange)="pages = $event" class="pagination"></pagination-controls>
+
+<div class="modal fade" id="editerMembre" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Editer membre</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #editeForm="ngForm">
+          <div class="mb-3">
+
+            <label for="recipient-name" class="col-form-label">Nom</label>
+            <input type="text" class="form-control" id="recipient-name" ngModel="{{member1.name}}" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Prenom</label>
+            <input type="text" class="form-control" id="recipient-name" ngModel="{{member1.lastname}}" name="lastname">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Email </label>
+            <input type="text" class="form-control" id="recipient-name" ngModel="{{member1.email}}" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Position </label>
+            <input type="text" class="form-control" id="recipient-name" name="position" ngModel="{{member1.position}}">
+
+          </div>
+          <div class="mb-3">
+            <!-- <label for="recipient-name" class="col-form-label">id </label> -->
+            <input type="hidden" class="form-control" id="recipient-name" name="id" ngModel="{{member1.id}}">
+
+          </div>
+
+          <div class="modal-footer">
+            <button (click)="updateMember(editeForm.value)" type="button" class="btn2 btn-primary"
+              data-bs-dismiss="modal">Editer</button>
+            <button type="button" class="btn2 btn-secondary" data-bs-dismiss="modal"
+              style="background-color: red; border-color: red;">Annuler</button>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+

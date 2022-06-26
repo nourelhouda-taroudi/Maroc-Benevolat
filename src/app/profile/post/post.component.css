@@ -11,9 +11,8 @@
    padding: 0px;  
   }
   .imagepost{
-    width: 900px;
+    width: 400px;
     height: 300px;
-    margin: 20px;
     border-style: solid;
     border-color: black;
     border-width: 1px;
