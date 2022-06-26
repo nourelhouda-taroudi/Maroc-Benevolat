@@ -29,7 +29,7 @@
   }
 .div{
   display: inline-flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 /* .edite {
   position: absolute;
@@ -42,4 +42,7 @@
   margin-top: 55px;
   font-size: 15px;
   margin-right: 10px;
+}
+.countainer{
+  justify-content: space-between;
 }
