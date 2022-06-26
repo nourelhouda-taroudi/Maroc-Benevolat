@@ -1,13 +1,15 @@
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
-    <img width="290"  src="./../../../assets/logo.PNG"/>
-    <div *ngIf="islogIn" class=" align-items-center " > 
+    <div>
+      <img width="290"  src="./../../../assets/logo.PNG"/>
+    </div>
+    <div *ngIf="islogIn"  > 
       <div class="dropdown d-block ">       
           <img [src]="this.uploadService.getImage(this.association.logo)"  alt=""
             class="rounded-circle " style="width: 70px;
             height: 70px;"
             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"/>
-            <p style="font-size: 18px; margin-top:5px;">{{association.nameAssociation}}</p>
+            <p style="font-size: 18px; margin-top:6px;margin-left: 490px;">{{association.nameAssociation}}</p>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <button
       (click)="Logout()"
