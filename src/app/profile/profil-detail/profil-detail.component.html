@@ -1,340 +1,173 @@
-<div class="container bg-white p-3 mt-3 rounded border shadow">
+<div class="container bg-white p-3 mt-300 rounded border shadow" *ngIf="association!=null">
   <div class="image">
-    <img class="rounded1 " src="../../../assets/images.jpg">
-
+    <img class="rounded1 " [src]="association.logo">
   </div>
-  <div class="text">
-    <a class="name">Association Care</a>
+  <div class="text"  >
+    <h1 class="name">{{association.nameAssociation}}</h1>
+
     <div class="local">
-      <a class="siege" href="">Siege</a>|
-      <a class="siege" href="">Local</a>
+      <p class="siege">{{association.sigleAssociation}}</p><br>
+      <p class="siege">{{association.city}} </p><br>
+      <p class="siege" >{{association.infos}}</p>
+    
     </div>
+
+   
     <div class="counter">
-      <a href="" class="btn-floating pulse indigo darken-3 btn btn-outline-success"><i class="fa fa-facebook"></i></a>
-      <a href="" class="btn-floating pulse light-blue darken-3 btn btn-outline-success"><i
+
+      <a href="{{association.facebook}}" class="btn-floating pulse indigo darken-3 btn btn-outline-success"><i class="fa fa-facebook"></i></a>
+      <a href="{{association.twitter}}" class="btn-floating pulse light-blue darken-3 btn btn-outline-success"><i
           class="fa fa-twitter"></i></a>
-      <a href="" class="btn-floating pulse red darken-3 btn btn-outline-success"><i class="fa fa-youtube"></i></a>
-      <a href="" class="btn-floating pulse brown darken-3 btn btn-outline-success"><i class="fa fa-instagram"></i></a>
-      <div style="width: 90px;height: 30px; margin-left: 160px;" class="
-                            dropdown-item
-                            rounded
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                            pointer
-                            text-muted
-                            p-1
-                          ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          class="bi bi-heart-fill text-danger" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-        </svg>
-        <p style="margin-left: 5px;" class="m-0"> Like</p>
-      </div>
+      <a href="{{association.instagram}}" class="btn-floating pulse brown darken-3 btn btn-outline-success"><i class="fa fa-instagram"></i></a>
+     
     </div>
-
-  </div>
-</div>
-<div class="container list bg-white p-3 mt-3 rounded border shadow">
-  <a class="link" href="#event">Evenements</a>
-  <a class="link" href="#">Annonces</a>
-  <a class="link" href="#contact">Contact</a>
-  <a class="link" href="#">Qui Somme Nous</a>
-
-
-</div>
-<!-- posts and story -->
-<div class="container mt-5 d-flex justify-content-between position-relative shadow" id="event" data-bs-interval="false">
-  <!-- s 1 -->
-  <div class="mx-1 bg-white rounded story" type="button" style="width: 6em; height: 40px; margin-top: 30px;">
-    <img src="https://source.unsplash.com/collection/happy-people" class="card-img-top mt-5 shadow" alt="story posts"
-      style="min-height: 125px; object-fit: cover" />
-    <div class=" d-flex align-items-center justify-content-center position-relative " style="min-height: 65px">
-      <p class="mb-0 text-center fs-7 fw-bold">Ajouter un evenement</p>
-      <div class="position-absolute top-0 start-50 translate-middle text-success">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-          class="bi bi-plus-circle-fill" viewBox="0 0 16 16" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <path
-            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-        </svg>
-      </div>
-    </div>
-  </div>
-  <!-- s 2 -->
-  <div class="rounded mx-1 story mt-5" type="button" style="width: 30em; height: 350px">
-    <img src="../../../assets/1.jpg" class="card-img-top rounded" alt="story posts" style=" object-fit: cover" />
-  </div>
-  <!-- s 3 -->
-  <div class="rounded mx-1 story mt-5" type="button" style="width: 30em; height: 350px">
-    <img src="../../../assets/1.jpg" class="card-img-top rounded" alt="story posts" style=" object-fit: cover" />
-  </div>
-  <!-- s 4 -->
-  <div class="rounded  story mt-5" type="button" style="width: 30em; height: 350px">
-    <img src="../../../assets/1.jpg" class="card-img-top rounded" alt="story posts" style="object-fit: cover" />
-  </div>
-  <!-- next icon -->
-  <div class=" position-absolute top-50 start-100 translate-middle  pointer d-none d-lg-block ">
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 90px; height: 30px; margin-left: 50px;margin-bottom: 30px;"*ngIf="!islogIn">
+      Signaler
     </button>
   </div>
-</div>
-<!-- create post -->
-<div class="container list bg-white p-3 mt-3 rounded border shadow" style="display: block;">
-  <div>
-    <button type="button" class="form-control rounded-pill border-0 bg-gray pointer shadow"
-      style="background-color: rgb(236, 234, 234);" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Ajouter Annonce...?
-    </button>
-    <!-- create modal -->
-    <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header align-items-center">
-            <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
-              Create Post
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            </button>
-          </div>
-          <div class="modal-body" >
-            <form>
-              <div class="d-flex flex-column">
-                <!-- name -->
-                <div class="d-flex align-items-center">
-                  <div class="p-2">
-                    <img src="https://source.unsplash.com/collection/happy-people" alt="from fb" class="rounded-circle"
-                      style="
-                          width: 38px;
-                          height: 38px;
-                          object-fit: cover;
-                        " />
-                  </div>
-                  <div>
-                    <p class="m-0 fw-bold">Care</p>
-                    <select [(ngModel)]="mypost.visualisation" [ngModelOptions]="{standalone: true}" class="form-select border-0 bg-gray w-75 fs-7" aria-label="Default select example">
-                      <option selected value="1">Public</option>
-                      <option value="2">Pin To Top</option>
-                      <option value="3">Hide</option>
-                    </select>
-                  </div>
-                </div>
-                <!-- text -->
-                <div>
-                  <textarea [(ngModel)]="mypost.text" [ngModelOptions]="{standalone: true}" cols="30" rows="5" class="form-control border-0" style="margin: 10px;"></textarea>
-                </div>
-                <!-- emoji  -->
-                <div class="
-                      d-flex
-                      justify-content-between
-                      align-items-center
-                    ">
-                  <img  src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" class="pointer"
-                    alt="fb text" style="
-                        width: 30px;
-                        height: 30px;
-                        object-fit: cover;
-                      " />
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-emoji-smile text-warning" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                    <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
-                  </svg>
-                </div>
-                <!-- options -->
-                <div class=" d-flex justify-content-between  border border-1 border-light  rounded  p-3 mt-3">
-                  <div>
-                    <input [(ngModel)]="mypost.image" [ngModelOptions]="{standalone: true}" type="file" (change)="onFileSelected($event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image text-success" viewBox="0 0 16 16">
-                      <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                      <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </form>
+  <div class="dropdown" *ngIf="islogIn && EmailVerfication===association.emailAssociation">
+    <button class="btn1 btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" ></button>
 
-            <!-- end -->
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" style="width: 60px; height: 30px;"
-              data-bs-dismiss="modal">Close</button>
-            <button *ngIf="!edite" (click)="persistpost()" data-bs-dismiss="modal" type="button" class="btn btn-primary" style="width: 80px; height: 30px;">publier </button>
-            <button *ngIf="edite"  (click)="updatepost()" data-bs-dismiss="modal"type="button" class="btn btn-warning" style="width: 100px; height: 30px;">sauvgarder </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="bg-white p-4 rounded shadow mt-3" *ngFor="let post of posts">
-    <!-- author -->
-    <div class="d-flex justify-content-between">
-      <!-- avatar -->
-      <div class="d-flex">
-        <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2"
-          style="width: 38px; height: 38px; object-fit: cover" />
-        <div>
-          <p class="m-0 fw-bold">Care</p>
-          <span class="text-muted fs-7"> July 17 at 1:23 pm</span>
-        </div>
-      </div>
-      <!-- edit -->
-      <svg class="fas fa-ellipsis-h" type="button" id="post1Menu" data-bs-toggle="dropdown" aria-expanded="false"
-        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square"
-        viewBox="0 0 16 16">
-        <path
-          d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-        <path fill-rule="evenodd"
-          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-      </svg>
-      <!-- edit menu -->
-      <ul class="dropdown-menu border-0 shadow" aria-labelledby="post1Menu">
-        <li class="d-flex align-items-center" (click)="editepost(post)">
-          <a class="
-              dropdown-item
-              d-flex
-              justify-content-around
-              align-items-center
-              fs-7
-              fa fa-pencil
-           " data-bs-toggle="modal" data-bs-target="#exampleModal" >
-            Editer</a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li class="d-flex align-items-center" >
+          <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-pencil"(click)="editeAnn(association)" > Editer Mon Profile</a>
+
+
+
         </li>
-        <li class="d-flex align-items-center"  (click)="deletepost(post.id)">
-          <a class="
-              dropdown-item
-              d-flex
-              justify-content-around
-              align-items-center
-              fs-7
-              fa fa-trash" >
-            Supprimer</a>
+        <li class="d-flex align-items-center"  >
+          <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-trash " data-bs-toggle="modal" data-bs-target="#suppression">Supprimer mon compte</a>
+        </li>
+
+        <li class="d-flex align-items-center"  >
+          <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-pencil"  data-bs-toggle="modal" data-bs-target="#ajoutMembre">Ajouter un membre</a>
         </li>
       </ul>
-    </div>
-    <!-- post content -->
-    <div class="mt-3">
-      <!-- content -->
-      <div>
-        <p>{{post.text}}</p>
-        <img src="{{post.image}}" style="width: 308px; height: 308px; text-align: justify; " />
+  </div>
+  <div>
+    <!-- Button trigger modal -->
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Signaler une association</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <!-- likes & comments -->
-      <div class="post__comment mt-3 position-relative">
-
-        <!-- comments start-->
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item border-0">
-            <!-- comment collapse -->
-            <hr />
-            <!-- comment & like bar -->
-            <div class="d-flex justify-content-around">
-              <div class="  dropdown-item  rounded  d-flex  justify-content-center align-items-center  pointer  text-muted  p-1 ">
-                <span (click)="tolike(post)" [ngClass]="{
-                  'text-danger':!post.like,
-                  'text-primary':post.like
-                }">
-                  <i class="fa" [ngClass]="{'fa-thumbs-up':post.like, 'fa-thumbs-down':!post.like }">
-                
-                  </i>
-                  {{post.likeNum}}
-                </span>
-              </div>
-              <div class=" dropdown-item  rounded   d-flex justify-content-center align-items-center pointer text-muted   p-1 " data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
-                <i class="bi bi-chat-left-dots-fill"></i>
-                <p class="m-0" style="padding: 15px;">Comment</p>
-              </div>
-            </div>
-            <!-- comment expand -->
-            <div id="collapsePost1" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample">
-              <hr />
-              <div class="accordion-body">
-                <!-- comment 1 -->
-                <div class="d-flex align-items-center my-1">
-                  <!-- avatar -->
-                  <img src="https://source.unsplash.com/collection/happy-people" alt="avatar"
-                    class="rounded-circle me-2" style="
-                      width: 38px;
-                      height: 38px;
-                      object-fit: cover;
-                    " />
-                  <!-- comment text -->
-                  <div class="p-3 rounded comment__input w-100">
-                    <p class="fw-bold m-0">John</p>
-                    <p class="m-0 fs-7 bg-gray p-2 rounded">
-                      {{post.commentaire}}
-                    </p>
-                  </div>
-                </div>
-                <!-- create comment -->
-                <form class="d-flex my-1">
-                  <!-- avatar -->
-                  <div>
-                    <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="  width: 38px;  height: 38px;  object-fit: cover;" />
-                  </div>
-                  <!-- input -->
-                  <input type="text" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment"
-                    style="margin-left: 30px;" />
-                </form>
-                <!-- end -->
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end -->
+      <div class="modal-body">
+        <h5>
+          Veuillez sélectionner une raison
+        </h5>
+        <select [(ngModel)]="signale.description" [ngModelOptions]="{standalone: true}"  class="form-select border-3 mt-3 bg-gray w-60 fs-7 ml-2" aria-label="Default select example">
+          <option *ngFor="let status of statusdata" [ngValue]="status.name" > 
+           
+           {{status.name}}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 90px; height: 30px;">Annuler</button>
+        <button type="button" class="btn btn-success" (click)="saveSignale(signale)" style="width: 90px; height: 30px;">Envoyer</button>
       </div>
     </div>
   </div>
 </div>
-<!-- Contact  -->
-<div class="container bg-white p-3 mt-3 rounded border shadow" style="display: block;" id="contact">
-  <section class="contact-us">
-    <div style="margin: 10px;">
-      <div class="section-title">
-        <h2>Contact</h2>
 
-      </div>
-    </div>
-    <div style="display: block;">
-      <div style="display: flex;margin: 10px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-          class="bi bi-house-door-fill text-light " viewBox="0 0 16 16">
-          <path
-            d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-        </svg>
-        <p style="margin-left: 10px; color: white;margin-top: 3px;"> New York, NY 10012, US</p>
-      </div>
-      <div style="display: flex;margin: 10px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-          class="bi bi-envelope-fill text-light" viewBox="0 0 16 16">
-          <path
-            d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
-        </svg>
-        <p style="margin-left: 10px; color: white;margin-top: 3px;"> care-Association@gmail.com</p>
-      </div>
-      <div style="display: flex;margin: 10px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-          class="bi bi-telephone-inbound-fill text-light" viewBox="0 0 16 16">
-          <path fill-rule="evenodd"
-            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z" />
-        </svg>
-        <p style="margin-left: 10px; color: white;margin-top: 3px;"> 05-09-65-97-44</p>
-      </div>
-    </div>
-    <div class="map" style="text-align: center; margin-top: 40px;">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571289.733943155!2d76.08560099999998!3d29.058775699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e4a4b98404f57%3A0x75ffae70833e8448!2sShahbad%2C%20Haryana%20136135!5e0!3m2!1sen!2sin!4v1594195370933!5m2!1sen!2sin"
-        width="80%" height="250" frameborder="0" style="border: 0; " allowfullscreen="" aria-hidden="false"
-        tabindex="0"></iframe>
-    </div>
+  </div> 
+ 
+</div>
+<div class="container list bg-white p-3 mt-3 rounded border shadow">
+  <a class="link" href="profile/{{association.id}}#news">Evenements</a>
+  <a class="link" href="profile/{{association.id}}#annonce">Annonces</a>
+  <a class="link" href="profile/{{association.id}}#contact">Contact</a>
+  <a class="link" href="profile/{{association.id}}#nous">Qui Somme Nous</a>
+  <a class="link" href="profile/{{association.id}}#membre">Membres</a>
 
-  </section>
-  <!-- End Contact Us Section -->
+
+</div>
+
+
+
+<div class="modal fade" id="suppression" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Demande de suppression du compte</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form  #demandeForm="ngForm" (ngSubmit)="save(demandeForm.value)">
+          <div class="mb-3">
+            <h3 class="modal-title" id="exampleModalLabel">Veuillez remplir les informations suivantes</h3>
+            <label for="recipient-name" class="col-form-label">Votre nom</label>
+            <input type="text" class="form-control" id="recipient-name" name="name" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Le nom de l'association</label>
+            <input type="text" class="form-control" id="recipient-name" name="name_asso" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Email de l'association</label>
+            <input type="text" class="form-control" id="recipient-name" name="email_asso" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Pourquoi souhaitez vous supprimer votre compte?</label>
+            <textarea class="form-control" id="message-text" name="text" ngModel></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn2 btn-primary"  data-bs-dismiss="modal">Envoyer</button>
+            <button type="button" class="btn2 btn-secondary" data-bs-dismiss="modal" style="background-color: red; border-color: red;">Annuler</button>
+ 
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="ajoutMembre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Ajouter un membre</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form  #ajoutForm="ngForm" (ngSubmit)="ajouter(ajoutForm.value)">
+          <div class="mb-3">
+            <h3 class="modal-title" id="exampleModalLabel">Veuillez remplir les informations suivantes</h3>
+            <label for="recipient-name" class="col-form-label">Nom</label>
+            <input type="text" class="form-control" id="recipient-name" name="name" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Prenom</label>
+            <input type="text" class="form-control" id="recipient-name" name="lastname" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Email </label>
+            <input type="text" class="form-control" id="recipient-name" name="email" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label" >Position </label>
+            <input type="text" class="form-control" id="recipient-name" name="position" ngModel>
+            <input type="hidden" class="form-control" id="recipient-name" name="id_asso" [ngModel]="association.id">
+          </div>
+          <input type="hidden" class="form-control" id="recipient-name" name="id_asso" [ngModel]="association.id">
+
+          <div class="modal-footer">
+            <button type="submit" class="btn2 btn-primary"  data-bs-dismiss="modal">Ajouter</button>
+            <button type="button" class="btn2 btn-secondary" data-bs-dismiss="modal" style="background-color: red; border-color: red;">Annuler</button>
+ 
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
 </div>

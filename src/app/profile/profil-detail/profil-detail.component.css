@@ -1,33 +1,38 @@
 .container{
   display: flex;
-  margin-top: 20px ;
+  margin-top: 0px ;
+
 }
 .counter{
-  margin-top: 40px;
-  margin-left: 40px;
-  display: flex;
+  margin-top: -100px;
+  margin-left: 784px;
+display:grid;
+  width: 200px;
+  justify-content: space-around;
+  height: 200px;
 }
 .image{
   text-align: center;
-  margin-left: 40px;
-  
+  margin-left: 40px; 
 }
 .text{
-  width: 800px;
+  width: 450px;
   height: 210px;
+  text-align: left;
+  margin-top: 50px;
+  margin-left: 30px;
+
+  
 }
 
 .btn{
-
-  margin-left: 20px;
-  border-radius: 30px;
- width: 27px;
- height: 27px;
- font-size: 18px;
- padding: 0px;
-
-  
-}
+  margin-right: 50px;
+    border-radius: 30px;
+   width: 28px;
+   height: 29px;
+   font-size: 18px;
+   padding: 0px;  
+  }
 .rounded-circle {
   border-style: none;
   width: 150px;
@@ -36,15 +41,23 @@
   text-align: left;
   margin-top: 5px;
   box-shadow: 10px 5px 5px 5px #d2d1d0;
+  
 }
 .rounded1 {
-  border-style: none;
-  width: 300px;
-  height: 200px;
  border: 1px solid #030303;
   text-align: left;
   margin-top: 5px;
-  box-shadow: 10px 5px 5px 5px #d2d1d0;
+  
+  margin: 30px;
+    font-size: 20px;
+    border-radius: 50px;
+    transition: 0.5s ease;
+    cursor: pointer;
+    width: 250px;
+}
+.rounded1:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
 }
 .describ{
   width: 600px;
@@ -56,21 +69,28 @@
   border-radius: 30px;
 }
 .name{
-  color: gray;
-  margin: 60px;
-  font-size: 18px;
+  color: rgb(28, 35, 83);
+  margin-left: 30px;
+  font-size: 30px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-family:'Montserrat regular';
 }
 .siege{
  text-decoration: none;
-  color: gray;
-  font-size: 18px;
+  color: rgb(60, 58, 58);
+  font-size: 22px;
   margin-right: 15px;
   margin-left: 15px;
+  margin-top: 0;
+  font-family:'Montserrat regular';
 
 }
+
 .local{
-  margin-left: 70px;
-  margin-top: 15px;
+  margin-top: 30px;
+  margin-left: 20px;
+  height: 40px;
 }
 
 .link:hover{
@@ -96,15 +116,19 @@
 }
 .contact-us {
   padding: 70px 0px;
-  background: #795548;
+
+  background: #ffffff;
+
+  background: #796348;
+
 }
 .section-title h2 {
-  color: #ffffff;
+  color: black;
   font-size: 30px;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 8px;
-  border-bottom: 5px solid #af8070;
+  border-bottom: 5px solid #625a58;
   padding-bottom: 10px;
   display: inline-block;
 }
@@ -112,3 +136,84 @@
   overflow: hidden;
   border-radius: 4px;
 }
+.imagepost{
+  width: 400px;
+  height: 300px;
+  margin: 20px;
+}
+.imagecenter{
+  text-align: center;
+  display: flex;
+  margin: 30px;
+}
+.like{
+  width: 80px;
+  height: 30px;
+  font-size: 28px;
+
+
+  
+
+
+  margin-left: 450px;
+
+  
+}
+.decouvert{
+  display: flex;
+  margin: 50px;
+  justify-content: space-around;
+}
+.textp{
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  padding: 10px;
+}
+.edite {
+  position: absolute;
+  margin-left: 1060px;
+}
+
+.btn1{
+margin-left: 430px;
+margin-bottom: 0px;
+border-radius: 15px;
+background-color: transparent;
+border-color: rgb(58, 31, 58);
+width: 30px;
+height: 30px;
+color: black;
+
+}
+
+.bi{
+
+}
+
+
+.don{
+  margin-left: 740px;
+  color: rgb(38, 37, 35);
+  font-size: 20px;
+  margin-top: 0px;
+  height: 50px;
+  width: 180px;
+  padding: 12px;
+  text-align: center;
+
+ }
+
+ .btn2{
+
+
+  width: 100px;
+  border-radius: 18px;
+ }
+
+ .add{
+   width: 200px;
+   height: 30px;
+   margin-right: 200px;
+
+ }

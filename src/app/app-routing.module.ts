@@ -1,12 +1,17 @@
+import { SignalsComponent } from './admin/signals/signals.component';
+import { AfterLoginGuard } from './core/guards/after-login.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 import { PageNotFoundComponent } from './shared/errors/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageComponent } from './page/page.component';
 
 
 
 const routes: Routes = [
   { 
-    path: 'auth' , 
+    path: 'auth' ,
+    canActivate:[AfterLoginGuard],
     loadChildren: () => 
     import('./features/auth/auth.module').then(m => m.AuthModule) 
   },
@@ -24,7 +29,8 @@ const routes: Routes = [
     ] 
   },
   { 
-    path: 'profile',
+    path: 'profile/:id',
+
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
   },
   {
@@ -43,8 +49,48 @@ const routes: Routes = [
     path: 'partenaires',
     loadChildren: () => import('./features/partenaires/partenaires.module').then(m=> m.PartenairesModule)
   },
-  
 
+  {
+    path: 'profile/editer/:id',
+    canActivate:[AuthGuard],
+    loadChildren: () => import('./profile/editer/editer.module').then(m=> m.EditerModule)
+  },
+ 
+  {
+    path: 'story',
+    loadChildren: () => import('./profile/story/story.module').then(m=> m.StoryModule)
+  },
+  {
+    path: 'annonce',
+    loadChildren: () => import('./profile/post/post.module').then(m=> m.PostModule)
+  },
+  {
+    path: 'login_admin',
+    loadChildren: () => import('./admin/login-admin/login-admin.module').then(m=> m.LoginAdminModule)
+  },
+  {
+    path: 'home_admin',
+    loadChildren: () => import('./admin/home-admin/home-admin.module').then(m=> m.HomeAdminModule)
+  },
+  {
+    path: 'all_associations',
+    loadChildren: () => import('./admin/all-associations/all-associations.module').then(m=> m.AllAssociationsModule)
+  },
+  {
+    path: 'Suppression',
+    loadChildren: () => import('./admin/suppression/suppression.module').then(m=> m.SuppressionModule)
+  },
+  {
+    path: 'Signaler',
+    loadChildren: () => import('./admin/signals/signals.module').then(m=> m.SignalsModule)
+  },
+  {
+    path: 'Demande',
+  component:PageComponent
+  },
+
+ 
+ 
  
  
   {

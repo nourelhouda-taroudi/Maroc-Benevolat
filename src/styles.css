@@ -7,10 +7,7 @@
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
 @font-face {
     font-family: "Montserrat light";
     font-style: normal;
@@ -32,4 +29,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-weight: 500;
     src: url("./assets/fonts/Montserrat-Medium.ttf") format("truetype");
     font-display: swap;
+}
+*{
+    font-family: "Montserrat regular"; /* 1 */
+}
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, 
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #012d48 !important;
+    /* color:  #012d48 !important; */
 }

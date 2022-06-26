@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { search } from '../home/search';
+
 
 @Component({
   selector: 'app-benevoles',
@@ -8,7 +8,7 @@ import { search } from '../home/search';
   styleUrls: ['./benevoles.component.css']
 })
 export class BenevolesComponent implements OnInit {
-  public search : search = new search();
+
   constructor(private router: Router) { }
   
 

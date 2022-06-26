@@ -1,14 +1,14 @@
 .title{
-    margin-top: 50px;
+    margin-top: 0px;
     margin-left: 10px;
     margin-bottom: 50px;
     width: 1420px;
     height: 200px;
-    background-color: rgb(221, 207, 180);
-    color: rgb(213, 233, 213);
+
+    color: rgb(110, 179, 181);
     padding: 100px;
     padding-left: 30px;
-    background-image: url('./../../../assets/back1.jpg');
+    line-height: 1.1em;
     background-repeat: no-repeat;
 
 }
@@ -24,5 +24,60 @@
     width: 250px;
     margin-top: 20px;
     border-radius: 5px;
-    background-color: rgb(233, 233, 171);
+    background-color: #012d48;
+    color: white;
+}
+
+.btn:hover{
+    width: 250px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #012d48;
+    color: white;
+}
+
+.titre{
+    line-height: 1.1em;
+}
+
+.titre::after{
+    content: " ";
+    position: relative;
+    display: block;
+    border-bottom: solid 6px rgb(110, 179, 181);
+    width: 60%;
+    top: 13px;
+
+}
+
+h1{
+
+    font-size: 26px;
+    font-family: 'Fira Sans',sans-serif;
+    font-weight: 200;
+    text-transform: uppercase;
+
+    color: #000;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    display: inline-block;
+    line-height: 1.1em;
+}
+
+h1::after{
+    content: " ";
+    position: relative;
+    display: block;
+    border-bottom: solid 6px #000;
+    width: 60%;
+    top: 13px;
+
+}
+
+h3{
+    color: #687880;
+    font-family: 'Titillium Web',sans-serif;
+    font-weight: 200;
+    font-size: 18px;
 }

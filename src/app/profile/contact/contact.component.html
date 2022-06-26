@@ -1,0 +1,78 @@
+<a name="contact">
+  <div
+    class="container bg-white p-3 mt-3 rounded"
+    style="display: block"
+    id="contact"
+  >
+    <section class="contact-us">
+      <div style="margin: 10px">
+        <div class="section-title">
+          <h2>Contact</h2>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-around">
+        <div style="display: flex; margin: 10px">
+          <i
+            class="fa fa-home"
+            style="font-size: 25px; margin-left: 20px"
+            aria-hidden="true"
+          ></i>
+          <p style="margin-left: 10px; color: black; margin-top: 3px">
+            {{ association.address }}
+          </p>
+        </div>
+        <div style="display: flex; margin: 10px">
+          <i
+            class="fa fa-envelope"
+            style="font-size: 25px; margin-left: 20px"
+            aria-hidden="true"
+          ></i>
+          <p style="margin-left: 10px; color: black; margin-top: 3px">
+            {{ association.emailAssociation }}
+          </p>
+        </div>
+        <div style="display: flex; margin: 10px">
+          <i
+            class="fa fa-phone"
+            style="font-size: 25px; margin-left: 20px"
+            aria-hidden="true"
+          ></i>
+          <p style="margin-left: 10px; color: black; margin-top: 3px">
+            {{ association.phoneAssociation }}
+          </p>
+        </div>
+      </div>
+      <div class="map" style="text-align: center; margin-top: 40px">
+        <iframe
+          [src]="sanitizer.bypassSecurityTrustResourceUrl(url)"
+          width="90%"
+          height="400"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen=""
+          aria-hidden="false"
+          tabindex="0"
+        >
+        </iframe>
+      </div>
+    </section>
+  </div>
+</a>
+
+<div id="nous"
+  class="container list p-3 mt-3 rounded border shadow d-lg-block"
+  style="margin-bottom: 30px"
+>
+  <div style="text-align: center">
+    <img src="./../../../assets/nous.webp" width="70px" /> QUI SOMME NOUS
+  </div>
+  <div class="decouvert">
+    <div><img src="{{ association.logo }}" width="300px" /></div>
+
+    <div class="textp">
+      <p>
+        {{ association.infos }}
+      </p>
+    </div>
+  </div>
+</div>

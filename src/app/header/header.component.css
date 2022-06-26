@@ -1,56 +1,110 @@
-.container{
-    justify-content: space-around;
+.container {
+  justify-content: space-around;
 }
-.navbar1{
-   justify-content: space-around;
-   display: flex;
-   margin-top: 25px;
-   margin-bottom: 20px;
-  
-
-
-   
-}
-.navbar{
+.navbar1 {
   justify-content: space-around;
   display: flex;
-  margin-top: 25px;
   margin-bottom: 20px;
-
+ 
 }
-.link{
-   color: gray;
-   font-size: 18px;
-   text-decoration: none;
-
-
-  
+.navbar {
+  justify-content: space-around;
+  display: flex;
+margin-top: 0px;
+margin-bottom: 20px;
+ 
 }
-.link:hover{
-   color: green;
-   text-decoration: underline;
-
-   text-underline-offset: 0.8em;
-  
-   
+.link {
+  color: #216114;
+  font-size: 18px;
+  text-decoration: none;
 }
+
+
+
+.link:hover {
+  color: #d89015;
+  text-decoration: underline;
+
+
+  text-underline-offset: 0.8em;
+}
+
 .btn{
     margin-left: 15px;
     border-radius: 20px;
+    border-color: #fbc352 ;
+    color: #fbc352 ;
 }
-input{
-    margin-right: -10px;
+
+
+
+input {
+  margin-right: -10px;
 }
-.d-flex{
-    text-align: center;
+.d-flex {
+  text-align: center;
 }
-.me-2{
-    margin-right: -0.5rem!important;
-    border-radius: 20px;
+.me-2 {
+  margin-right: -0.5rem !important;
+  border-radius: 20px;
 }
 .active {
-    color: green;
+
+    color: #d89015;
     text-decoration: underline;
  
     text-underline-offset: 0.8em;
   }
+.rounded-circle {
+  border: black;
+  border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    margin-left: 500px;
+    margin-top: -50px;
+}
+.rounded-circle:hover{
+  background-color: rgb(227, 159, 32);
+}
+.dropdown {
+  position: absolute;
+}
+.boutton{
+    margin-left: 15px;
+    border-radius: 20px;
+    border: rgb(227, 159, 32);
+    color: rgb(227, 159, 32);
+    background-color: white;
+    font-size: 1rem;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 100%;
+  left: 300px;
+  margin-top: -100px;
+}
+
+.boutton:hover{
+    background-color: rgb(227, 159, 32);
+    color: white;
+}
+
+.icon{
+    color: rgb(227, 159, 32);
+}
+
+.icon:hover{
+  color: white;
+    
+}
+
+.btn:hover{
+    background-color:  #287f10;
+    color: white;
+}
+
+.container-fluid{
+  margin-top: 0px;
+  margin-bottom: 20px;
+}

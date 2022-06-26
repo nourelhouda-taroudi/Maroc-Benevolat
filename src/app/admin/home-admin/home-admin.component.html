@@ -1,0 +1,37 @@
+<app-header-admin></app-header-admin>
+
+<h1> Toutes les demandes d'inscription</h1>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Nom Directeur</th>
+        <th scope="col">Email Directeur</th>
+        <th scope="col">Contact Directeur</th>
+        <th scope="col">Nom Association</th>
+        <th scope="col">Email</th>
+        <th scope="col">Accepter</th>
+        <th scope="col">Refuser</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+      <tr  *ngFor="let demande of demandes"  >
+    
+        <th scope="row"  >{{demande.id}}</th>
+        <td  >{{demande.firstname}}  {{demande.lastname}}</td>
+        <td >{{demande.email}}</td>
+        <td  >{{demande.phone}}</td>
+        <td  >{{demande.nameAssociation}}</td>
+        <td >{{demande.emailAssociation}}</td>
+        <td  ><button  (click)="getDemande(demande.id)">Accepter</button></td>
+        <td  ><button class="refuser" (click)="deleteDemande(demande.id)">Refuser</button></td> 
+     
+      
+      </tr>
+
+     
+    </tbody>
+  </table>

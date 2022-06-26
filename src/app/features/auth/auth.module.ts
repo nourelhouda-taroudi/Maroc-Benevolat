@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { OtpValidationComponent } from './otp-validation/otp-validation.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegisterComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
+    OtpValidationComponent,
   ],
   imports: [
     AuthRoutingModule,

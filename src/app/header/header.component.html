@@ -1,25 +1,65 @@
-
-<nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="container-fluid">
-     <img  width="200" src="./../../../assets/logo.png" >
-      <form class="d-flex" (ngSubmit)="Search(homeform)" #homeform="ngForm">
-       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  [(ngModel)]="search.search" name="you searched " >
-        <button class="btn btn-outline-success" type="submit"><mat-icon>search</mat-icon></button>
-       
-      </form>
-      <form class="d-flex">
-      <button  (click)="goToConn('auth/login')"  class="btn btn-outline-success" type="submit" style="background-color: green; color: white;">Se connecter</button>
-      <button  (click)="goToConn('auth/register')" class="btn btn-outline-success" type="submit" >S'inscrire</button>
-    </form>
-        
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <div>
+      <img width="290"  src="./../../../assets/logo.PNG"/>
     </div>
-  </nav>
+    <div *ngIf="islogIn"  > 
+      <div class="dropdown d-block ">       
+          <img [src]="this.uploadService.getImage(this.association.logo)"  alt=""
+            class="rounded-circle " style="width: 70px;
+            height: 70px;"
+            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"/>
+            <p style="font-size: 18px; margin-top:6px;margin-left: 490px;">{{association.nameAssociation}}</p>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <a  class="" href="profile/{{association.id}}" style="text-decoration:none ; font-size:15px ;color: black;">Profile</a>
+          <br/>
+          ___________________
+          <br/>
+          <br/>
+          
+          <a (click)="Logout()" class="" type="submit" *ngIf="islogIn"
+     
+    >
+      Déconnexion
+        </a>
+          
+          
+        </ul>
+      </div>
+  </div>
+    <form class="d-flex">
+      <button
+        (click)="goToConn('auth/login')"
+        class="btn btn-outline-success"
+        type="submit"
+        *ngIf="!islogIn"
+        style="background-color: #d87a15; color: white; border-color: #d87a15;;"
+      >
+        Se connecter
+      </button>
+      <button
+        (click)="goToConn('auth/register')"
+        class="btn btn-outline-success inscrire"
+        type="submit"
+        *ngIf="!islogIn"
+      >
+        S'inscrire
+      </button>
+      
+    
+     
+    </form>   
+  </div>
+</nav>
 
-
- <div class="navbar1">
+ <div class="navbar1  navbar navbar-expand-lg navbar-light "  >
+ 
   <a class="link " aria-current="page" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">ASSOCIATIONS</a>|
   <a class="link " aria-current="page" routerLink="benevoles" routerLinkActive="active">BENEVOLES</a>|
-  <a class="link " aria-current="page" routerLink="partenaires"  routerLinkActive="active">PARTENAIRES</a>|
-  <a class="link " aria-current="page" routerLink="maroc"  routerLinkActive="active">MAROC BENEVOLAT</a>|
-  <a class="link " aria-current="page" routerLink="nous"  routerLinkActive="active">POURQUOI NOUS REJOUNDRE</a>
+  <a class="link " aria-current="page" routerLink="nous"  routerLinkActive="active">POURQUOI NOUS REJOUNDRE</a>|
+  <a class="link " aria-current="page" routerLink="maroc"  routerLinkActive="active">MAROC BENEVOLAT</a>
+
+
+ 
  </div>
+

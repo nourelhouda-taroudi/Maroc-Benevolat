@@ -4,10 +4,16 @@ import { AngularMaterialModule } from './../../angular-material/angular-material
 import {LoginComponent  } from './../auth/login/login.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { SlideComponent } from './slide/slide.component';
+import { SearchComponent } from '../search/search.component';
 
 
 @NgModule({
   declarations: [
+  
+  
+    
+  
   
   ],
   imports: [
