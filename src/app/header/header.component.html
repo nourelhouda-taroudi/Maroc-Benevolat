@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
-    <img width="230"  src="./../../../assets/logo.PNG" />
+    <img width="290"  src="./../../../assets/logo.PNG"/>
     <div *ngIf="islogIn" class=" align-items-center " > 
       <div class="dropdown d-block ">       
           <img [src]="this.uploadService.getImage(this.association.logo)"  alt=""
@@ -52,7 +52,6 @@
  
   <a class="link " aria-current="page" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">ASSOCIATIONS</a>|
   <a class="link " aria-current="page" routerLink="benevoles" routerLinkActive="active">BENEVOLES</a>|
-  <a class="link " aria-current="page" routerLink="partenaires"  routerLinkActive="active">PARTENAIRES</a>|
   <a class="link " aria-current="page" routerLink="nous"  routerLinkActive="active">POURQUOI NOUS REJOUNDRE</a>|
   <a class="link " aria-current="page" routerLink="maroc"  routerLinkActive="active">MAROC BENEVOLAT</a>
 

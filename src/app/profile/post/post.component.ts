@@ -18,6 +18,7 @@ export class PostComponent implements OnInit {
 
   //param login
   islogIn:boolean=false;
+  EmailVerfication!:string;
   statusdata = [
     { id: 1, name: 'Appels de dons ' },
     { id: 2, name: 'Appel aux volontaires' },
@@ -208,6 +209,7 @@ export class PostComponent implements OnInit {
   }
   isLoggedIn(){
     this.islogIn=this.tokenService.loggedIn();
+    this.EmailVerfication=this.tokenService.getInfos().email;
   }
 }
 

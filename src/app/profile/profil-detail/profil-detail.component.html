@@ -18,12 +18,14 @@
       <a href="{{association.facebook}}" class="btn-floating pulse indigo darken-3 btn btn-outline-success"><i class="fa fa-facebook"></i></a>
       <a href="{{association.twitter}}" class="btn-floating pulse light-blue darken-3 btn btn-outline-success"><i
           class="fa fa-twitter"></i></a>
-      <a href="{{association.emailAssociation}}" class="btn-floating pulse red darken-3 btn btn-outline-success"> <i class="fa fa-envelope" aria-hidden="true"></i> </a>
       <a href="{{association.instagram}}" class="btn-floating pulse brown darken-3 btn btn-outline-success"><i class="fa fa-instagram"></i></a>
+     
     </div>
-   
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 90px; height: 30px; margin-left: 50px;"*ngIf="!islogIn">
+      Signaler
+    </button>
   </div>
-  <div class="dropdown" *ngIf="islogIn">
+  <div class="dropdown" *ngIf="islogIn && EmailVerfication===association.emailAssociation">
     <button class="btn1 btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" ></button>
 
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -42,9 +44,37 @@
         </li>
       </ul>
   </div>
-  
+  <div>
+    <!-- Button trigger modal -->
 
-   
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Signaler une association</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>
+          Veuillez sélectionner une raison
+        </h5>
+        <select [(ngModel)]="signale.description" [ngModelOptions]="{standalone: true}"  class="form-select border-3 mt-3 bg-gray w-60 fs-7 ml-2" aria-label="Default select example">
+          <option *ngFor="let status of statusdata" [ngValue]="status.name" > 
+           
+           {{status.name}}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 90px; height: 30px;">Annuler</button>
+        <button type="button" class="btn btn-success" (click)="saveSignale(signale)" style="width: 90px; height: 30px;">Envoyer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div> 
  
 </div>
 <div class="container list bg-white p-3 mt-3 rounded border shadow">

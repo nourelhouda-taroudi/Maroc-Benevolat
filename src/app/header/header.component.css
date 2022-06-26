@@ -10,7 +10,7 @@
 .navbar {
   justify-content: space-around;
   display: flex;
-
+margin-top: 0px;
  
 }
 .link {

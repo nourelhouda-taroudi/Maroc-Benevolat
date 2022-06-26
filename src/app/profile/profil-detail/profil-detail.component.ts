@@ -1,3 +1,4 @@
+import { Signaler } from './../../models/signaler';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,7 +20,15 @@ export class ProfilDetailComponent implements OnInit {
   edite = false;
   showForm = true;
   islogIn:boolean=false;
+  signale=new Signaler();
   membres!:Membres[];
+  EmailVerfication!:string;
+  statusdata = [
+    { id: 1, name: 'Faux compte ' },
+    { id: 2, name: 'Publication de contenus inappropriés' },
+  ];
+  value = this.statusdata[0];
+
   @Input('association') association!: associations;
   mypost: Post = {
     text: '',
@@ -79,7 +88,6 @@ export class ProfilDetailComponent implements OnInit {
   editeAnn(post: any) {
     this.cards = post;
     this.edite = true;
-    console.log(this.cards.id);
 
     this.router.navigate(['profile/editer', this.cards.id]);
   }
@@ -127,6 +135,15 @@ export class ProfilDetailComponent implements OnInit {
 
   isLoggedIn(){
     this.islogIn=this.tokenService.loggedIn(); 
+    this.EmailVerfication=this.tokenService.getInfos().email;
   }
+saveSignale(data:any){
+  this.signale.nom=this.association.nameAssociation;
+ return this.postservice.postSignal(data).subscribe((response:{})=>{
+  
+  console.log(this.signale.nom)
+  window.location.reload()
 
+  })
+}
 }

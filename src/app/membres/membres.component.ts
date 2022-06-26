@@ -17,6 +17,7 @@ export class MembresComponent implements OnInit {
   pages: number = 1;
   membres!:Membres[]
   membre!:Membres;
+  EmailVerfication!:string;
   data:Membres ={
     id_asso: 0,
     name: '',
@@ -95,5 +96,6 @@ export class MembresComponent implements OnInit {
   }
   isLoggedIn(){
     this.islogIn=this.tokenService.loggedIn(); 
+    this.EmailVerfication=this.tokenService.getInfos().email;
   }
 }
