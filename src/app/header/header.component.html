@@ -1,24 +1,28 @@
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
-    <img width="230"  src="./../../../assets/logo.PNG" />
-    <div *ngIf="islogIn" class=" align-items-center " > 
+    <div>
+      <img width="290"  src="./../../../assets/logo.PNG"/>
+    </div>
+    <div *ngIf="islogIn"  > 
       <div class="dropdown d-block ">       
           <img [src]="this.uploadService.getImage(this.association.logo)"  alt=""
             class="rounded-circle " style="width: 70px;
             height: 70px;"
             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"/>
-            <p style="font-size: 18px; margin-top:5px;">{{association.nameAssociation}}</p>
+            <p style="font-size: 18px; margin-top:6px;margin-left: 490px;">{{association.nameAssociation}}</p>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <button
-      (click)="Logout()"
-      class="btn btn-outline-success"
-      type="submit"
-      *ngIf="islogIn"
+          <a  class="" href="profile/{{association.id}}" style="text-decoration:none ; font-size:15px ;color: black;">Profile</a>
+          <br/>
+          ___________________
+          <br/>
+          <br/>
+          
+          <a (click)="Logout()" class="" type="submit" *ngIf="islogIn"
      
     >
       Déconnexion
-    </button>
-          <li><a  class="btn btn-outline-success" href="profile/{{association.id}}">Profile</a></li>
+        </a>
+          
           
         </ul>
       </div>
@@ -52,7 +56,6 @@
  
   <a class="link " aria-current="page" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">ASSOCIATIONS</a>|
   <a class="link " aria-current="page" routerLink="benevoles" routerLinkActive="active">BENEVOLES</a>|
-  <a class="link " aria-current="page" routerLink="partenaires"  routerLinkActive="active">PARTENAIRES</a>|
   <a class="link " aria-current="page" routerLink="nous"  routerLinkActive="active">POURQUOI NOUS REJOUNDRE</a>|
   <a class="link " aria-current="page" routerLink="maroc"  routerLinkActive="active">MAROC BENEVOLAT</a>
 

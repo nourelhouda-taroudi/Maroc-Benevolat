@@ -23,9 +23,7 @@ export class AppComponent {
       if (event instanceof NavigationStart) {
         {
           if (
-            event['url'] == '/auth/login' ||
-            event['url'] == '/auth/register' ||
-            event['url'] == '/auth/forget-password' ||
+            event['url'].split('/')[1]=='auth'||
             event['url'] == '/editer' ||
             event['url'] == '/login_admin' ||
             event['url'] == '/home_admin'  ||

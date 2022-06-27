@@ -26,16 +26,13 @@ display:grid;
 }
 
 .btn{
-
-  margin-left: 20px;
-  border-radius: 30px;
- width: 27px;
- height: 27px;
- font-size: 18px;
- padding: 0px;
-
-  
-}
+  margin-right: 50px;
+    border-radius: 30px;
+   width: 28px;
+   height: 29px;
+   font-size: 18px;
+   padding: 0px;  
+  }
 .rounded-circle {
   border-style: none;
   width: 150px;

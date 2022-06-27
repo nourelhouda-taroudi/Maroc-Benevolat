@@ -13,8 +13,7 @@
 .story:hover {
     transform: scale(1.15);
     box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
-    background-color: rgb(187, 186, 184);
-    color: white;
+    background-color: white;
 
     
   }
@@ -30,7 +29,7 @@
   }
 .div{
   display: inline-flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 /* .edite {
   position: absolute;
@@ -43,4 +42,7 @@
   margin-top: 55px;
   font-size: 15px;
   margin-right: 10px;
+}
+.countainer{
+  justify-content: space-between;
 }

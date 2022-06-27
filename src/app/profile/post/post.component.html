@@ -2,10 +2,10 @@
 <div id="annonce" class="container list bg-white p-3 mt-3 rounded "  style="display: block;" >
 
     <div>
-      <div style="text-align: center" *ngIf="!islogIn " >
+      <div style="text-align: center"  >
         <img src="./../../../assets/images/poster.png"  style="margin: 5px;" width="70px" height="50px"/><h2>LES ANNONCES</h2>
       </div>
-      <div *ngIf="islogIn">
+      <div *ngIf="islogIn && EmailVerfication===association.emailAssociation">
         <button type="button" class="form-control rounded-pill border-0 bg-gray pointer shadow"
         style="background-color: rgb(250, 181, 96);" data-bs-toggle="modal" data-bs-target="#exampleModal" >
         Ajouter Annonce...?
@@ -94,7 +94,7 @@
           <p style="margin:7px ;">{{post.visualisation}}</p>
         </div>
         <!-- edit -->
-        <div class="dropdown" *ngIf="islogIn">
+        <div class="dropdown" *ngIf="islogIn && EmailVerfication===association.emailAssociation">
           <button class="btn btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -128,8 +128,10 @@
               <hr />
               <!--  like bar -->
               <div class="d-flex ">
-                <i class="fa fa-heart" aria-hidden="true" (click)="tolike(post)" style="width:30px ;height:30px;" ></i> 
-                {{post.likeNum}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill text-danger" viewBox="0 0 16 16" (click)="tolike(post)" style="margin-left:550px; ">
+                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                </svg>
+                <h5 style="font-size:18px ;margin-top: 4px;margin-left: 8px;"> {{post.likeNum}}</h5>
               </div>
             </div>
           </div>

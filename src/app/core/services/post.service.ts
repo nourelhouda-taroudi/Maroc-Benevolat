@@ -1,3 +1,4 @@
+import { Signaler } from './../../models/signaler';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -88,8 +89,8 @@ export class PostService {
   postSignal(data:any){
     return this.http.post(`http://localhost:3000/api/signaler`,data);
   }
-  getSignal(){
-    this.http.get(`http://localhost:3000/api/signaler`)
+  getSignal():Observable<Signaler[]>{
+    return this.http.get<Signaler[]>(`http://localhost:3000/api/signaler`);
   }
   deleteSignal(id:number){
     this.http.delete(`http://localhost:3000/api/signaler/${id}`)

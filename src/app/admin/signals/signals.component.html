@@ -1,2 +1,24 @@
 <app-header-admin></app-header-admin>
 
+<h1> Les associations signaler</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Le Nom de l'association</th>
+        
+       
+      </tr>
+    </thead>
+    <tbody>  
+      <tr   *ngFor="let sign of signale" >
+    
+        <td >{{sign.description}}</td>
+        <td  >{{sign.nom}}</td>
+      </tr>
+
+     
+    </tbody>
+  </table>
+
