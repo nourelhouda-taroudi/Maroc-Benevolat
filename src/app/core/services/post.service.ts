@@ -14,59 +14,59 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class PostService {
-  apiUrl = environment.baseURL+'/post';
+  apiUrl = environment.baseURL;
   constructor(private http: HttpClient) {}
   findAll(params: string | undefined) {
-    return this.http.get<Post[]>(this.apiUrl + params);
+    return this.http.get<Post[]>(this.apiUrl+'/post' + params);
   }
   delete(id: any) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(`${this.apiUrl}/post/${id}`);
   }
   persist(post: Post) {
     console.log({post});
     
-    return this.http.post<Post>(this.apiUrl, post);
+    return this.http.post<Post>(this.apiUrl+'/post', post);
   }
  
   update(post: any) {
-    return this.http.put(`${this.apiUrl}/${post.id}`, post);
+    return this.http.put(`${this.apiUrl}/post/${post.id}`, post);
   }
 
   getAssociation() {
     return this.http.get<associations[]>(
-      'http://localhost:3000/api/association/all'
+      this.apiUrl+'/association/all'
     );
   }
 
   saveDemande(data: any) {
     return this.http.post<SuppInter[]>(
-      'http://localhost:3000/api/suppression',
+      this.apiUrl+'/suppression',
       data
     );
   }
 
   ajoutMembre(data: any) {
-    return this.http.post<Membres[]>('http://localhost:3000/api/membres', data);
+    return this.http.post<Membres[]>(this.apiUrl+'/membres', data);
   }
 
   getMembres() {
-    return this.http.get<Membres[]>('http://localhost:3000/api/membres');
+    return this.http.get<Membres[]>(this.apiUrl+'/membres');
   }
 
   saveAdresse(data: any) {
-    return this.http.post<likes[]>('http://localhost:3000/api/likes', data);
+    return this.http.post<likes[]>(this.apiUrl+'/likes', data);
   }
 
   getAdress(likes: likes) {
     return this.http.post<likes[]>(
-      'http://localhost:3000/api/likes/adresse',
+     this.apiUrl+'/likes/adresse',
       likes
     );
   }
 
   getAssociationById(id: number): Observable<associations> {
     return this.http.get<associations>(
-      `http://localhost:3000/api/association/${id}`
+      `${this.apiUrl}/association/${id}`
     );
   }
 
@@ -74,26 +74,26 @@ export class PostService {
     return this.http.get<Post[]>(`${this.apiUrl}/association/${associationId}`);
   }
   deletelike(id: any) {
-    return this.http.delete(`http://localhost:3000/api/likes/${id}`);
+    return this.http.delete(`${this.apiUrl}/likes/${id}`);
   }
 
   getMembreById(data:Membres){
-    return this.http.post<Membres[]>(`http://localhost:3000/api/membres/find`,data);
+    return this.http.post<Membres[]>(`${this.apiUrl}/membres/find`,data);
   }
  
   updateMembre(membre: any,id:number) : Observable<Membres>{
-    return this.http.put<Membres>(`http://localhost:3000/api/membres/${id}`, membre);
+    return this.http.put<Membres>(`${this.apiUrl}/membres/${id}`, membre);
   }
   deleteMembre(id: any) {
-    return this.http.delete(`http://localhost:3000/api/membres/${id}`);
+    return this.http.delete(`${this.apiUrl}/membres/${id}`);
   }
   postSignal(data:any){
-    return this.http.post(`http://localhost:3000/api/signaler`,data);
+    return this.http.post(`${this.apiUrl}/signaler`,data);
   }
   getSignal():Observable<Signaler[]>{
-    return this.http.get<Signaler[]>(`http://localhost:3000/api/signaler`);
+    return this.http.get<Signaler[]>(`${this.apiUrl}/signaler`);
   }
   deleteSignal(id:number){
-    this.http.delete(`http://localhost:3000/api/signaler/${id}`)
+    this.http.delete(`${this.apiUrl}/signaler/${id}`)
   }
 }
