@@ -46,6 +46,6 @@ export class UserService {
     );
   }
   findOneEmail(email: string): Observable<AdminInter> {
-    return this.http.get<AdminInter>(`http://localhost:3000/api/user/${email}`);
+    return this.http.get<AdminInter>(`${this.url}/${email}`);
   }
 }
