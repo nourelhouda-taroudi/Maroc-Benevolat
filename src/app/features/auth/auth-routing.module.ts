@@ -29,13 +29,13 @@ const routes: Routes = [
       },
       {
         path:'reset-password',
-        component:ResetPasswordComponent
+        component:ResetPasswordComponent,
+        data:{email:""}
       },
       {
         path:'otp-validation',
         component:OtpValidationComponent,
         data:{email:""}
-        
       }
 
     ]

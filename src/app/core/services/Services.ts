@@ -41,7 +41,7 @@ export class PostService {
   }
   
   saveAsso(data: any){
-    return this.http.post<associations[]>('http://localhost:3000/api/association',data);
+    return this.http.post<associations>('http://localhost:3000/api/association',data);
   }
 
 
@@ -56,8 +56,8 @@ export class PostService {
     return this.http.delete(`http://localhost:3000/api/demandes/${id}`)
   }
 
-  saveUser(data: any){
-    return this.http.post<associations[]>('http://localhost:3000/api/user',data);
+  saveUser(id:number,data: any){
+    return this.http.post<any>('http://localhost:3000/api/user?associationId='+id,data);
   }
 
   loginAdmin(admin:AdminInter){
