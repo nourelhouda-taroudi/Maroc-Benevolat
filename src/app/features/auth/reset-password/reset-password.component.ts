@@ -1,4 +1,5 @@
-import { Router } from '@angular/router';
+import { UserService } from './../../../core/services/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResetPasswordComponent implements OnInit {
   error: string = '';
+  email:string='';
 
   resetForm: FormGroup = new FormGroup({
     newPassword: new FormControl(null, [
@@ -22,9 +24,13 @@ export class ResetPasswordComponent implements OnInit {
   });
   hasFormErrors = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private userService:UserService,private route:ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.email = params.email || '/offers/list';
+    });
+  }
 
   isControlHasError(controlName: string, validationType: string): boolean {
     const control = this.resetForm.controls[controlName];
@@ -53,6 +59,13 @@ export class ResetPasswordComponent implements OnInit {
     this.checkFormIsValid();
     const { newPassword, retapPassword } = this.resetForm.value;
     if (newPassword == retapPassword) {
+      this.userService.resetPassword(this.email,newPassword).subscribe(res=>{
+        console.log(res);
+      },
+      err=>{
+        console.log(err);
+      }
+      )
       this.router.navigateByUrl('/auth/login');
     } else {
       alert('le mot de passe different dans les deux champs ');

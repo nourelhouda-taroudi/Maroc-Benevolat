@@ -63,7 +63,7 @@ export class OtpValidationComponent implements OnInit {
     const { code } = this.codeForm.value;
     this.userService.otpValidation(code, this.email).subscribe(
       (res) => {
-        this.router.navigateByUrl('/auth/reset-password');
+        this.router.navigateByUrl('/auth/reset-password?email='+this.email);
       },
       (err) => {
         console.log(err);

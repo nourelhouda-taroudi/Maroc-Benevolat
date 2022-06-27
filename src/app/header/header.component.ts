@@ -59,7 +59,9 @@ export class HeaderComponent implements OnInit {
   isLoggedIn(){
     this.islogIn=this.tokenService.loggedIn();
    this.UserEmail=this.tokenService.getInfos().email;
-   this.getUserByEmail(this.UserEmail); 
+   if(this.islogIn){
+    this.getUserByEmail(this.UserEmail); 
+   }
   }
 
   getUserByEmail(email:string){
