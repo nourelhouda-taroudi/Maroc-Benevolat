@@ -33,7 +33,7 @@ export class PostService {
 
 
   deleteAsso(id: any){
-    return this.http.delete(``${this.apiUrl}/association/${id}`)
+    return this.http.delete(`${this.apiUrl}/association/${id}`)
   }
  
   getAssociation_Inscription(){
