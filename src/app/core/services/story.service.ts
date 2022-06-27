@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Story } from 'src/app/models/story';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoryService {
-  apiUrl = 'http://localhost:3000/api/story';
+  apiUrl = environment.baseURL+'/story'
   constructor(private http: HttpClient) {}
   findAll() {
     return this.http.get<Story[]>(this.apiUrl);
