@@ -7,13 +7,14 @@ import { likes } from 'src/app/models/likes';
 import { Membres } from 'src/app/models/membre';
 import { SuppInter } from 'src/app/models/suppression';
 import { Post } from '../../models/post';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  apiUrl = 'http://localhost:3000/api/post';
+  apiUrl = environment.baseURL+'/post';
   constructor(private http: HttpClient) {}
   findAll(params: string | undefined) {
     return this.http.get<Post[]>(this.apiUrl + params);
