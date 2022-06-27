@@ -16,7 +16,7 @@ export class UserService {
     private readonly http: HttpClient,
     private readonly token: TokenService
   ) {}
-  url = environment.baseURL + 'user/';
+  url = environment.baseURL + '/user/';
   signIn(payload: { email: string; password: string }) {
     return this.http.post(`${this.url}signIn`, payload);
   }
