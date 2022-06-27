@@ -9,7 +9,7 @@ import { associations } from 'src/app/models/associations';
 export class UploadsService {
 
   constructor(private httpClient:HttpClient) { }
-  url = environment.baseURL+'common/';
+  url = environment.baseURL+'/common/';
   uploadImage(data:FormData){
 
     return this.httpClient.post(`${this.url}upload`,data)
