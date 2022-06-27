@@ -1,6 +1,6 @@
 <div class="container bg-white p-3 mt-300 rounded border shadow" *ngIf="association!=null">
   <div class="image">
-    <img class="rounded1 " [src]="association.logo">
+    <img class="rounded1"[src]="association.logo">
   </div>
   <div class="text"  >
     <h1 class="name">{{association.nameAssociation}}</h1>
@@ -21,16 +21,18 @@
       <a href="{{association.instagram}}" class="btn-floating pulse brown darken-3 btn btn-outline-success"><i class="fa fa-instagram"></i></a>
      
     </div>
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 90px; height: 30px; margin-left: 50px;margin-bottom: 30px;"*ngIf="!islogIn">
+    <div style="margin-bottom:50px ;">
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="width: 90px; height: 30px; margin-left: 50px;"*ngIf="!islogIn">
       Signaler
     </button>
   </div>
+  </div>
   <div class="dropdown" *ngIf="islogIn && EmailVerfication===association.emailAssociation">
-    <button class="btn1 btn-success fa fa-pencil" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" ></button>
+    <button class="btn1 btn-success fa fa-pencil" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false" ></button>
 
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
         <li class="d-flex align-items-center" >
-          <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-pencil"(click)="editeAnn(association)" > Editer Mon Profile</a>
+          <a class="dropdown-item d-flex justify-content-around align-items-center  fs-7 fa fa-pencil"(click)="editeAnn(association)" > Editer Mon Profil</a>
 
 
 
@@ -49,7 +51,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
