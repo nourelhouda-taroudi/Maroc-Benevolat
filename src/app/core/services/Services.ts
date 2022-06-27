@@ -6,68 +6,70 @@ import { Demande } from 'src/app/models/demandes';
 import { AdminInter } from 'src/app/models/admin';
 import { SuppInter } from 'src/app/models/suppression';
 import { likes } from 'src/app/models/likes';
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
   constructor(private http : HttpClient) { }
   ipAddress = '';
-
+  apiUrl = environment.baseURL;
   getAssociationById(id: number ): Observable<associations>{
-    return this.http.get<associations>(`http://localhost:3000/api/association/${id}`);
+    return this.http.get<associations>(`${this.apiUrl}/association/${id}`);
    
    
   }
 
   getAssociation(){
     
-    return this.http.get<associations[]>('http://localhost:3000/api/association/all');
+    return this.http.get<associations[]>(`${this.apiUrl}/association/all`);
   
   }
 
   updateAsso(association:any){
-    return this.http.put(`http://localhost:3000/api/association/${association.id}`,association);
+    return this.http.put(`${this.apiUrl}/association/${association.id}`,association);
   }
 
 
   deleteAsso(id: any){
-    return this.http.delete(`http://localhost:3000/api/association/${id}`)
+    return this.http.delete(``${this.apiUrl}/association/${id}`)
   }
  
   getAssociation_Inscription(){
     
-    return this.http.get<Demande[]>('http://localhost:3000/api/demandes');
+    return this.http.get<Demande[]>(`${this.apiUrl}/demandes`);
   
   }
   
   saveAsso(data: any){
-    return this.http.post<associations>('http://localhost:3000/api/association',data);
+    return this.http.post<associations>(`${this.apiUrl}/association`,data);
   }
 
 
 
   getDemandeById(id: number ): Observable<Demande>{
-    return this.http.get<Demande>(`http://localhost:3000/api/demandes/${id}`);
+    return this.http.get<Demande>(`${this.apiUrl}/demandes/${id}`);
    
    
   }
 
   deleteDemande(id: any){
-    return this.http.delete(`http://localhost:3000/api/demandes/${id}`)
+    return this.http.delete(`${this.apiUrl}/demandes/${id}`)
   }
 
   saveUser(id:number,data: any){
-    return this.http.post<any>('http://localhost:3000/api/user?associationId='+id,data);
+    return this.http.post<any>(`${this.apiUrl}/user?associationId=${id}`,data);
   }
 
   loginAdmin(admin:AdminInter){
-    return this.http.post<AdminInter[]>('http://localhost:3000/api/admin/login',admin);
+    return this.http.post<AdminInter[]>(`${this.apiUrl}/admin/login`,admin);
   }
 
 
   getAssociation_Suppression(){
     
-    return this.http.get<SuppInter[]>('http://localhost:3000/api/suppression');
+    return this.http.get<SuppInter[]>(`${this.apiUrl}/suppression`);
   
   }
 
